@@ -32,56 +32,44 @@ export default function AdamEveEnv(props) {
       />
 
       <group {...props} dispose={null}>
-        {/* Main directional light for primary shadows */}
         {/* <directionalLight
-          castShadow
-          position={[2.599, 2.582, 3.344]}
-          intensity={2}
-          shadow-mapSize={[2048, 2048]}
-          shadow-bias={-0.0001}
-          shadow-normalBias={0.02}
-          shadow-camera-near={0.1}
-          shadow-camera-far={20}
-          shadow-camera-left={-10}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-bottom={-10}
-        /> */}
-
-        {/* Spot lights with enhanced shadow properties */}
+        intensity={6830}
+        decay={2}
+        position={[2.599, 2.582, 3.344]}
+        rotation={[-0.615, 0.705, -0.774]}
+        target={nodes.Sun.target}
+      >
+        <primitive object={nodes.Sun.target} position={[0, 0, -1]} />
+      </directionalLight> */}
         <spotLight
-          castShadow
           intensity={spot1}
           angle={1.221}
           penumbra={0.15}
           decay={2}
           position={[5.295, 2.596, 4.506]}
-          shadow-mapSize={[1024, 1024]}
-          shadow-bias={-0.0001}
-          target-position={[0, 0, 0]}
-        />
-
+          rotation={[-0.565, 0.785, 0.918]}
+          target={nodes.Spot.target}
+        >
+          <primitive object={nodes.Spot.target} position={[0, 0, -1]} />
+        </spotLight>
         <spotLight
-          castShadow
           intensity={spot2}
           angle={0.698}
           penumbra={0.15}
           decay={2}
           position={[6.314, 0.198, -0.42]}
-          shadow-mapSize={[1024, 1024]}
-          shadow-bias={-0.0001}
-          target-position={[0, 0, 0]}
-        />
-
-        {/* Ground plane with enhanced shadow receiving */}
+          rotation={[3.065, 1.506, -2.541]}
+          target={nodes.Spot001.target}
+        >
+          <primitive object={nodes.Spot001.target} position={[0, 0, -1]} />
+        </spotLight>
         <mesh
+          castShadow
           receiveShadow
           geometry={nodes.Plane.geometry}
           material={materials["Material.002"]}
           scale={[2.5, 4.29, 1.5]}
         />
-
-        {/* Trees and objects with shadow casting */}
         <mesh
           castShadow
           receiveShadow
@@ -90,7 +78,6 @@ export default function AdamEveEnv(props) {
           position={[0.579, -0.047, 0.836]}
           scale={0.241}
         />
-
         <mesh
           castShadow
           receiveShadow
@@ -99,7 +86,6 @@ export default function AdamEveEnv(props) {
           position={[0.325, 0, -0.93]}
           scale={0.213}
         />
-
         <mesh
           castShadow
           receiveShadow
@@ -108,7 +94,6 @@ export default function AdamEveEnv(props) {
           position={[1.705, 0.014, -0.62]}
           rotation={[Math.PI, -1.559, Math.PI]}
         />
-
         <mesh
           castShadow
           receiveShadow
@@ -117,7 +102,6 @@ export default function AdamEveEnv(props) {
           position={[0.729, 0.024, 0.663]}
           scale={0.839}
         />
-
         <group
           position={[1.767, 0, -0.785]}
           rotation={[-Math.PI, -0.589, -Math.PI]}
@@ -142,8 +126,6 @@ export default function AdamEveEnv(props) {
             material={materials["island_tree_01.001"]}
           />
         </group>
-
-        {/* Rest of the meshes with shadow properties */}
         <mesh
           castShadow
           receiveShadow
@@ -152,7 +134,6 @@ export default function AdamEveEnv(props) {
           position={[0.688, -0.008, -1.047]}
           scale={0.617}
         />
-
         <mesh
           castShadow
           receiveShadow
@@ -161,7 +142,6 @@ export default function AdamEveEnv(props) {
           position={[0.4, 0, 0.782]}
           scale={3.455}
         />
-
         <mesh
           castShadow
           receiveShadow
@@ -169,7 +149,6 @@ export default function AdamEveEnv(props) {
           material={materials.fern_02}
           position={[0, 0, 1]}
         />
-
         <group position={[1.362, 0, 1.034]} scale={0.138}>
           <mesh
             castShadow
@@ -190,7 +169,6 @@ export default function AdamEveEnv(props) {
             material={materials.jacaranda_tree_trunk}
           />
         </group>
-
         <mesh
           castShadow
           receiveShadow
