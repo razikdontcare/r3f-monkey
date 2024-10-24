@@ -6,7 +6,12 @@ Files: .\adameve_env.gltf [114.52KB] > D:\Wannabe Stuff\Projects\Monyet\AdamEveE
 
 import React from "react";
 import { useGraph } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
+import {
+  useGLTF,
+  AccumulativeShadows,
+  RandomizedLight,
+  SoftShadows,
+} from "@react-three/drei";
 import { SkeletonUtils } from "three-stdlib";
 import { useControls } from "leva";
 
@@ -18,129 +23,207 @@ export default function AdamEveEnv(props) {
   const { spot1, spot2 } = useControls({ spot1: 500, spot2: 20 });
 
   return (
-    <group {...props} dispose={null} receiveShadow={true}>
-      {/* <directionalLight
-        intensity={2}
-        decay={2}
-        castShadow={true}
-        position={[2.599, 2.582, 3.344]}
-        rotation={[-0.615, 0.705, -0.774]}
-        target={nodes.Sun.target}
-      >
-        <primitive object={nodes.Sun.target} position={[0, 0, -1]} />
-      </directionalLight> */}
-      <spotLight
-        intensity={spot1}
-        angle={1.221}
-        penumbra={0.15}
-        decay={2}
-        castShadow={true}
-        position={[5.295, 2.596, 4.506]}
-        rotation={[-0.565, 0.785, 0.918]}
-        target={nodes.Spot.target}
-      >
-        <primitive object={nodes.Spot.target} position={[0, 0, -1]} />
-      </spotLight>
-      <spotLight
-        intensity={spot2}
-        angle={0.698}
-        penumbra={0.15}
-        decay={2}
-        castShadow={true}
-        position={[6.314, 0.198, -0.42]}
-        rotation={[3.065, 1.506, -2.541]}
-        target={nodes.Spot001.target}
-      >
-        <primitive object={nodes.Spot001.target} position={[0, 0, -1]} />
-      </spotLight>
-      <mesh
-        geometry={nodes.Plane.geometry}
-        material={materials["Material.002"]}
-        scale={[2.5, 4.29, 1.5]}
+    <>
+      {/* Enable better shadow mapping */}
+      <SoftShadows
+        size={25} // Size of the shadow map
+        samples={16} // Number of samples
+        focus={0.5} // Shadow focus/blur
       />
-      <mesh
-        geometry={nodes.Weird_Tree_Trunk_in_Forest.geometry}
-        material={materials.Lighthouse_forest_3_u1_v1}
-        position={[0.579, -0.047, 0.836]}
-        scale={0.241}
-      />
-      <mesh
-        geometry={nodes.Granite_Rock_Photoscan.geometry}
-        material={materials.lynn_mar624_7_u1_v1}
-        position={[0.325, 0, -0.93]}
-        scale={0.213}
-      />
-      <mesh
-        geometry={nodes.pine_roots_a001.geometry}
-        material={materials["pine_roots_a.001"]}
-        position={[1.705, 0.014, -0.62]}
-        rotation={[Math.PI, -1.559, Math.PI]}
-      />
-      <mesh
-        geometry={nodes.pine_roots_b001.geometry}
-        material={materials["pine_roots_b.001"]}
-        position={[0.729, 0.024, 0.663]}
-        scale={0.839}
-      />
-      <group
-        position={[1.767, 0, -0.785]}
-        rotation={[-Math.PI, -0.589, -Math.PI]}
-        scale={0.796}
-        receiveShadow={true}
-      >
-        <mesh
-          geometry={nodes.island_trees_01_blockout_cleaned001.geometry}
-          material={materials["island_tree_01_leaves.001"]}
+
+      <group {...props} dispose={null}>
+        {/* Main directional light for primary shadows */}
+        {/* <directionalLight
+          castShadow
+          position={[2.599, 2.582, 3.344]}
+          intensity={2}
+          shadow-mapSize={[2048, 2048]}
+          shadow-bias={-0.0001}
+          shadow-normalBias={0.02}
+          shadow-camera-near={0.1}
+          shadow-camera-far={20}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
+        /> */}
+
+        {/* Spot lights with enhanced shadow properties */}
+        <spotLight
+          castShadow
+          intensity={spot1}
+          angle={1.221}
+          penumbra={0.15}
+          decay={2}
+          position={[5.295, 2.596, 4.506]}
+          shadow-mapSize={[1024, 1024]}
+          shadow-bias={-0.0001}
+          target-position={[0, 0, 0]}
         />
-        <mesh
-          geometry={nodes.island_trees_01_blockout_cleaned001_1.geometry}
-          material={materials["island_tree_01_branches.001"]}
+
+        <spotLight
+          castShadow
+          intensity={spot2}
+          angle={0.698}
+          penumbra={0.15}
+          decay={2}
+          position={[6.314, 0.198, -0.42]}
+          shadow-mapSize={[1024, 1024]}
+          shadow-bias={-0.0001}
+          target-position={[0, 0, 0]}
         />
+
+        {/* Ground plane with enhanced shadow receiving */}
         <mesh
-          geometry={nodes.island_trees_01_blockout_cleaned001_2.geometry}
-          material={materials["island_tree_01.001"]}
+          receiveShadow
+          geometry={nodes.Plane.geometry}
+          material={materials["Material.002"]}
+          scale={[2.5, 4.29, 1.5]}
         />
-      </group>
-      <mesh
-        geometry={nodes.island_tree_02.geometry}
-        material={materials.island_tree_02}
-        position={[0.688, -0.008, -1.047]}
-        scale={0.617}
-      />
-      <mesh
-        geometry={nodes.nettle_plant_medium_a_LOD0.geometry}
-        material={materials.nettle_plant}
-        position={[0.4, 0, 0.782]}
-        scale={3.455}
-      />
-      <mesh
-        geometry={nodes.fern_02_a.geometry}
-        material={materials.fern_02}
-        position={[0, 0, 1]}
-      />
-      <group position={[1.362, 0, 1.034]} scale={0.138} receiveShadow={true}>
+
+        {/* Trees and objects with shadow casting */}
         <mesh
-          geometry={nodes.tree016.geometry}
-          material={materials.jacaranda_tree_leaves}
+          castShadow
+          receiveShadow
+          geometry={nodes.Weird_Tree_Trunk_in_Forest.geometry}
+          material={materials.Lighthouse_forest_3_u1_v1}
+          position={[0.579, -0.047, 0.836]}
+          scale={0.241}
         />
+
         <mesh
-          geometry={nodes.tree016_1.geometry}
+          castShadow
+          receiveShadow
+          geometry={nodes.Granite_Rock_Photoscan.geometry}
+          material={materials.lynn_mar624_7_u1_v1}
+          position={[0.325, 0, -0.93]}
+          scale={0.213}
+        />
+
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pine_roots_a001.geometry}
+          material={materials["pine_roots_a.001"]}
+          position={[1.705, 0.014, -0.62]}
+          rotation={[Math.PI, -1.559, Math.PI]}
+        />
+
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.pine_roots_b001.geometry}
+          material={materials["pine_roots_b.001"]}
+          position={[0.729, 0.024, 0.663]}
+          scale={0.839}
+        />
+
+        <group
+          position={[1.767, 0, -0.785]}
+          rotation={[-Math.PI, -0.589, -Math.PI]}
+          scale={0.796}
+        >
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.island_trees_01_blockout_cleaned001.geometry}
+            material={materials["island_tree_01_leaves.001"]}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.island_trees_01_blockout_cleaned001_1.geometry}
+            material={materials["island_tree_01_branches.001"]}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.island_trees_01_blockout_cleaned001_2.geometry}
+            material={materials["island_tree_01.001"]}
+          />
+        </group>
+
+        {/* Rest of the meshes with shadow properties */}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.island_tree_02.geometry}
+          material={materials.island_tree_02}
+          position={[0.688, -0.008, -1.047]}
+          scale={0.617}
+        />
+
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.nettle_plant_medium_a_LOD0.geometry}
+          material={materials.nettle_plant}
+          position={[0.4, 0, 0.782]}
+          scale={3.455}
+        />
+
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.fern_02_a.geometry}
+          material={materials.fern_02}
+          position={[0, 0, 1]}
+        />
+
+        <group position={[1.362, 0, 1.034]} scale={0.138}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.tree016.geometry}
+            material={materials.jacaranda_tree_leaves}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.tree016_1.geometry}
+            material={materials.jacaranda_tree_branches}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.tree016_2.geometry}
+            material={materials.jacaranda_tree_trunk}
+          />
+        </group>
+
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Plane027.geometry}
           material={materials.jacaranda_tree_branches}
         />
         <mesh
-          geometry={nodes.tree016_2.geometry}
-          material={materials.jacaranda_tree_trunk}
+          castShadow
+          receiveShadow
+          geometry={nodes.Plane027_1.geometry}
+          material={materials.jacaranda_tree_leaves}
         />
       </group>
-      <mesh
-        geometry={nodes.Plane027.geometry}
-        material={materials.jacaranda_tree_branches}
-      />
-      <mesh
-        geometry={nodes.Plane027_1.geometry}
-        material={materials.jacaranda_tree_leaves}
-      />
-    </group>
+
+      {/* Accumulative shadows for better ground shadow quality */}
+      <AccumulativeShadows
+        temporal
+        frames={100}
+        color="#316d39"
+        colorBlend={0.5}
+        opacity={1}
+        scale={10}
+        position={[0, -0.01, 0]}
+      >
+        <RandomizedLight
+          amount={8}
+          radius={4}
+          ambient={0.5}
+          position={[5, 5, -10]}
+          bias={0.001}
+        />
+      </AccumulativeShadows>
+    </>
   );
 }
 

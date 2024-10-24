@@ -14,8 +14,8 @@ export default function CameraRig({ children }: { children: React.ReactNode }) {
   const cameraRef = useRef<ThreePerspectiveCamera>(null);
 
   const { position, rotation, pov } = useControls({
-    position: [0, 0.5, 3],
-    rotation: [0, 0, 0],
+    position: [0, 0.3, 3],
+    rotation: [0.05, 0, 0],
     pov: 40,
   });
 
