@@ -20,7 +20,7 @@ export default function AdamEveEnv(props) {
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes, materials } = useGraph(clone);
 
-  const { spot1, spot2 } = useControls({ spot1: 500, spot2: 20 });
+  const { spot1, spot2 } = useControls({ spot1: 350, spot2: 27 });
 
   return (
     <>
@@ -33,31 +33,47 @@ export default function AdamEveEnv(props) {
 
       <group {...props} dispose={null}>
         {/* <directionalLight
-        intensity={6830}
-        decay={2}
-        position={[2.599, 2.582, 3.344]}
-        rotation={[-0.615, 0.705, -0.774]}
-        target={nodes.Sun.target}
-      >
-        <primitive object={nodes.Sun.target} position={[0, 0, -1]} />
-      </directionalLight> */}
+          castShadow
+          position={[2.599, 2.582, 3.344]}
+          intensity={2}
+          shadow-mapSize={[2048, 2048]}
+          shadow-bias={-0.0001}
+          shadow-normalBias={0.02}
+          shadow-camera-near={0.1}
+          shadow-camera-far={20}
+          shadow-camera-left={-10}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-bottom={-10}
+          target={nodes.Sun.target}
+        >
+          <primitive object={nodes.Sun.target} position={[0, 0, -1]} />
+        </directionalLight> */}
         <spotLight
+          castShadow
           intensity={spot1}
           angle={1.221}
           penumbra={0.15}
           decay={2}
           position={[5.295, 2.596, 4.506]}
+          shadow-mapSize={[1024, 1024]}
+          shadow-bias={-0.0001}
+          // target-position={[0, 0, 0]}
           rotation={[-0.565, 0.785, 0.918]}
           target={nodes.Spot.target}
         >
           <primitive object={nodes.Spot.target} position={[0, 0, -1]} />
         </spotLight>
         <spotLight
+          castShadow
           intensity={spot2}
           angle={0.698}
           penumbra={0.15}
           decay={2}
           position={[6.314, 0.198, -0.42]}
+          shadow-mapSize={[1024, 1024]}
+          shadow-bias={-0.0001}
+          // target-position={[0, 0, 0]}
           rotation={[3.065, 1.506, -2.541]}
           target={nodes.Spot001.target}
         >

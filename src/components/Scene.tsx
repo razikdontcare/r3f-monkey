@@ -8,7 +8,7 @@ import { useControls } from "leva";
 // import { SpotLight } from "@react-three/drei";
 
 export default function Scene() {
-  const { modelPos } = useControls({ modelPos: [-0.4, 0, 0] });
+  const { modelPos } = useControls({ modelPos: [0, 0, 0] });
 
   return (
     <>
@@ -21,6 +21,7 @@ export default function Scene() {
           position={position}
           rotation={rotation}
         /> */}
+        {/* <color attach="background" args={["#000"]} /> */}
         <CameraRig>
           <group rotation={[0, 5, 0]} position={modelPos}>
             <AdamEveEnv />
