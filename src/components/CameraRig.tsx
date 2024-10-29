@@ -15,8 +15,8 @@ export default function CameraRig({ children }: { children: React.ReactNode }) {
 
   const { position, rotation, pov } = useControls({
     position: [0.3, 0.3, 2.7],
-    rotation: [0.05, 0, 0],
-    pov: 47,
+    rotation: [0.08, 0.1, 0],
+    pov: 35,
   });
 
   useFrame((state, delta) => {

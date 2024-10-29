@@ -12,6 +12,7 @@
     "@pmndrs/assets": "^1.7.0",
     "@react-three/drei": "^9.114.6",
     "@react-three/fiber": "^8.17.10",
+    "@react-three/postprocessing": "^2.16.3",
     "@types/three": "^0.169.0",
     "leva": "^0.9.35",
     "maath": "^0.10.8",
