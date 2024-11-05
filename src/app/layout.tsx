@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import AnimPresence from "@/animation/AnimPresence";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AnimPresence>{children}</AnimPresence>
       </body>
     </html>
   );

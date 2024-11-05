@@ -1,6 +1,6 @@
 import { PerspectiveCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { useControls } from "leva";
+
 import { easing } from "maath";
 import { useRef } from "react";
 import {
@@ -9,15 +9,17 @@ import {
   PerspectiveCamera as ThreePerspectiveCamera,
 } from "three";
 
-export default function CameraRig({ children }: { children: React.ReactNode }) {
+export default function CameraRig({
+  position,
+  rotation,
+  pov,
+}: {
+  position: [number, number, number];
+  rotation: [number, number, number];
+  pov: number;
+}) {
   // const group = useRef<Group<Object3DEventMap>>(null);
   const cameraRef = useRef<ThreePerspectiveCamera>(null);
-
-  const { position, rotation, pov } = useControls({
-    position: [0.3, 0.3, 2.7],
-    rotation: [0.08, 0.1, 0],
-    pov: 35,
-  });
 
   useFrame((state, delta) => {
     const x = state.pointer.x * 0.01;
@@ -50,7 +52,6 @@ export default function CameraRig({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {/* Perspektif kamera yang digunakan untuk efek wiggle */}
       <PerspectiveCamera
         ref={cameraRef}
         makeDefault // Pastikan ini adalah kamera default di scene
@@ -58,8 +59,6 @@ export default function CameraRig({ children }: { children: React.ReactNode }) {
         rotation={rotation}
         fov={pov} // Field of view, bisa disesuaikan
       />
-      {children}
-      {/* <group ref={group}>{children}</group> */}
     </>
   );
 }

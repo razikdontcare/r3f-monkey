@@ -1,5 +1,5 @@
 "use client";
-import Scene from "@/components/Scene";
+import { AdamScene } from "@/components/Scene";
 import { HomeSection } from "@/components/overlay";
 import { useState } from "react";
 
@@ -29,7 +29,7 @@ export default function Home() {
         >
           <source src="/bg.mp4" type="video/mp4" />
         </video>
-        <Scene />
+        <AdamScene />
         <HomeSection />
       </div>
     </>
