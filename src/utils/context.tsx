@@ -33,3 +33,38 @@ export function useCameraPosition() {
   const { targetPosition, setTargetPosition } = useContext(CameraPosition);
   return { targetPosition, setTargetPosition };
 }
+
+interface CharacterEventsProps {
+  event: "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc" | null;
+  setEvent: React.Dispatch<
+    React.SetStateAction<
+      "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc" | null
+    >
+  >;
+}
+
+const CharacterEvents = createContext<CharacterEventsProps>({
+  event: null,
+  setEvent: () => {},
+});
+
+export function CharacterEventsProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [event, setEvent] = useState<
+    "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc" | null
+  >(null);
+
+  return (
+    <CharacterEvents.Provider value={{ event, setEvent }}>
+      {children}
+    </CharacterEvents.Provider>
+  );
+}
+
+export function useCharacterEvents() {
+  const { event, setEvent } = useContext(CharacterEvents);
+  return { event, setEvent };
+}

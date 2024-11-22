@@ -1,4 +1,5 @@
 // import { useObjectControls } from "@/utils/controls";
+import { useCharacterEvents } from "@/utils/context";
 import { SpriteAnimator, useSpriteLoader } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useSpring } from "framer-motion";
@@ -39,6 +40,8 @@ export default function EgyptSprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const meshRef = useRef<Group>(null);
 
+  const { setEvent } = useCharacterEvents();
+
   useEffect(() => {
     if (isInView) {
       setIsVisible(true);
@@ -78,7 +81,13 @@ export default function EgyptSprite({ isInView }: { isInView: boolean }) {
           </group>
           <GrassSprite />
           <CornerGrassSprite />
-          <SnifferSprite />
+          <group
+            onClick={() =>
+              setEvent((prev) => (prev === "egypt" ? null : "egypt"))
+            }
+          >
+            <SnifferSprite />
+          </group>
         </>
       </group>
     </>

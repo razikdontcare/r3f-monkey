@@ -1,3 +1,4 @@
+import { useCharacterEvents } from "@/utils/context";
 import { SpriteAnimator, useSpriteLoader } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useSpring } from "framer-motion";
@@ -46,6 +47,8 @@ export default function DynastySprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const meshRef = useRef<Group>(null);
 
+  const { setEvent } = useCharacterEvents();
+
   useEffect(() => {
     if (isInView) {
       setIsVisible(true);
@@ -85,7 +88,13 @@ export default function DynastySprite({ isInView }: { isInView: boolean }) {
         </group>
         {/* <CloudMesh /> */}
         <ArrowsFlyingSprite />
-        <SnifferSprite />
+        <group
+          onClick={() =>
+            setEvent((prev) => (prev === "dynasty" ? null : "dynasty"))
+          }
+        >
+          <SnifferSprite />
+        </group>
       </group>
     </>
   );

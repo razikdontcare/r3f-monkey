@@ -2,9 +2,10 @@
 import textBox from "./assets/text-box.png";
 import milestones from "./assets/milestones.png";
 
-import Arrows from "./HomeSection";
+import Arrows from "@/components/overlay/Arrows";
 import Image from "next/image";
 import { useCameraPosition } from "@/utils/context";
+import CharacterEvents from "@/components/overlay/CharacterEvents";
 
 export default function UIOverlay() {
   const { setTargetPosition } = useCameraPosition();
@@ -14,6 +15,7 @@ export default function UIOverlay() {
 
   return (
     <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+      <CharacterEvents />
       <div className="w-full h-full flex pointer-events-none p-2">
         <Image src={textBox} alt="TEXT BOX" className="h-full" />
         <div className="relative">
@@ -49,6 +51,7 @@ export default function UIOverlay() {
           />
         </div>
       </div>
+
       <Arrows />
     </div>
   );
