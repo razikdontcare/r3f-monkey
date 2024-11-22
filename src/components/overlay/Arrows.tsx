@@ -34,7 +34,7 @@ export default function Arrows() {
           {/* <h1 className="text-6xl font-bold text-white cursor-default pointer-events-auto">
             bismillah gak ngebug
           </h1> */}
-          <div className="w-full mx-auto px-[40rem] pr-10 flex items-center justify-between gap-5 text-white pointer-events-none">
+          <div className="w-full mx-auto pl-[34rem] pr-10 flex items-center justify-between gap-5 text-white pointer-events-none">
             <button
               onClick={handlePrev}
               className="bg-rose-800 hover:bg-rose-700 disabled:bg-rose-900 rounded p-2 pointer-events-auto"
