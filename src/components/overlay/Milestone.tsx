@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import milestones from "./assets/milestones.png";
 import { useCameraPosition } from "@/utils/context";

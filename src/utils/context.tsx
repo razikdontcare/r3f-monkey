@@ -8,9 +8,23 @@ interface CameraPositionProps {
   >;
 }
 
+interface CharacterEventsProps {
+  event: "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc" | null;
+  setEvent: React.Dispatch<
+    React.SetStateAction<
+      "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc" | null
+    >
+  >;
+}
+
 const CameraPosition = createContext<CameraPositionProps>({
   targetPosition: [0, 0, 0],
   setTargetPosition: () => {},
+});
+
+const CharacterEvents = createContext<CharacterEventsProps>({
+  event: null,
+  setEvent: () => {},
 });
 
 export function CameraPositionProvider({
@@ -29,25 +43,6 @@ export function CameraPositionProvider({
   );
 }
 
-export function useCameraPosition() {
-  const { targetPosition, setTargetPosition } = useContext(CameraPosition);
-  return { targetPosition, setTargetPosition };
-}
-
-interface CharacterEventsProps {
-  event: "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc" | null;
-  setEvent: React.Dispatch<
-    React.SetStateAction<
-      "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc" | null
-    >
-  >;
-}
-
-const CharacterEvents = createContext<CharacterEventsProps>({
-  event: null,
-  setEvent: () => {},
-});
-
 export function CharacterEventsProvider({
   children,
 }: {
@@ -62,6 +57,11 @@ export function CharacterEventsProvider({
       {children}
     </CharacterEvents.Provider>
   );
+}
+
+export function useCameraPosition() {
+  const { targetPosition, setTargetPosition } = useContext(CameraPosition);
+  return { targetPosition, setTargetPosition };
 }
 
 export function useCharacterEvents() {

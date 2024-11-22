@@ -20,15 +20,17 @@ export default function CameraRig({
   const animatedPositionX = useSpring(position[0], {
     mass: 1,
     stiffness: 200,
-  });
+  }).get();
   const animatedPositionY = useSpring(position[1], {
     mass: 1,
     stiffness: 200,
-  });
+  }).get();
   const animatedPositionZ = useSpring(position[2], {
     mass: 1,
     stiffness: 200,
-  });
+  }).get();
+
+  const sensitivity = [10, 40];
 
   useFrame((state, delta) => {
     const x = state.pointer.x * 0.05;
@@ -45,8 +47,8 @@ export default function CameraRig({
       easing.dampE(
         cameraRef.current.rotation,
         [
-          state.pointer.y / 40 + rotation[0],
-          -state.pointer.x / 10 + rotation[1],
+          state.pointer.y / sensitivity[1] + rotation[0],
+          -state.pointer.x / sensitivity[0] + rotation[1],
           rotation[2],
         ],
         0.5,
@@ -60,11 +62,7 @@ export default function CameraRig({
       <PerspectiveCamera
         ref={cameraRef}
         makeDefault
-        position={[
-          animatedPositionX.get(),
-          animatedPositionY.get(),
-          animatedPositionZ.get(),
-        ]}
+        position={[animatedPositionX, animatedPositionY, animatedPositionZ]}
         rotation={rotation}
         fov={pov}
       />

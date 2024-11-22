@@ -21,10 +21,6 @@ const texturePath = {
     png: basePath + "l-foreground-sillhouette.png",
     json: basePath + "l-foreground-sillhouette.json",
   },
-  ptero: {
-    png: basePath + "ptero.png",
-    json: basePath + "ptero.json",
-  },
   lTree: {
     png: basePath + "l-tree.png",
     json: basePath + "l-tree.json",
@@ -36,14 +32,6 @@ const texturePath = {
   smoke: {
     png: basePath + "smoke.png",
     json: basePath + "smoke.json",
-  },
-  brachio: {
-    png: basePath + "brachio.png",
-    json: basePath + "brachio.json",
-  },
-  raptor1: {
-    png: basePath + "raptor-1.png",
-    json: basePath + "raptor-1.json",
   },
   raptor2: {
     png: basePath + "raptor-2.png",
@@ -77,7 +65,7 @@ export default function PrehistoricSprite({ isInView }: { isInView: boolean }) {
     } else {
       const timer = setTimeout(() => {
         setIsVisible(false);
-      }, 250); // Adjust the delay as needed
+      }, 250);
       return () => clearTimeout(timer);
     }
   }, [isInView]);
@@ -85,7 +73,7 @@ export default function PrehistoricSprite({ isInView }: { isInView: boolean }) {
   const animatedPositionY = useSpring(meshRef.current?.position.y || 0, {
     mass: 1,
     stiffness: 200,
-  });
+  }).get();
 
   useFrame(({}, delta) => {
     if (meshRef.current) {
@@ -99,50 +87,28 @@ export default function PrehistoricSprite({ isInView }: { isInView: boolean }) {
   return (
     <>
       <group>
-        <GrassSprite />
-        <RForegroundSillhouetteSprite />
-        <LForegroundSillhouetteSprite />
-        <RTree />
-        <MidGroundMesh />
-        <GroundMesh />
-        <LTree />
-        <group ref={meshRef} position={[0, animatedPositionY.get(), 0]}>
-          {/* <CloudMesh /> */}
+        <group ref={meshRef} position={[0, animatedPositionY, 0]}>
           <VolcanoMesh />
           <SmokeSprite />
         </group>
-        {/* <PteroSprite /> */}
-        {/* <BrachioSprite /> */}
-        {/* <Raptor1Sprite /> */}
+        <GroundMesh />
+        <MidGroundMesh />
+        <GrassSprite />
         <BrachioAndRaptorSprite />
         <Raptor2Sprite />
         <TRexSprite />
+        <RTree />
+        <LTree />
         <SnifferSprite />
         <SnakeSprite />
+        <RForegroundSillhouetteSprite />
+        <LForegroundSillhouetteSprite />
       </group>
     </>
   );
 }
 
-export function CloudMesh() {
-  const texture = useLoader(TextureLoader, "/" + "cloud.png");
-  texture.minFilter = NearestFilter;
-  texture.magFilter = NearestFilter;
-
-  texture.repeat.set(0.72, 1);
-  texture.offset.set(0.14, 0);
-
-  return (
-    <>
-      <mesh position={[0, -1, -14]} scale={3}>
-        <planeGeometry args={[8.5, 5]} />
-        <meshBasicMaterial map={texture} transparent />
-      </mesh>
-    </>
-  );
-}
-
-export function MidGroundMesh() {
+function MidGroundMesh() {
   const texture = useLoader(TextureLoader, basePath + "mid-ground.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
@@ -157,14 +123,14 @@ export function MidGroundMesh() {
   );
 }
 
-export function GroundMesh() {
+function GroundMesh() {
   const texture = useLoader(TextureLoader, basePath + "ground.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
   return (
     <>
-      <mesh position={[0, -1.5, -5.5]} scale={1.8}>
+      <mesh position={[0, -1.5, -5.5]} scale={[1.8, 1.8, 0.1]}>
         <planeGeometry args={[5.5, 1]} />
         <meshBasicMaterial map={texture} transparent />
       </mesh>
@@ -172,7 +138,7 @@ export function GroundMesh() {
   );
 }
 
-export function VolcanoMesh() {
+function VolcanoMesh() {
   const texture = useLoader(TextureLoader, basePath + "volcano.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
@@ -187,7 +153,7 @@ export function VolcanoMesh() {
   );
 }
 
-export function SmokeSprite() {
+function SmokeSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.smoke.png,
     texturePath.smoke.json,
@@ -215,61 +181,7 @@ export function SmokeSprite() {
   );
 }
 
-export function BrachioSprite() {
-  const { spriteObj } = useSpriteLoader(
-    texturePath.brachio.png,
-    texturePath.brachio.json,
-    null,
-    32,
-    (tex) => {
-      tex.minFilter = NearestFilter;
-      tex.magFilter = NearestFilter;
-    }
-  );
-  return (
-    <>
-      <SpriteAnimator
-        position={[-0.6, -0.6, -4.18]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[0.5, 0.8, 0.5]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={10}
-      />
-    </>
-  );
-}
-
-export function Raptor1Sprite() {
-  const { spriteObj } = useSpriteLoader(
-    texturePath.raptor1.png,
-    texturePath.raptor1.json,
-    null,
-    32,
-    (tex) => {
-      tex.minFilter = NearestFilter;
-      tex.magFilter = NearestFilter;
-    }
-  );
-  return (
-    <>
-      <SpriteAnimator
-        position={[-1.45, -0.93, -5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={0.93}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={10}
-      />
-    </>
-  );
-}
-
-export function BrachioAndRaptorSprite() {
+function BrachioAndRaptorSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.brachioAndRaptor.png,
     texturePath.brachioAndRaptor.json,
@@ -287,7 +199,7 @@ export function BrachioAndRaptorSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1.3, 2, 2]}
+        scale={[1.3, 2, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={10}
@@ -296,7 +208,7 @@ export function BrachioAndRaptorSprite() {
   );
 }
 
-export function Raptor2Sprite() {
+function Raptor2Sprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.raptor2.png,
     texturePath.raptor2.json,
@@ -314,7 +226,7 @@ export function Raptor2Sprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1, 0.8, 0.8]}
+        scale={[1, 0.8, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={10}
@@ -323,7 +235,7 @@ export function Raptor2Sprite() {
   );
 }
 
-export function TRexSprite() {
+function TRexSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.tRex.png,
     texturePath.tRex.json,
@@ -341,7 +253,7 @@ export function TRexSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1.78, 1.8, 1.78]}
+        scale={[1.78, 1.8, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={10}
@@ -350,34 +262,7 @@ export function TRexSprite() {
   );
 }
 
-export function PteroSprite() {
-  const { spriteObj } = useSpriteLoader(
-    texturePath.ptero.png,
-    texturePath.ptero.json,
-    null,
-    64,
-    (tex) => {
-      tex.minFilter = NearestFilter;
-      tex.magFilter = NearestFilter;
-    }
-  );
-  return (
-    <>
-      <SpriteAnimator
-        position={[0, 0, -8]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={5}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
-  );
-}
-
-export function GrassSprite() {
+function GrassSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.grass.png,
     texturePath.grass.json,
@@ -412,7 +297,7 @@ export function GrassSprite() {
   );
 }
 
-export function RForegroundSillhouetteSprite() {
+function RForegroundSillhouetteSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.rForegroundSillhouette.png,
     texturePath.rForegroundSillhouette.json,
@@ -431,7 +316,7 @@ export function RForegroundSillhouetteSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[2.2, 1.2, 1.2]}
+        scale={[2.2, 1.2, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}
@@ -440,7 +325,7 @@ export function RForegroundSillhouetteSprite() {
   );
 }
 
-export function LForegroundSillhouetteSprite() {
+function LForegroundSillhouetteSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.lForegroundSillhouette.png,
     texturePath.lForegroundSillhouette.json,
@@ -459,7 +344,7 @@ export function LForegroundSillhouetteSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[2.2, 1.2, 1.2]}
+        scale={[2.2, 1.2, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}
@@ -468,7 +353,7 @@ export function LForegroundSillhouetteSprite() {
   );
 }
 
-export function RTree() {
+function RTree() {
   const { spriteObj } = useSpriteLoader(
     texturePath.rTree.png,
     texturePath.rTree.json,
@@ -487,7 +372,7 @@ export function RTree() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[5, 6.65, 1]}
+        scale={[5, 6.65, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}
@@ -495,7 +380,7 @@ export function RTree() {
     </>
   );
 }
-export function LTree() {
+function LTree() {
   const { spriteObj } = useSpriteLoader(
     texturePath.lTree.png,
     texturePath.lTree.json,
@@ -514,7 +399,7 @@ export function LTree() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[5, 6, 6]}
+        scale={[5, 6, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}
@@ -523,7 +408,7 @@ export function LTree() {
   );
 }
 
-export function SnifferSprite() {
+function SnifferSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.sniffer.png,
     texturePath.sniffer.json,
@@ -553,7 +438,7 @@ export function SnifferSprite() {
   );
 }
 
-export function SnakeSprite() {
+function SnakeSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.snake.png,
     texturePath.snake.json,
@@ -572,7 +457,7 @@ export function SnakeSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1.1, 1.04, 1]}
+        scale={[1.1, 1.04, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}

@@ -68,7 +68,7 @@ export default function NYCSprite({ isInView }: { isInView: boolean }) {
   const animatedPositionY = useSpring(meshRef.current?.position.y || 0, {
     mass: 1,
     stiffness: 200,
-  });
+  }).get();
 
   useFrame(({}, delta) => {
     if (meshRef.current) {
@@ -83,7 +83,7 @@ export default function NYCSprite({ isInView }: { isInView: boolean }) {
   return (
     <>
       <group position={[40, 0, 0]}>
-        <group ref={meshRef} position={[0, animatedPositionY.get(), 0]}>
+        <group ref={meshRef} position={[0, animatedPositionY, 0]}>
           <SideBuildingsMesh />
         </group>
         <MidGroundMesh />
@@ -95,6 +95,7 @@ export default function NYCSprite({ isInView }: { isInView: boolean }) {
         <PeoplesSprite />
         <GuyWithFedoraSprite />
         <ForegroundSilhouettesSprite />
+
         <group onClick={() => setEvent("nyc")}>
           <SnifferSprite />
         </group>

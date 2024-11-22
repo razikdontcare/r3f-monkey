@@ -1,3 +1,4 @@
+"use client";
 import { useCameraPosition, useCharacterEvents } from "@/utils/context";
 import Image from "next/image";
 import { useEffect, useState } from "react";

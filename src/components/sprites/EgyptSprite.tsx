@@ -48,7 +48,7 @@ export default function EgyptSprite({ isInView }: { isInView: boolean }) {
     } else {
       const timer = setTimeout(() => {
         setIsVisible(false);
-      }, 250); // Adjust the delay as needed
+      }, 250);
       return () => clearTimeout(timer);
     }
   }, [isInView]);
@@ -56,7 +56,7 @@ export default function EgyptSprite({ isInView }: { isInView: boolean }) {
   const animatedPositionY = useSpring(meshRef.current?.position.y || 0, {
     mass: 1,
     stiffness: 200,
-  });
+  }).get();
 
   useFrame(({}, delta) => {
     if (meshRef.current) {
@@ -71,16 +71,16 @@ export default function EgyptSprite({ isInView }: { isInView: boolean }) {
     <>
       <group position={[10, 0, 0]}>
         <>
-          {/* <CloudMesh /> */}
-          <SandMesh />
-          <ForegroundStuffMesh />
-          <CactusMesh />
-          <group ref={meshRef} position={[0, animatedPositionY.get(), 0]}>
+          <group ref={meshRef} position={[0, animatedPositionY, 0]}>
             <SphinxMesh />
             <PyramidsAndNileSprite />
           </group>
+          <SandMesh />
+          <CactusMesh />
           <GrassSprite />
           <CornerGrassSprite />
+          <ForegroundStuffMesh />
+
           <group onClick={() => setEvent("egypt")}>
             <SnifferSprite />
           </group>
@@ -131,7 +131,7 @@ function CactusMesh() {
 
   return (
     <>
-      <mesh position={[-0.5, -1, -5]} scale={[1.2, 1.2, 1]}>
+      <mesh position={[-0.5, -1, -5]} scale={[1.2, 1.2, 0.1]}>
         <planeGeometry args={[6.4, 2]} />
         <meshBasicMaterial map={texture} transparent />
       </mesh>
@@ -178,7 +178,7 @@ function PyramidsAndNileSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[scaleX, scaleY, 1]}
+        scale={[scaleX, scaleY, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}
@@ -207,7 +207,7 @@ function GrassSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[0.9, 0.8, 1]}
+        scale={[0.9, 0.8, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}
@@ -236,7 +236,7 @@ function CornerGrassSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[2.95, 2, 1]}
+        scale={[2.95, 2, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}
@@ -268,7 +268,7 @@ function SnifferSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[scaleX, scaleX * 0.6020833333333334, 1]}
+        scale={[scaleX, scaleX * 0.6020833333333334, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}

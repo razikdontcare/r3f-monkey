@@ -91,20 +91,21 @@ export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
   return (
     <>
       <group position={[30, 0, 0]}>
-        <ForegroundSillhouetteMesh />
-        <DustSprite />
-        <EnvironmentMesh />
-        <FireSprite />
-        <SoldiersSprite />
-        <SparksOverlaySprite />
-        <RBuildingSmokeSprite />
-        <LBuildingSmokeSprite />
-        <SoldierDyingForegroundSprite />
         <group ref={meshRef} position={[0, animatedPositionY.get(), 0]}>
           <StatueMesh />
           <TreeLineSprite />
           <TreeLineSmokeSprite />
         </group>
+        <EnvironmentMesh />
+        <SoldiersSprite />
+        <SparksOverlaySprite />
+        <DustSprite />
+        <FireSprite />
+        <RBuildingSmokeSprite />
+        <LBuildingSmokeSprite />
+        <SoldierDyingForegroundSprite />
+        <ForegroundSilhouetteMesh />
+
         <group onClick={() => setEvent("ww2")}>
           <SnifferSprite />
         </group>
@@ -113,7 +114,7 @@ export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
   );
 }
 
-export function ForegroundSillhouetteMesh() {
+export function ForegroundSilhouetteMesh() {
   const texture = useLoader(
     TextureLoader,
     basePath + "foreground-sillhouette.png"

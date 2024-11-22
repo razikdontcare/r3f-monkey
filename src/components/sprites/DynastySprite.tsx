@@ -55,7 +55,7 @@ export default function DynastySprite({ isInView }: { isInView: boolean }) {
     } else {
       const timer = setTimeout(() => {
         setIsVisible(false);
-      }, 250); // Adjust the delay as needed
+      }, 250);
       return () => clearTimeout(timer);
     }
   }, [isInView]);
@@ -63,7 +63,7 @@ export default function DynastySprite({ isInView }: { isInView: boolean }) {
   const animatedPositionY = useSpring(meshRef.current?.position.y || 0, {
     mass: 1,
     stiffness: 200,
-  });
+  }).get();
 
   useFrame(({}, delta) => {
     if (meshRef.current) {
@@ -77,17 +77,17 @@ export default function DynastySprite({ isInView }: { isInView: boolean }) {
   return (
     <>
       <group position={[20, 0, 0]}>
+        <group ref={meshRef} position={[0, animatedPositionY, 0]}>
+          <CitySprite />
+        </group>
+        <MidGroundMesh />
+        <WarriorsFightingSprite />
+        <ArrowsFlyingSprite />
+        <SunTzuSprite />
         <GrassSprite />
         <PavedRoadMesh />
         <GlowsSprite />
-        <MidGroundMesh />
-        <WarriorsFightingSprite />
-        <SunTzuSprite />
-        <group ref={meshRef} position={[0, animatedPositionY.get(), 0]}>
-          <CitySprite />
-        </group>
-        {/* <CloudMesh /> */}
-        <ArrowsFlyingSprite />
+
         <group onClick={() => setEvent("dynasty")}>
           <SnifferSprite />
         </group>
@@ -106,7 +106,7 @@ export function CloudMesh() {
 
   return (
     <>
-      <mesh position={[0, -1, -14]} scale={[3, 3, 1]}>
+      <mesh position={[0, -1, -14]} scale={[3, 3, 0.1]}>
         <planeGeometry args={[8.5, 5]} />
         <meshBasicMaterial map={texture} transparent />
       </mesh>
@@ -121,7 +121,7 @@ export function PavedRoadMesh() {
 
   return (
     <>
-      <mesh position={[0, -1.15, -4]} scale={[1.1, 1.1, 1]}>
+      <mesh position={[0, -1.15, -4]} scale={[1.1, 1.1, 0.1]}>
         <planeGeometry args={[5.4, 1]} />
         <meshBasicMaterial map={texture} transparent />
       </mesh>
@@ -136,7 +136,7 @@ export function MidGroundMesh() {
 
   return (
     <>
-      <mesh position={[0, -1.1, -5]} scale={[1.8, 1.8, 1]}>
+      <mesh position={[0, -1.1, -5]} scale={[1.8, 1.8, 0.1]}>
         <planeGeometry args={[5.2, 1]} />
         <meshBasicMaterial map={texture} transparent />
       </mesh>
@@ -161,10 +161,8 @@ export function GrassSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[7, 30.37, 1]}
+        scale={[7, 30.37, 0.1]}
         spriteDataset={spriteObj}
-        // textureImageURL={texture.image.src}
-        // textureDataURL={texturePath.grass.json}
         asSprite={false}
         fps={15}
       />
@@ -194,8 +192,6 @@ export function GlowsSprite() {
         loop={true}
         scale={[scaleX, scaleX * 4.274463007159905, 0.1]}
         spriteDataset={spriteObj}
-        // textureImageURL={texture.image.src}
-        // textureDataURL={texturePath.grass.json}
         asSprite={false}
         fps={15}
       />
@@ -221,7 +217,7 @@ export function WarriorsFightingSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[5.5, 13.03, 1]}
+        scale={[5.5, 13.03, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}
@@ -250,7 +246,7 @@ export function SunTzuSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1.6, 1.24, 1]}
+        scale={[1.6, 1.24, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}
@@ -279,7 +275,7 @@ export function CitySprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[12, 49.07, 1]}
+        scale={[12, 49.07, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}
@@ -308,7 +304,7 @@ export function ArrowsFlyingSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1, 1.9, 1]}
+        scale={[1, 1.9, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}
@@ -341,7 +337,7 @@ export function SnifferSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[scaleX, scaleX * 0.9703703703703703, 1]}
+        scale={[scaleX, scaleX * 0.9703703703703703, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}
