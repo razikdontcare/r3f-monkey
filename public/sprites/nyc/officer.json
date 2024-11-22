@@ -1,0 +1,268 @@
+{"frames": [
+
+{
+	"filename": "officer-0.png",
+	"frame": {"x":0,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-1.png",
+	"frame": {"x":153,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-2.png",
+	"frame": {"x":306,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-3.png",
+	"frame": {"x":459,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-4.png",
+	"frame": {"x":612,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-5.png",
+	"frame": {"x":765,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-6.png",
+	"frame": {"x":918,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-7.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-8.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-9.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-10.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-11.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-12.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-13.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-14.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-15.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-16.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-17.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-18.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-19.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-20.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-21.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-22.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-23.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-24.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-25.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-26.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-27.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-28.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-29.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-30.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+},
+{
+	"filename": "officer-31.png",
+	"frame": {"x":1071,"y":0,"w":153,"h":199},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":153,"h":199},
+	"sourceSize": {"w":153,"h":199}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "officer.png",
+	"format": "RGBA8888",
+	"size": {"w":1224,"h":199},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c67821f8f7b41e3a2b46a81aeb98e201:7c4c2d102b89e2834816036333bf490d:ed569ce4eee955aca16607fe5871e8a7$"
+}
+}

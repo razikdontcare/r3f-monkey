@@ -1,0 +1,268 @@
+{"frames": [
+
+{
+	"filename": "t-rex-0.png",
+	"frame": {"x":0,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-1.png",
+	"frame": {"x":531,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-2.png",
+	"frame": {"x":1062,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-3.png",
+	"frame": {"x":1593,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-4.png",
+	"frame": {"x":2124,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-5.png",
+	"frame": {"x":1593,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-6.png",
+	"frame": {"x":1062,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-7.png",
+	"frame": {"x":531,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-8.png",
+	"frame": {"x":0,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-9.png",
+	"frame": {"x":531,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-10.png",
+	"frame": {"x":1062,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-11.png",
+	"frame": {"x":1593,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-12.png",
+	"frame": {"x":2124,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-13.png",
+	"frame": {"x":1593,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-14.png",
+	"frame": {"x":1062,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-15.png",
+	"frame": {"x":531,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-16.png",
+	"frame": {"x":0,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-17.png",
+	"frame": {"x":531,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-18.png",
+	"frame": {"x":1062,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-19.png",
+	"frame": {"x":1593,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-20.png",
+	"frame": {"x":2124,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-21.png",
+	"frame": {"x":1593,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-22.png",
+	"frame": {"x":1062,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-23.png",
+	"frame": {"x":531,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-24.png",
+	"frame": {"x":0,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-25.png",
+	"frame": {"x":531,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-26.png",
+	"frame": {"x":1062,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-27.png",
+	"frame": {"x":1593,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-28.png",
+	"frame": {"x":2124,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-29.png",
+	"frame": {"x":1593,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-30.png",
+	"frame": {"x":1062,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+},
+{
+	"filename": "t-rex-31.png",
+	"frame": {"x":531,"y":0,"w":531,"h":596},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":531,"h":596},
+	"sourceSize": {"w":531,"h":596}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "t-rex.png",
+	"format": "RGBA8888",
+	"size": {"w":2655,"h":596},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0dbe6f36530cf1dde70074fbc82de480:5a9fff232a2eb6dc456eabf0a81d9f80:7b1a7c4b23696b2c0309033cd55cf5e3$"
+}
+}

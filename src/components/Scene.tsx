@@ -3,219 +3,78 @@
 import { Canvas } from "@react-three/fiber";
 import CameraRig from "@/components/CameraRig";
 import { Environment, BakeShadows } from "@react-three/drei";
-import { useControls } from "leva";
-import { EffectComposer, SMAA, Bloom } from "@react-three/postprocessing";
+import { EffectComposer, Bloom, SSAO } from "@react-three/postprocessing";
 
-// model
-import AdamEveEnv from "@/components/models/AdamEveEnv";
-import EgyptEnv from "@/components/models/EgyptEnv";
-import ChinaEnv from "@/components/models/ChinaEnv";
-import WW2Env from "@/components/models/WW2Env";
-import NewYorkEnv from "@/components/models/NewYorkEnv";
+import PrehistoricSprite from "./sprites/PrehistoricSprite";
+import EgyptSprite from "./sprites/EgyptSprite";
+import DynastySprite from "./sprites/DynastySprite";
+import { useCameraPosition } from "@/utils/context";
+import CloudMesh from "./sprites/CloudMesh";
+import { BlendFunction } from "postprocessing";
+import WorldWar2Sprite from "./sprites/WorldWar2Sprite";
+import NYCSprite from "./sprites/NYCSprite";
+import {
+  DynastyToWW2,
+  EgyptToDynasty,
+  PrehistoricToEgypt,
+  WW2ToNYC,
+} from "./transitions";
 
-export function AdamScene() {
-  const { modelPos } = useControls({ modelPos: [0, 0, 0] });
-  const { position, rotation, pov } = useControls({
-    position: [0.52, 0.16, 2.7],
-    rotation: [0.08, 0.22, 0],
-    pov: 35,
-  });
-
-  return (
-    <>
-      <Canvas>
-        <EffectComposer multisampling={0}>
-          <SMAA />
-          <Bloom
-            luminanceThreshold={0}
-            mipmapBlur
-            luminanceSmoothing={0.0}
-            intensity={1}
-          />
-        </EffectComposer>
-        {/* <Environment files={"sky.hdr"} environmentIntensity={0.01} /> */}
-        <CameraRig position={position} rotation={rotation} pov={pov} />
-        <group rotation={[0, 5, 0]} position={modelPos}>
-          <mesh
-            position={[0, 0.3, 0]}
-            rotation={[0, -0.2, 0]}
-            receiveShadow
-            castShadow
-          >
-            <boxGeometry args={[0.2, 0.5, 0.2]} />
-            <meshStandardMaterial color={0x282828} />
-          </mesh>
-          <AdamEveEnv />
-        </group>
-        <BakeShadows />
-      </Canvas>
-    </>
-  );
-}
-
-export function EgyptScene() {
-  const { modelPos } = useControls({ modelPos: [0, 0, 0] });
-  const { position, rotation, pov } = useControls({
-    position: [0.52, 0.26, 2.7],
-    rotation: [0.08, 0.22, 0],
-    pov: 35,
-  });
+export default function Scene() {
+  const { targetPosition } = useCameraPosition();
 
   return (
     <>
       <Canvas>
-        <EffectComposer multisampling={0}>
-          <SMAA />
+        <EffectComposer>
           <Bloom
             luminanceThreshold={0}
             mipmapBlur
             luminanceSmoothing={0.0}
-            intensity={1}
+            intensity={0.1}
+          />
+          <SSAO
+            blendFunction={BlendFunction.MULTIPLY} // blend mode
+            samples={30} // amount of samples per pixel (shouldn't be a multiple of the ring count)
+            rings={4} // amount of rings in the occlusion sampling pattern
+            distanceThreshold={1.0} // global distance threshold at which the occlusion effect starts to fade out. min: 0, max: 1
+            distanceFalloff={0.0} // distance falloff. min: 0, max: 1
+            rangeThreshold={0.5} // local occlusion range threshold at which the occlusion starts to fade out. min: 0, max: 1
+            rangeFalloff={0.1} // occlusion range falloff. min: 0, max: 1
+            luminanceInfluence={0.9} // how much the luminance of the scene influences the ambient occlusion
+            radius={20} // occlusion sampling radius
+            bias={0.5} // occlusion bias
+            worldDistanceThreshold={0.01} // global distance threshold in world units
+            worldDistanceFalloff={0.01} // distance falloff in world units
+            worldProximityThreshold={0.01} // local occlusion range threshold in world units
+            worldProximityFalloff={0.01} // occlusion range falloff in world units
           />
         </EffectComposer>
-        <Environment files={"sky.hdr"} background environmentIntensity={0.01} />
-        <CameraRig position={position} rotation={rotation} pov={pov} />
-        <group rotation={[0, 5, 0]} position={modelPos}>
-          <mesh
-            position={[0, 0.3, 0]}
-            rotation={[0, -0.2, 0]}
-            receiveShadow
-            castShadow
-          >
-            <boxGeometry args={[0.2, 0.5, 0.2]} />
-            <meshStandardMaterial color={0x282828} />
-          </mesh>
-          <EgyptEnv />
-        </group>
-        <BakeShadows />
-      </Canvas>
-    </>
-  );
-}
+        <Environment
+          files={"autumn_field_puresky_1k.hdr"}
+          background
+          environmentIntensity={0.01}
+        />
+        <CameraRig position={targetPosition} rotation={[0, 0, 0]} pov={40} />
+        <PrehistoricSprite isInView={targetPosition[0] <= 5} />
+        <EgyptSprite
+          isInView={targetPosition[0] >= 5 && targetPosition[0] <= 15}
+        />
+        <DynastySprite
+          isInView={targetPosition[0] >= 15 && targetPosition[0] <= 25}
+        />
+        <WorldWar2Sprite
+          isInView={targetPosition[0] >= 25 && targetPosition[0] <= 35}
+        />
+        <NYCSprite
+          isInView={targetPosition[0] >= 35 && targetPosition[0] <= 45}
+        />
 
-export function ChinaScene() {
-  const { modelPos, modelRot } = useControls({
-    modelPos: [2.6, 0, -0.9],
-    modelRot: [0, -1.6, 0],
-  });
-  const { position, rotation, pov } = useControls({
-    position: [2.54, 0.25, 2.02],
-    rotation: [0.17, 0, 0],
-    pov: 45,
-  });
-
-  return (
-    <>
-      <Canvas>
-        <EffectComposer multisampling={0}>
-          <SMAA />
-          <Bloom
-            luminanceThreshold={0}
-            mipmapBlur
-            luminanceSmoothing={0.0}
-            intensity={1}
-          />
-        </EffectComposer>
-        <Environment files={"sky.hdr"} background environmentIntensity={0.01} />
-        <CameraRig position={position} rotation={rotation} pov={pov} />
-        <group rotation={modelRot} position={modelPos}>
-          <mesh
-            position={[0, 0.2, 0]}
-            rotation={[0, 0, 0]}
-            receiveShadow
-            castShadow
-          >
-            <boxGeometry args={[0.2, 0.5, 0.2]} />
-            <meshStandardMaterial color={0x282828} />
-          </mesh>
-          <ChinaEnv />
-        </group>
-        <BakeShadows />
-      </Canvas>
-    </>
-  );
-}
-
-export function WW2Scene() {
-  const { modelPos, modelRot } = useControls({
-    modelPos: [0, 0, 0],
-    modelRot: [0, -1.68, 0],
-  });
-  const { position, rotation, pov } = useControls({
-    position: [-0.23, 0.31, 3.08],
-    rotation: [0.09, -0.19, 0],
-    pov: 45,
-  });
-
-  return (
-    <>
-      <Canvas>
-        <EffectComposer multisampling={0}>
-          <SMAA />
-          <Bloom
-            luminanceThreshold={0}
-            mipmapBlur
-            luminanceSmoothing={0.0}
-            intensity={1}
-          />
-        </EffectComposer>
-        <Environment files={"sky.hdr"} background environmentIntensity={0.01} />
-        <CameraRig position={position} rotation={rotation} pov={pov} />
-        <group rotation={modelRot} position={modelPos}>
-          <mesh
-            position={[0, 0.2, 0]}
-            rotation={[0, 0, 0]}
-            receiveShadow
-            castShadow
-          >
-            <boxGeometry args={[0.2, 0.5, 0.2]} />
-            <meshStandardMaterial color={0x282828} />
-          </mesh>
-          <WW2Env />
-        </group>
-        <BakeShadows />
-      </Canvas>
-    </>
-  );
-}
-
-export function NewYorkScene() {
-  const { modelPos, modelRot } = useControls({
-    modelPos: [0, 0, 0],
-    modelRot: [0, -1.73, 0],
-  });
-  const { position, rotation, pov } = useControls({
-    position: [-0.5, 0.31, 3.08],
-    rotation: [0.09, -0.19, 0],
-    pov: 45,
-  });
-
-  return (
-    <>
-      <Canvas>
-        <EffectComposer multisampling={0}>
-          <SMAA />
-          <Bloom
-            luminanceThreshold={0}
-            mipmapBlur
-            luminanceSmoothing={0.0}
-            intensity={1}
-          />
-        </EffectComposer>
-        <Environment files={"sky.hdr"} background environmentIntensity={0.01} />
-        <CameraRig position={position} rotation={rotation} pov={pov} />
-        <group rotation={modelRot} position={modelPos}>
-          {/* <mesh
-            position={[0, 0.2, 0]}
-            rotation={[0, 0, 0]}
-            receiveShadow
-            castShadow
-          >
-            <boxGeometry args={[0.2, 0.5, 0.2]} />
-            <meshStandardMaterial color={"hotpink"} />
-          </mesh> */}
-          <NewYorkEnv />
-        </group>
+        <PrehistoricToEgypt target={targetPosition} />
+        <EgyptToDynasty target={targetPosition} />
+        <DynastyToWW2 target={targetPosition} />
+        <WW2ToNYC target={targetPosition} />
+        <CloudMesh />
         <BakeShadows />
       </Canvas>
     </>

@@ -1,0 +1,204 @@
+{"frames": [
+
+{
+	"filename": "arrows-flying-0.png",
+	"frame": {"x":0,"y":0,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-1.png",
+	"frame": {"x":2417,"y":0,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-2.png",
+	"frame": {"x":4834,"y":0,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-3.png",
+	"frame": {"x":7251,"y":0,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-4.png",
+	"frame": {"x":9668,"y":0,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-5.png",
+	"frame": {"x":12085,"y":0,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-6.png",
+	"frame": {"x":0,"y":1268,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-7.png",
+	"frame": {"x":2417,"y":1268,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-8.png",
+	"frame": {"x":4834,"y":1268,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-9.png",
+	"frame": {"x":7251,"y":1268,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-10.png",
+	"frame": {"x":9668,"y":1268,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-11.png",
+	"frame": {"x":12085,"y":1268,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-12.png",
+	"frame": {"x":0,"y":2536,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-13.png",
+	"frame": {"x":2417,"y":2536,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-14.png",
+	"frame": {"x":4834,"y":2536,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-15.png",
+	"frame": {"x":7251,"y":2536,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-16.png",
+	"frame": {"x":9668,"y":2536,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-17.png",
+	"frame": {"x":12085,"y":2536,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-18.png",
+	"frame": {"x":0,"y":3804,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-19.png",
+	"frame": {"x":2417,"y":3804,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-20.png",
+	"frame": {"x":4834,"y":3804,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-21.png",
+	"frame": {"x":7251,"y":3804,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-22.png",
+	"frame": {"x":9668,"y":3804,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+},
+{
+	"filename": "arrows-flying-23.png",
+	"frame": {"x":12085,"y":3804,"w":2417,"h":1268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2417,"h":1268},
+	"sourceSize": {"w":2417,"h":1268}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "arrows-flying.png",
+	"format": "RGBA8888",
+	"size": {"w":14502,"h":5072},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e4e838216c2f4889a38b258eaa163d92:b9f0ff543062adac1c484e9272dcc3b0:763505f000920da5eb1b8fc91c7375f8$"
+}
+}

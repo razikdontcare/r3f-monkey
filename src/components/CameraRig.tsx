@@ -1,13 +1,10 @@
 import { PerspectiveCamera } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { useSpring } from "framer-motion";
 
 import { easing } from "maath";
 import { useRef } from "react";
-import {
-  // Group,
-  // Object3DEventMap,
-  PerspectiveCamera as ThreePerspectiveCamera,
-} from "three";
+import { PerspectiveCamera as ThreePerspectiveCamera } from "three";
 
 export default function CameraRig({
   position,
@@ -18,30 +15,38 @@ export default function CameraRig({
   rotation: [number, number, number];
   pov: number;
 }) {
-  // const group = useRef<Group<Object3DEventMap>>(null);
   const cameraRef = useRef<ThreePerspectiveCamera>(null);
 
-  useFrame((state, delta) => {
-    const x = state.pointer.x * 0.01;
-    const y = state.pointer.y * 0.01;
+  const animatedPositionX = useSpring(position[0], {
+    mass: 1,
+    stiffness: 200,
+  });
+  const animatedPositionY = useSpring(position[1], {
+    mass: 1,
+    stiffness: 200,
+  });
+  const animatedPositionZ = useSpring(position[2], {
+    mass: 1,
+    stiffness: 200,
+  });
 
-    // Update posisi kamera dengan efek parallax
+  useFrame((state, delta) => {
+    const x = state.pointer.x * 0.05;
+    const y = state.pointer.y * 0.05;
+
     if (cameraRef.current) {
       easing.damp3(
         cameraRef.current.position,
-        [x + position[0], y + position[1], position[2]], // Menambahkan position dari useControls
+        [x + position[0], y + position[1], position[2]],
         0.5,
         delta
       );
-    }
 
-    // Update rotasi kamera
-    if (cameraRef.current) {
       easing.dampE(
         cameraRef.current.rotation,
         [
-          state.pointer.y / 10 + rotation[0], // Menambahkan rotation dari useControls
-          -state.pointer.x / 15 + rotation[1],
+          state.pointer.y / 40 + rotation[0],
+          -state.pointer.x / 10 + rotation[1],
           rotation[2],
         ],
         0.5,
@@ -54,10 +59,14 @@ export default function CameraRig({
     <>
       <PerspectiveCamera
         ref={cameraRef}
-        makeDefault // Pastikan ini adalah kamera default di scene
-        position={position} // Posisi default kamera
+        makeDefault
+        position={[
+          animatedPositionX.get(),
+          animatedPositionY.get(),
+          animatedPositionZ.get(),
+        ]}
         rotation={rotation}
-        fov={pov} // Field of view, bisa disesuaikan
+        fov={pov}
       />
     </>
   );

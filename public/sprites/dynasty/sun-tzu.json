@@ -1,0 +1,268 @@
+{"frames": [
+
+{
+	"filename": "sun-tzu-0.png",
+	"frame": {"x":0,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-1.png",
+	"frame": {"x":471,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-2.png",
+	"frame": {"x":942,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-3.png",
+	"frame": {"x":1413,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-4.png",
+	"frame": {"x":1884,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-5.png",
+	"frame": {"x":2355,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-6.png",
+	"frame": {"x":2826,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-7.png",
+	"frame": {"x":3297,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-8.png",
+	"frame": {"x":3768,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-9.png",
+	"frame": {"x":4239,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-10.png",
+	"frame": {"x":0,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-11.png",
+	"frame": {"x":0,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-12.png",
+	"frame": {"x":471,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-13.png",
+	"frame": {"x":942,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-14.png",
+	"frame": {"x":1413,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-15.png",
+	"frame": {"x":4710,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-16.png",
+	"frame": {"x":5181,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-17.png",
+	"frame": {"x":2826,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-18.png",
+	"frame": {"x":3297,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-19.png",
+	"frame": {"x":3768,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-20.png",
+	"frame": {"x":5652,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-21.png",
+	"frame": {"x":6123,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-22.png",
+	"frame": {"x":0,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-23.png",
+	"frame": {"x":6594,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-24.png",
+	"frame": {"x":7065,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-25.png",
+	"frame": {"x":7536,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-26.png",
+	"frame": {"x":8007,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-27.png",
+	"frame": {"x":8478,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-28.png",
+	"frame": {"x":8949,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-29.png",
+	"frame": {"x":9420,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-30.png",
+	"frame": {"x":9891,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+},
+{
+	"filename": "sun-tzu-31.png",
+	"frame": {"x":10362,"y":0,"w":471,"h":604},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":604},
+	"sourceSize": {"w":471,"h":604}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "sun-tzu.png",
+	"format": "RGBA8888",
+	"size": {"w":10833,"h":604},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:805ad112d91f3b6aee829d09d93aabc6:ca9f7b5398a275c2744e4df758933034:012eb4db4b6680b71f0c94d45a7553d4$"
+}
+}

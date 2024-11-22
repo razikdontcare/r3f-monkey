@@ -1,0 +1,132 @@
+{"frames": [
+
+{
+	"filename": "pyramids-and-nile-0.png",
+	"frame": {"x":0,"y":0,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-1.png",
+	"frame": {"x":2070,"y":0,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-2.png",
+	"frame": {"x":4140,"y":0,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-3.png",
+	"frame": {"x":6210,"y":0,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-4.png",
+	"frame": {"x":8280,"y":0,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-5.png",
+	"frame": {"x":0,"y":525,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-6.png",
+	"frame": {"x":2070,"y":525,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-7.png",
+	"frame": {"x":4140,"y":525,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-8.png",
+	"frame": {"x":6210,"y":525,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-9.png",
+	"frame": {"x":8280,"y":525,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-10.png",
+	"frame": {"x":0,"y":1050,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-11.png",
+	"frame": {"x":2070,"y":1050,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-12.png",
+	"frame": {"x":4140,"y":1050,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-13.png",
+	"frame": {"x":6210,"y":1050,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+},
+{
+	"filename": "pyramids-and-nile-14.png",
+	"frame": {"x":8280,"y":1050,"w":2070,"h":525},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":2070,"h":525},
+	"sourceSize": {"w":2070,"h":525}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "pyramids-and-nile.png",
+	"format": "RGBA8888",
+	"size": {"w":10350,"h":1575},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3f8737e7c63a7c811f5da9ea1eff8990:f20eeefbc67ac82c7ecc0bb6f7b4263f:bcc32595056cc9391bc9642724580ba5$"
+}
+}

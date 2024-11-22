@@ -1,0 +1,268 @@
+{"frames": [
+
+{
+	"filename": "raptor-2-0.png",
+	"frame": {"x":0,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-1.png",
+	"frame": {"x":204,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-2.png",
+	"frame": {"x":408,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-3.png",
+	"frame": {"x":612,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-4.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-5.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-6.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-7.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-8.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-9.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-10.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-11.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-12.png",
+	"frame": {"x":1020,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-13.png",
+	"frame": {"x":1224,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-14.png",
+	"frame": {"x":1428,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-15.png",
+	"frame": {"x":0,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-16.png",
+	"frame": {"x":1632,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-17.png",
+	"frame": {"x":1836,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-18.png",
+	"frame": {"x":1020,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-19.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-20.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-21.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-22.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-23.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-24.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-25.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-26.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-27.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-28.png",
+	"frame": {"x":816,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-29.png",
+	"frame": {"x":2040,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-30.png",
+	"frame": {"x":1224,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+},
+{
+	"filename": "raptor-2-31.png",
+	"frame": {"x":1428,"y":0,"w":204,"h":254},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":204,"h":254},
+	"sourceSize": {"w":204,"h":254}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "raptor-2.png",
+	"format": "RGBA8888",
+	"size": {"w":2244,"h":254},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8037a7982549449ce71aa126dcb37b49:2c0e3a40287e8eb3eb0a4c54d1e56041:4a07a11ed5488e0c501da4e864b16157$"
+}
+}

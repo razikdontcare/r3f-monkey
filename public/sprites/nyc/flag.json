@@ -1,0 +1,268 @@
+{"frames": [
+
+{
+	"filename": "flag-0.png",
+	"frame": {"x":0,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-1.png",
+	"frame": {"x":150,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-2.png",
+	"frame": {"x":300,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-3.png",
+	"frame": {"x":450,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-4.png",
+	"frame": {"x":600,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-5.png",
+	"frame": {"x":750,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-6.png",
+	"frame": {"x":900,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-7.png",
+	"frame": {"x":1050,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-8.png",
+	"frame": {"x":1200,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-9.png",
+	"frame": {"x":1350,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-10.png",
+	"frame": {"x":1350,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-11.png",
+	"frame": {"x":1500,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-12.png",
+	"frame": {"x":1650,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-13.png",
+	"frame": {"x":1800,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-14.png",
+	"frame": {"x":1950,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-15.png",
+	"frame": {"x":600,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-16.png",
+	"frame": {"x":2100,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-17.png",
+	"frame": {"x":2250,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-18.png",
+	"frame": {"x":2400,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-19.png",
+	"frame": {"x":0,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-20.png",
+	"frame": {"x":150,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-21.png",
+	"frame": {"x":300,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-22.png",
+	"frame": {"x":450,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-23.png",
+	"frame": {"x":600,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-24.png",
+	"frame": {"x":750,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-25.png",
+	"frame": {"x":900,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-26.png",
+	"frame": {"x":1050,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-27.png",
+	"frame": {"x":1200,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-28.png",
+	"frame": {"x":1350,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-29.png",
+	"frame": {"x":1350,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-30.png",
+	"frame": {"x":1500,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+},
+{
+	"filename": "flag-31.png",
+	"frame": {"x":1650,"y":0,"w":150,"h":556},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":556},
+	"sourceSize": {"w":150,"h":556}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "flag.png",
+	"format": "RGBA8888",
+	"size": {"w":2550,"h":556},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:1ffe429bac6c914d9c8f2a2f57f4ff15:375484faf6b6593ee751156da9da0bc7:649e98370082788fd8fd3ec33000549b$"
+}
+}

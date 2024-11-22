@@ -1,0 +1,116 @@
+{"frames": [
+
+{
+	"filename": "city-0.png",
+	"frame": {"x":0,"y":0,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-1.png",
+	"frame": {"x":0,"y":380,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-2.png",
+	"frame": {"x":0,"y":760,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-3.png",
+	"frame": {"x":0,"y":1140,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-4.png",
+	"frame": {"x":0,"y":1520,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-5.png",
+	"frame": {"x":0,"y":1900,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-6.png",
+	"frame": {"x":0,"y":2280,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-7.png",
+	"frame": {"x":0,"y":2660,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-8.png",
+	"frame": {"x":0,"y":3040,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-9.png",
+	"frame": {"x":0,"y":3420,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-10.png",
+	"frame": {"x":0,"y":3800,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-11.png",
+	"frame": {"x":0,"y":4180,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+},
+{
+	"filename": "city-12.png",
+	"frame": {"x":0,"y":4560,"w":1554,"h":380},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1554,"h":380},
+	"sourceSize": {"w":1554,"h":380}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "city.png",
+	"format": "RGBA8888",
+	"size": {"w":1554,"h":4940},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4c5d40e61fe119027088a9dd1e0b0c72:3a535f616785a7064b36bd04187cb84b:1186cb44d9f35306d4cdd173fc40f7e6$"
+}
+}

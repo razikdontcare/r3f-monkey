@@ -1,0 +1,268 @@
+{"frames": [
+
+{
+	"filename": "sewer-smoke-2-0.png",
+	"frame": {"x":0,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-1.png",
+	"frame": {"x":0,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-2.png",
+	"frame": {"x":149,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-3.png",
+	"frame": {"x":149,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-4.png",
+	"frame": {"x":298,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-5.png",
+	"frame": {"x":298,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-6.png",
+	"frame": {"x":447,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-7.png",
+	"frame": {"x":447,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-8.png",
+	"frame": {"x":596,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-9.png",
+	"frame": {"x":596,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-10.png",
+	"frame": {"x":745,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-11.png",
+	"frame": {"x":745,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-12.png",
+	"frame": {"x":894,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-13.png",
+	"frame": {"x":894,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-14.png",
+	"frame": {"x":1043,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-15.png",
+	"frame": {"x":1043,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-16.png",
+	"frame": {"x":0,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-17.png",
+	"frame": {"x":0,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-18.png",
+	"frame": {"x":149,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-19.png",
+	"frame": {"x":149,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-20.png",
+	"frame": {"x":298,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-21.png",
+	"frame": {"x":298,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-22.png",
+	"frame": {"x":447,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-23.png",
+	"frame": {"x":447,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-24.png",
+	"frame": {"x":596,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-25.png",
+	"frame": {"x":596,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-26.png",
+	"frame": {"x":745,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-27.png",
+	"frame": {"x":745,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-28.png",
+	"frame": {"x":894,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-29.png",
+	"frame": {"x":894,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-30.png",
+	"frame": {"x":1043,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+},
+{
+	"filename": "sewer-smoke-2-31.png",
+	"frame": {"x":1043,"y":0,"w":149,"h":510},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":149,"h":510},
+	"sourceSize": {"w":149,"h":510}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "sewer-smoke-2.png",
+	"format": "RGBA8888",
+	"size": {"w":1192,"h":510},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:03562be906b4f639b13585d13ee43e89:ac0e887c0ae0b51bb6412f2dccd96b8e:4bcb66e946f3a77e4a2c4be7ca90251e$"
+}
+}
