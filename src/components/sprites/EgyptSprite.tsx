@@ -81,11 +81,7 @@ export default function EgyptSprite({ isInView }: { isInView: boolean }) {
           </group>
           <GrassSprite />
           <CornerGrassSprite />
-          <group
-            onClick={() =>
-              setEvent((prev) => (prev === "egypt" ? null : "egypt"))
-            }
-          >
+          <group onClick={() => setEvent("egypt")}>
             <SnifferSprite />
           </group>
         </>
@@ -262,17 +258,18 @@ function SnifferSprite() {
       tex.magFilter = NearestFilter;
     }
   );
+
+  const scaleX = 1.5;
+
   return (
     <>
       <SpriteAnimator
-        position={[0, -0.8, -5.2]}
+        position={[0, -0.5, -5.2]}
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1, 0.6, 1]}
+        scale={[scaleX, scaleX * 0.6020833333333334, 1]}
         spriteDataset={spriteObj}
-        // textureImageURL={texture.image.src}
-        // textureDataURL={texturePath.grass.json}
         asSprite={false}
         fps={15}
       />

@@ -535,14 +535,16 @@ export function SnifferSprite() {
     }
   );
 
+  const scaleX = 1.3;
+
   return (
     <>
       <SpriteAnimator
-        position={[0, -1, -5]}
+        position={[0, -0.85, -5]}
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1, 0.7348484848484849, 0.1]}
+        scale={[scaleX, scaleX * 0.7348484848484849, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}

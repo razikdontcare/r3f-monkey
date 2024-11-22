@@ -1,4 +1,5 @@
 // import { useObjectControls } from "@/utils/controls";
+import { useCharacterEvents } from "@/utils/context";
 import { SpriteAnimator, useSpriteLoader } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useSpring } from "framer-motion";
@@ -85,6 +86,8 @@ export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
     }
   });
 
+  const { setEvent } = useCharacterEvents();
+
   return (
     <>
       <group position={[30, 0, 0]}>
@@ -97,11 +100,13 @@ export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
         <RBuildingSmokeSprite />
         <LBuildingSmokeSprite />
         <SoldierDyingForegroundSprite />
-        <SnifferSprite />
         <group ref={meshRef} position={[0, animatedPositionY.get(), 0]}>
           <StatueMesh />
           <TreeLineSprite />
           <TreeLineSmokeSprite />
+        </group>
+        <group onClick={() => setEvent("ww2")}>
+          <SnifferSprite />
         </group>
       </group>
     </>

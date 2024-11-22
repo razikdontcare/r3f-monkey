@@ -88,11 +88,7 @@ export default function DynastySprite({ isInView }: { isInView: boolean }) {
         </group>
         {/* <CloudMesh /> */}
         <ArrowsFlyingSprite />
-        <group
-          onClick={() =>
-            setEvent((prev) => (prev === "dynasty" ? null : "dynasty"))
-          }
-        >
+        <group onClick={() => setEvent("dynasty")}>
           <SnifferSprite />
         </group>
       </group>
@@ -335,6 +331,9 @@ export function SnifferSprite() {
       tex.magFilter = NearestFilter;
     }
   );
+
+  const scaleX = 2;
+
   return (
     <>
       <SpriteAnimator
@@ -342,7 +341,7 @@ export function SnifferSprite() {
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[1.5, 1.45, 1]}
+        scale={[scaleX, scaleX * 0.9703703703703703, 1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}

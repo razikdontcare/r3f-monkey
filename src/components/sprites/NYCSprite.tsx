@@ -1,4 +1,5 @@
 // import { useObjectControls } from "@/utils/controls";
+import { useCharacterEvents } from "@/utils/context";
 import { SpriteAnimator, useSpriteLoader } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useSpring } from "framer-motion";
@@ -51,6 +52,8 @@ export default function NYCSprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const meshRef = useRef<Group>(null);
 
+  const { setEvent } = useCharacterEvents();
+
   useEffect(() => {
     if (isInView) {
       setIsVisible(true);
@@ -91,8 +94,10 @@ export default function NYCSprite({ isInView }: { isInView: boolean }) {
         <OfficerSprite />
         <PeoplesSprite />
         <GuyWithFedoraSprite />
-        <SnifferSprite />
         <ForegroundSilhouettesSprite />
+        <group onClick={() => setEvent("nyc")}>
+          <SnifferSprite />
+        </group>
       </group>
     </>
   );
@@ -400,13 +405,13 @@ function SnifferSprite() {
 
   //   const { position } = useObjectControls();
 
-  const scaleX = 1.8;
+  const scaleX = 2.2;
   const scaleY = scaleX * 1.4019370460048426;
 
   return (
     <>
       <SpriteAnimator
-        position={[0.14, -0.8, -4.5]}
+        position={[0.14, -0.6, -4.5]}
         startFrame={0}
         autoPlay={true}
         loop={true}

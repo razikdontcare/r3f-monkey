@@ -26,7 +26,7 @@ export default function Scene() {
   return (
     <>
       <Canvas>
-        <EffectComposer>
+        <EffectComposer enableNormalPass>
           <Bloom
             luminanceThreshold={0}
             mipmapBlur
