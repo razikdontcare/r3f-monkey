@@ -9,15 +9,6 @@ export default function Arrows() {
   const SCENE_STEP = 10;
   const MAX_POSITION = (SCENE_COUNT - 1) * SCENE_STEP;
 
-  const handlePrev = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    e.preventDefault();
-    setTargetPosition(
-      targetPosition[0] - SCENE_STEP < 0
-        ? [MAX_POSITION, 0, 0]
-        : [targetPosition[0] - SCENE_STEP, 0, 0]
-    );
-  };
-
   const handleNext = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     setTargetPosition(
