@@ -63,12 +63,16 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
   const handleHover = useMemo(
     () => ({
       enter: () => {
-        document.body.style.cursor = "pointer";
-        setIsHovered(true);
+        if (typeof window !== "undefined") {
+          document.body.style.cursor = "pointer";
+          setIsHovered(true);
+        }
       },
       leave: () => {
-        document.body.style.cursor = "auto";
-        setIsHovered(false);
+        if (typeof window !== "undefined") {
+          document.body.style.cursor = "auto";
+          setIsHovered(false);
+        }
       },
     }),
     []
@@ -109,6 +113,65 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
       <group position={[40, 0, 0]}>
         <group ref={meshRef} position={[0, animatedPositionY, 0]}>
           <SideBuildingsMesh />
+          <VideoScreen
+            src="16.mp4"
+            size={[1, 0.37]}
+            position={[-0.03, 0.215, -4.9]}
+            scale={0.82}
+          />
+          <VideoScreen
+            src="12.mp4"
+            size={[1, 1.45]}
+            position={[-0.01, 0.95, -4.9]}
+            scale={0.78}
+          />
+          <VideoScreen
+            src="15.mp4"
+            size={[1, 0.5]}
+            position={[-0.001, 1.75, -4.9]}
+            scale={0.67}
+          />
+          <VideoScreen
+            src="3.mp4"
+            size={[1, 0.24]}
+            position={[0, 2.01, -4.9]}
+            scale={0.71}
+          />
+          <VideoScreen
+            src="14.mp4"
+            size={[1, 1]}
+            position={[3.88, 3.46, -12.1]}
+            scale={1.2}
+            rotation={[0, -0.11, 0.04]}
+          />
+          <VideoScreen
+            src="13.mp4"
+            size={[1, 0.71]}
+            position={[-2.6, 0.68, -12.1]}
+            scale={0.92}
+            rotation={[0, 0, -0.01]}
+          />
+          <VideoScreen
+            src="6.mp4"
+            size={[2.05, 2.95]}
+            position={[-5.8, 0.37, -10.5]}
+            scale={0.74}
+            rotation={[-1.23, 1.47, 1.03]}
+          />
+          <VideoScreen
+            src="2.mp4"
+            size={[1, 0.74]}
+            position={[-8.46, 3.04, -10]}
+            scale={3.07}
+            rotation={[-1.2, 1.43, 1.03]}
+          />
+          <VideoScreen
+            src="2.mp4"
+            size={[1, 0.74]}
+            position={[-8.46, 3.04, -10]}
+            scale={3.07}
+            rotation={[-1.2, 1.43, 1.03]}
+          />
         </group>
         <MidGroundMesh />
         <TaxiSprite />
@@ -132,52 +195,6 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
             <SnifferHoverSprite />
           </mesh>
         </group>
-
-        <VideoScreen
-          src="16.mp4"
-          size={[1, 0.37]}
-          position={[-0.03, 0.215, -4.9]}
-          scale={0.82}
-        />
-        <VideoScreen
-          src="12.mp4"
-          size={[1, 1.45]}
-          position={[-0.01, 0.95, -4.9]}
-          scale={0.78}
-        />
-        <VideoScreen
-          src="15.mp4"
-          size={[1, 0.5]}
-          position={[-0.001, 1.75, -4.9]}
-          scale={0.67}
-        />
-        <VideoScreen
-          src="3.mp4"
-          size={[1, 0.24]}
-          position={[0, 2.01, -4.9]}
-          scale={0.71}
-        />
-        <VideoScreen
-          src="14.mp4"
-          size={[1, 1]}
-          position={[3.88, 3.46, -12.1]}
-          scale={1.2}
-          rotation={[0, -0.11, 0.04]}
-        />
-        <VideoScreen
-          src="13.mp4"
-          size={[1, 0.71]}
-          position={[-2.6, 0.68, -12.1]}
-          scale={0.92}
-          rotation={[0, 0, -0.01]}
-        />
-        <VideoScreen
-          src="6.mp4"
-          size={[2.05, 2.95]}
-          position={[-5.8, 0.37, -10.5]}
-          scale={0.74}
-          rotation={[-1.23, 1.47, 1.03]}
-        />
       </group>
     </>
   );

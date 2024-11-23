@@ -70,12 +70,16 @@ function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
   const handleHover = useMemo(
     () => ({
       enter: () => {
-        document.body.style.cursor = "pointer";
-        setIsHovered(true);
+        if (typeof window !== "undefined") {
+          document.body.style.cursor = "pointer";
+          setIsHovered(true);
+        }
       },
       leave: () => {
-        document.body.style.cursor = "auto";
-        setIsHovered(false);
+        if (typeof window !== "undefined") {
+          document.body.style.cursor = "auto";
+          setIsHovered(false);
+        }
       },
     }),
     []
