@@ -6,10 +6,10 @@ import CameraRig from "@/components/CameraRig";
 import PrehistoricSprite from "@/components/sprites/PrehistoricSprite";
 import EgyptSprite from "@/components/sprites/EgyptSprite";
 import DynastySprite from "@/components/sprites/DynastySprite";
-import { useCameraPosition } from "@/utils/context";
-import CloudMesh from "@/components/sprites/CloudMesh";
 import WorldWar2Sprite from "@/components/sprites/WorldWar2Sprite";
 import NYCSprite from "@/components/sprites/NYCSprite";
+import CloudMesh from "@/components/sprites/CloudMesh";
+import { useCameraPosition } from "@/utils/context";
 import {
   DynastyToWW2,
   EgyptToDynasty,

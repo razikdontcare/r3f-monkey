@@ -4,7 +4,7 @@ import { SpriteAnimator, useSpriteLoader } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useSpring } from "framer-motion";
 import { easing } from "maath";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
 
 const basePath = "/sprites/world-war-2/";
@@ -62,21 +62,24 @@ const texturePath = {
   },
 };
 
-export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
+function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
 
-  const handleHover = {
-    enter: () => {
-      document.body.style.cursor = "pointer";
-      setIsHovered(true);
-    },
-    leave: () => {
-      document.body.style.cursor = "auto";
-      setIsHovered(false);
-    },
-  };
+  const handleHover = useMemo(
+    () => ({
+      enter: () => {
+        document.body.style.cursor = "pointer";
+        setIsHovered(true);
+      },
+      leave: () => {
+        document.body.style.cursor = "auto";
+        setIsHovered(false);
+      },
+    }),
+    []
+  );
 
   useEffect(() => {
     if (isInView) {
@@ -140,6 +143,8 @@ export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
     </>
   );
 }
+
+export default React.memo(WorldWar2Sprite);
 
 function ForegroundSilhouetteMesh() {
   const texture = useLoader(

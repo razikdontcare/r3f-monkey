@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useSpring } from "framer-motion";
 
 import { easing } from "maath";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { PerspectiveCamera as ThreePerspectiveCamera } from "three";
 
 export default function CameraRig({
@@ -29,6 +29,15 @@ export default function CameraRig({
     mass: 1,
     stiffness: 200,
   }).get();
+
+  const animatedPosition = useMemo(
+    () => ({
+      x: animatedPositionX,
+      y: animatedPositionY,
+      z: animatedPositionZ,
+    }),
+    [animatedPositionX, animatedPositionY, animatedPositionZ]
+  );
 
   const sensitivity = [10, 40];
 
@@ -62,7 +71,7 @@ export default function CameraRig({
       <PerspectiveCamera
         ref={cameraRef}
         makeDefault
-        position={[animatedPositionX, animatedPositionY, animatedPositionZ]}
+        position={[animatedPosition.x, animatedPosition.y, animatedPosition.z]}
         rotation={rotation}
         fov={pov}
       />

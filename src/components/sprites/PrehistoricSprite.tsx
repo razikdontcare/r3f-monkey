@@ -1,9 +1,8 @@
-// import { useObjectControls } from "@/utils/controls";
 import { SpriteAnimator, useSpriteLoader } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useSpring } from "framer-motion";
 import { easing } from "maath";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
 
 const basePath = "/sprites/prehistoric/";
@@ -61,21 +60,24 @@ const texturePath = {
   },
 };
 
-export default function PrehistoricSprite({ isInView }: { isInView: boolean }) {
+function PrehistoricSprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
 
-  const handleHover = {
-    enter: () => {
-      document.body.style.cursor = "pointer";
-      setIsHovered(true);
-    },
-    leave: () => {
-      document.body.style.cursor = "auto";
-      setIsHovered(false);
-    },
-  };
+  const handleHover = useMemo(
+    () => ({
+      enter: () => {
+        document.body.style.cursor = "pointer";
+        setIsHovered(true);
+      },
+      leave: () => {
+        document.body.style.cursor = "auto";
+        setIsHovered(false);
+      },
+    }),
+    []
+  );
 
   useEffect(() => {
     if (isInView) {
@@ -102,40 +104,41 @@ export default function PrehistoricSprite({ isInView }: { isInView: boolean }) {
       }
     }
   });
+
   return (
-    <>
-      <group>
-        <group ref={meshRef} position={[0, animatedPositionY, 0]}>
-          <VolcanoMesh />
-          <SmokeSprite />
-        </group>
-        <GroundMesh />
-        <MidGroundMesh />
-        <GrassSprite />
-        <BrachioAndRaptorSprite />
-        <Raptor2Sprite />
-        <TRexSprite />
-        <RTree />
-        <LTree />
-        <SnakeSprite />
-        <RForegroundSillhouetteSprite />
-        <LForegroundSillhouetteSprite />
-        <group>
-          <mesh
-            visible={!isHovered}
-            onPointerEnter={handleHover.enter}
-            onPointerLeave={handleHover.leave}
-          >
-            <SnifferSprite />
-          </mesh>
-          <mesh visible={isHovered}>
-            <SnifferHoverSprite />
-          </mesh>
-        </group>
+    <group>
+      <group ref={meshRef} position={[0, animatedPositionY, 0]}>
+        <VolcanoMesh />
+        <SmokeSprite />
       </group>
-    </>
+      <GroundMesh />
+      <MidGroundMesh />
+      <GrassSprite />
+      <BrachioAndRaptorSprite />
+      <Raptor2Sprite />
+      <TRexSprite />
+      <RTree />
+      <LTree />
+      <SnakeSprite />
+      <RForegroundSillhouetteSprite />
+      <LForegroundSillhouetteSprite />
+      <group>
+        <mesh
+          visible={!isHovered}
+          onPointerEnter={handleHover.enter}
+          onPointerLeave={handleHover.leave}
+        >
+          <SnifferSprite />
+        </mesh>
+        <mesh visible={isHovered}>
+          <SnifferHoverSprite />
+        </mesh>
+      </group>
+    </group>
   );
 }
+
+export default React.memo(PrehistoricSprite);
 
 function MidGroundMesh() {
   const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
@@ -143,12 +146,10 @@ function MidGroundMesh() {
   texture.magFilter = NearestFilter;
 
   return (
-    <>
-      <mesh position={[-0.43, -0.85, -5.4]} scale={[4.3, 4.3, 0.1]}>
-        <planeGeometry args={[1, 0.42]} />
-        <meshBasicMaterial map={texture} transparent />
-      </mesh>
-    </>
+    <mesh position={[-0.43, -0.85, -5.4]} scale={[4.3, 4.3, 0.1]}>
+      <planeGeometry args={[1, 0.42]} />
+      <meshBasicMaterial map={texture} transparent />
+    </mesh>
   );
 }
 
@@ -158,12 +159,10 @@ function GroundMesh() {
   texture.magFilter = NearestFilter;
 
   return (
-    <>
-      <mesh position={[0, -1.5, -5.5]} scale={[1.8, 1.8, 0.1]}>
-        <planeGeometry args={[5.5, 1]} />
-        <meshBasicMaterial map={texture} transparent />
-      </mesh>
-    </>
+    <mesh position={[0, -1.5, -5.5]} scale={[1.8, 1.8, 0.1]}>
+      <planeGeometry args={[5.5, 1]} />
+      <meshBasicMaterial map={texture} transparent />
+    </mesh>
   );
 }
 
@@ -173,12 +172,10 @@ function VolcanoMesh() {
   texture.magFilter = NearestFilter;
 
   return (
-    <>
-      <mesh position={[0.5, -1.3, -12]} scale={7}>
-        <planeGeometry args={[3, 1.06]} />
-        <meshBasicMaterial map={texture} transparent />
-      </mesh>
-    </>
+    <mesh position={[0.5, -1.3, -12]} scale={7}>
+      <planeGeometry args={[3, 1.06]} />
+      <meshBasicMaterial map={texture} transparent />
+    </mesh>
   );
 }
 
@@ -195,18 +192,16 @@ function SmokeSprite() {
   );
 
   return (
-    <>
-      <SpriteAnimator
-        position={[0.2, 2.1, -13]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={5}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[0.2, 2.1, -13]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={5}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
 
@@ -222,18 +217,16 @@ function BrachioAndRaptorSprite() {
     }
   );
   return (
-    <>
-      <SpriteAnimator
-        position={[-1.1, -1, -5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[1.3, 2, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={10}
-      />
-    </>
+    <SpriteAnimator
+      position={[-1.1, -1, -5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[1.3, 2, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={10}
+    />
   );
 }
 
@@ -249,18 +242,16 @@ function Raptor2Sprite() {
     }
   );
   return (
-    <>
-      <SpriteAnimator
-        position={[1.1, -0.8, -5.2]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[1, 0.8, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={10}
-      />
-    </>
+    <SpriteAnimator
+      position={[1.1, -0.8, -5.2]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[1, 0.8, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={10}
+    />
   );
 }
 
@@ -276,18 +267,16 @@ function TRexSprite() {
     }
   );
   return (
-    <>
-      <SpriteAnimator
-        position={[1.75, -0.7, -4.5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[1.78, 1.8, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={10}
-      />
-    </>
+    <SpriteAnimator
+      position={[1.75, -0.7, -4.5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[1.78, 1.8, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={10}
+    />
   );
 }
 
@@ -303,26 +292,20 @@ function GrassSprite() {
     }
   );
 
-  // const { position } = useObjectControls("Grass");
-
   const scaleX = 7.5;
   const scaleY = scaleX * 5.23517382413088;
 
   return (
-    <>
-      <SpriteAnimator
-        position={[0, -0.8, -3.5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[scaleX, scaleY, 0.1]}
-        spriteDataset={spriteObj}
-        // textureImageURL={texture.image.src}
-        // textureDataURL={texturePath.grass.json}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[0, -0.8, -3.5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[scaleX, scaleY, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
 
@@ -339,18 +322,16 @@ function RForegroundSillhouetteSprite() {
   );
 
   return (
-    <>
-      <SpriteAnimator
-        position={[1.25, 0, -2.5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[2.2, 1.2, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[1.25, 0, -2.5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[2.2, 1.2, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
 
@@ -367,18 +348,16 @@ function LForegroundSillhouetteSprite() {
   );
 
   return (
-    <>
-      <SpriteAnimator
-        position={[-1.25, 0, -2.5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[2.2, 1.2, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[-1.25, 0, -2.5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[2.2, 1.2, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
 
@@ -397,20 +376,19 @@ function RTree() {
   const scaleX = 6;
 
   return (
-    <>
-      <SpriteAnimator
-        position={[1.45, -0.2, -4.1]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[scaleX, scaleX * 1.3314814814814815, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[1.45, -0.2, -4.1]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[scaleX, scaleX * 1.3314814814814815, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
+
 function LTree() {
   const { spriteObj } = useSpriteLoader(
     texturePath.lTree.png,
@@ -424,18 +402,16 @@ function LTree() {
   );
 
   return (
-    <>
-      <SpriteAnimator
-        position={[-2, -0.4, -4.55]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[5, 6, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[-2, -0.4, -4.55]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[5, 6, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
 
@@ -454,18 +430,16 @@ function SnifferSprite() {
   const scaleX = 1.3;
 
   return (
-    <>
-      <SpriteAnimator
-        position={[0, -0.85, -5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[scaleX, scaleX * 0.7348484848484849, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[0, -0.85, -5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[scaleX, scaleX * 0.7348484848484849, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
 
@@ -484,18 +458,16 @@ function SnifferHoverSprite() {
   const scaleX = 1.5;
 
   return (
-    <>
-      <SpriteAnimator
-        position={[0, -0.85, -5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[scaleX, scaleX * 0.7602739726027397, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[0, -0.85, -5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[scaleX, scaleX * 0.7602739726027397, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
 
@@ -512,17 +484,15 @@ function SnakeSprite() {
   );
 
   return (
-    <>
-      <SpriteAnimator
-        position={[3, 0.78, -3.8]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[1.1, 1.04, 0.1]}
-        spriteDataset={spriteObj}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <SpriteAnimator
+      position={[3, 0.78, -3.8]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[1.1, 1.04, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
