@@ -23,7 +23,8 @@ export default function VideoScreen({
   scale = 1,
   part = "center",
 }: VideoScreenProps) {
-  const texture = useVideoTexture(videoPath + src);
+  const [start, setStart] = useState(false);
+  const texture = useVideoTexture(videoPath + src, { start });
   const meshRef = useRef<Mesh>(null);
   const [aspectRatio, setAspectRatio] = useState(1);
 
@@ -31,6 +32,9 @@ export default function VideoScreen({
   const height = size[1];
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      setStart(true);
+    }, 1200);
     if (texture.image) {
       const { videoWidth, videoHeight } = texture.image;
       setAspectRatio(videoWidth / videoHeight);
@@ -82,6 +86,8 @@ export default function VideoScreen({
         }
       }
     }
+
+    return () => clearTimeout(timeout);
   }, [
     texture.image,
     aspectRatio,

@@ -69,11 +69,13 @@ function PrehistoricSprite({ isInView }: { isInView: boolean }) {
     () => ({
       enter: () => {
         if (typeof window !== "undefined") {
+          document.body.style.cursor = "pointer";
           setIsHovered(true);
         }
       },
       leave: () => {
         if (typeof window !== "undefined") {
+          document.body.style.cursor = "auto";
           setIsHovered(false);
         }
       },
@@ -218,13 +220,15 @@ function BrachioAndRaptorSprite() {
       tex.magFilter = NearestFilter;
     }
   );
+  const scale = 1.3;
+
   return (
     <SpriteAnimator
       position={[-1.1, -1, -5]}
       startFrame={0}
       autoPlay={true}
       loop={true}
-      scale={[1.3, 2, 0.1]}
+      scale={[scale, scale * 1.44, 0.1]}
       spriteDataset={spriteObj}
       asSprite={false}
       fps={10}
@@ -379,11 +383,11 @@ function RTree() {
 
   return (
     <SpriteAnimator
-      position={[1.45, -0.2, -4.1]}
+      position={[1.46, -0.2, -4]}
       startFrame={0}
       autoPlay={true}
       loop={true}
-      scale={[scaleX, scaleX * 1.3314814814814815, 0.1]}
+      scale={[scaleX, scaleX * 1.33, 0.1]}
       spriteDataset={spriteObj}
       asSprite={false}
       fps={15}
@@ -405,7 +409,7 @@ function LTree() {
 
   return (
     <SpriteAnimator
-      position={[-2, -0.4, -4.55]}
+      position={[-2, -0.4, -4.6]}
       startFrame={0}
       autoPlay={true}
       loop={true}

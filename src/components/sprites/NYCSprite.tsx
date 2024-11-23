@@ -1,4 +1,4 @@
-import { useObjectControls } from "@/utils/controls";
+// import { useObjectControls } from "@/utils/controls";
 import { useCharacterEvents } from "@/utils/context";
 import { SpriteAnimator, useSpriteLoader } from "@react-three/drei";
 import { useFrame, useLoader } from "@react-three/fiber";
@@ -106,7 +106,7 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
     }
   });
 
-  const { position, rotation } = useObjectControls("a");
+  // const { position, rotation } = useObjectControls("a");
 
   return (
     <>
@@ -145,7 +145,7 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
             rotation={[0, -0.11, 0.04]}
           />
           <VideoScreen
-            src="13.mp4"
+            src="7.mp4"
             size={[1, 0.71]}
             position={[-2.6, 0.68, -12.1]}
             scale={0.92}
@@ -166,20 +166,25 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
             rotation={[-1.2, 1.43, 1.03]}
           />
           <VideoScreen
-            src="7.mp4"
+            src="13-2-compressed.mp4"
             size={[1, 0.74]}
-            part="right"
             position={[5.51, -0.06, -10]}
             scale={1.95}
             rotation={[-0.03, 0.41, -0.01]}
           />
           <VideoScreen
-            src="7.mp4"
-            size={[1, 1.42]}
-            part="left"
-            position={[position[0], position[1], -10]}
-            scale={position[2]}
-            rotation={rotation}
+            src="13-1-compressed.mp4"
+            size={[1, 0.74]}
+            position={[4.39, -0.17, -10]}
+            scale={1.83}
+            rotation={[-0.28, -1.55, -0.13]}
+          />
+          <VideoScreen
+            src="17.mp4"
+            size={[1, 0.56]}
+            position={[6.81, 3.65, -10]}
+            scale={6.0}
+            rotation={[-0.25, -1.57, -0.17]}
           />
         </group>
         <MidGroundMesh />
