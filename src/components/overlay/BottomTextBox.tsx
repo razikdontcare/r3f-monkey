@@ -23,9 +23,8 @@ export default function BottomTextBox() {
           onClick={handleCopy}
           src={textBoxLong}
           alt="TEXT BOX"
-          layout="fill"
-          objectFit="contain"
-          className="pointer-events-auto cursor-pointer"
+          fill
+          className="pointer-events-auto cursor-pointer object-contain"
         />
         <div className="absolute inset-0 flex items-center justify-center">
           {copied ? (

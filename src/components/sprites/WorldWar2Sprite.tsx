@@ -56,11 +56,27 @@ const texturePath = {
     png: pngPath + "sniffer.png",
     json: jsonPath + "sniffer.json",
   },
+  snifferHover: {
+    png: pngPath + "sniffer-hover.png",
+    json: jsonPath + "sniffer-hover.json",
+  },
 };
 
 export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
+  const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
+
+  const handleHover = {
+    enter: () => {
+      document.body.style.cursor = "pointer";
+      setIsHovered(true);
+    },
+    leave: () => {
+      document.body.style.cursor = "auto";
+      setIsHovered(false);
+    },
+  };
 
   useEffect(() => {
     if (isInView) {
@@ -109,14 +125,23 @@ export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
         <ForegroundSilhouetteMesh />
 
         <group onClick={() => setEvent("ww2")}>
-          <SnifferSprite />
+          <mesh
+            visible={!isHovered}
+            onPointerEnter={handleHover.enter}
+            onPointerLeave={handleHover.leave}
+          >
+            <SnifferSprite />
+          </mesh>
+          <mesh visible={isHovered}>
+            <SnifferHoverSprite />
+          </mesh>
         </group>
       </group>
     </>
   );
 }
 
-export function ForegroundSilhouetteMesh() {
+function ForegroundSilhouetteMesh() {
   const texture = useLoader(
     TextureLoader,
     pngPath + "foreground-sillhouette.png"
@@ -136,7 +161,7 @@ export function ForegroundSilhouetteMesh() {
   );
 }
 
-export function StatueMesh() {
+function StatueMesh() {
   const texture = useLoader(TextureLoader, pngPath + "statue.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
@@ -155,7 +180,7 @@ export function StatueMesh() {
   );
 }
 
-export function EnvironmentMesh() {
+function EnvironmentMesh() {
   const texture = useLoader(TextureLoader, pngPath + "environment.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
@@ -172,7 +197,7 @@ export function EnvironmentMesh() {
   );
 }
 
-export function DustSprite() {
+function DustSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.dust.png,
     texturePath.dust.json,
@@ -200,7 +225,7 @@ export function DustSprite() {
   );
 }
 
-export function FireSprite() {
+function FireSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.fire.png,
     texturePath.fire.json,
@@ -235,7 +260,7 @@ export function FireSprite() {
   );
 }
 
-export function SoldiersSprite() {
+function SoldiersSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.soldiers.png,
     texturePath.soldiers.json,
@@ -268,7 +293,7 @@ export function SoldiersSprite() {
   );
 }
 
-export function SparksOverlaySprite() {
+function SparksOverlaySprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.sparksOverlay.png,
     texturePath.sparksOverlay.json,
@@ -303,7 +328,7 @@ export function SparksOverlaySprite() {
   );
 }
 
-export function RBuildingSmokeSprite() {
+function RBuildingSmokeSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.rBuildingSmoke.png,
     texturePath.rBuildingSmoke.json,
@@ -336,7 +361,7 @@ export function RBuildingSmokeSprite() {
   );
 }
 
-export function LBuildingSmokeSprite() {
+function LBuildingSmokeSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.lBuildingSmoke.png,
     texturePath.lBuildingSmoke.json,
@@ -369,7 +394,7 @@ export function LBuildingSmokeSprite() {
   );
 }
 
-export function SoldierDyingForegroundSprite() {
+function SoldierDyingForegroundSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.soldierDyingForeground.png,
     texturePath.soldierDyingForeground.json,
@@ -402,7 +427,7 @@ export function SoldierDyingForegroundSprite() {
   );
 }
 
-export function TreeLineSprite() {
+function TreeLineSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.treeLine.png,
     texturePath.treeLine.json,
@@ -435,7 +460,7 @@ export function TreeLineSprite() {
   );
 }
 
-export function TreeLineSmokeSprite() {
+function TreeLineSmokeSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.treeLineSmoke.png,
     texturePath.treeLineSmoke.json,
@@ -468,12 +493,12 @@ export function TreeLineSmokeSprite() {
   );
 }
 
-export function SnifferSprite() {
+function SnifferSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.sniffer.png,
     texturePath.sniffer.json,
     null,
-    64,
+    32,
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
@@ -489,6 +514,39 @@ export function SnifferSprite() {
     <>
       <SpriteAnimator
         position={[0, -0.28, -4.3]}
+        startFrame={0}
+        autoPlay={true}
+        loop={true}
+        scale={[scaleX, scaleY, 0.1]}
+        spriteDataset={spriteObj}
+        asSprite={false}
+        fps={15}
+      />
+    </>
+  );
+}
+
+function SnifferHoverSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.snifferHover.png,
+    texturePath.snifferHover.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  const scaleX = 1.19;
+  const scaleY = scaleX * 0.5257410296411856;
+
+  //   const { position } = useObjectControls();
+
+  return (
+    <>
+      <SpriteAnimator
+        position={[-0.01, -0.3, -4.3]}
         startFrame={0}
         autoPlay={true}
         loop={true}

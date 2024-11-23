@@ -36,11 +36,27 @@ const texturePath = {
     png: pngPath + "sniffer.png",
     json: jsonPath + "sniffer.json",
   },
+  snifferHover: {
+    png: pngPath + "sniffer-hover.png",
+    json: jsonPath + "sniffer-hover.json",
+  },
 };
 
 export default function EgyptSprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
+  const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
+
+  const handleHover = {
+    enter: () => {
+      document.body.style.cursor = "pointer";
+      setIsHovered(true);
+    },
+    leave: () => {
+      document.body.style.cursor = "auto";
+      setIsHovered(false);
+    },
+  };
 
   const { setEvent } = useCharacterEvents();
 
@@ -84,7 +100,16 @@ export default function EgyptSprite({ isInView }: { isInView: boolean }) {
           <ForegroundStuffMesh />
 
           <group onClick={() => setEvent("egypt")}>
-            <SnifferSprite />
+            <mesh
+              visible={!isHovered}
+              onPointerEnter={handleHover.enter}
+              onPointerLeave={handleHover.leave}
+            >
+              <SnifferSprite />
+            </mesh>
+            <mesh visible={isHovered}>
+              <SnifferHoverSprite />
+            </mesh>
           </group>
         </>
       </group>
@@ -254,7 +279,7 @@ function SnifferSprite() {
     texturePath.sniffer.png,
     texturePath.sniffer.json,
     null,
-    64,
+    32,
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
@@ -271,6 +296,35 @@ function SnifferSprite() {
         autoPlay={true}
         loop={true}
         scale={[scaleX, scaleX * 0.6020833333333334, 0.1]}
+        spriteDataset={spriteObj}
+        asSprite={false}
+        fps={15}
+      />
+    </>
+  );
+}
+function SnifferHoverSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.snifferHover.png,
+    texturePath.snifferHover.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  const scaleX = 2.1;
+
+  return (
+    <>
+      <SpriteAnimator
+        position={[0, -0.5, -5.2]}
+        startFrame={0}
+        autoPlay={true}
+        loop={true}
+        scale={[scaleX, scaleX * 0.6784511784511785, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}

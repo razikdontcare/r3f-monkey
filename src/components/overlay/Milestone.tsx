@@ -3,7 +3,18 @@ import Image from "next/image";
 import milestones from "./assets/milestones.png";
 import { useCameraPosition } from "@/utils/context";
 
+import IconPrehistoric from "./assets/icons/icon-prehistoric.png";
+import IconEgypt from "./assets/icons/icon-egypt.png";
+import IconDynasty from "./assets/icons/icon-three-kingdoms.png";
+import IconWW2 from "./assets/icons/icon-ww2.png";
+import IconNYC from "./assets/icons/icon-nyc.png";
+import { useState } from "react";
+
+type Scenes = "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc";
+
 export default function Milestones() {
+  const [current, setCurrent] = useState<Scenes>("prehistoric");
+
   const { setTargetPosition } = useCameraPosition();
   return (
     <>
@@ -13,29 +24,83 @@ export default function Milestones() {
             <Image src={milestones} alt="MILESTONES" className="w-[35rem]" />
             <button
               id="prehistoric"
-              className="size-12 pointer-events-auto absolute top-0 left-0 rounded-full "
-              onClick={() => setTargetPosition([0, 0, 0])}
-            />
+              className="size-10 pointer-events-auto absolute top-1 left-1 rounded-full"
+              onClick={() => {
+                setTargetPosition([0, 0, 0]);
+                setCurrent("prehistoric");
+              }}
+            >
+              <Image
+                src={IconPrehistoric}
+                alt="PREHISTORIC"
+                fill
+                className={`object-contain ${
+                  current !== "prehistoric" && "hidden"
+                }`}
+              />
+            </button>
             <button
               id="egypt"
-              className="size-12 pointer-events-auto absolute top-0 left-32 rounded-full "
-              onClick={() => setTargetPosition([10, 0, 0])}
-            />
+              className="size-10 pointer-events-auto absolute top-1 left-[8.2rem] rounded-full"
+              onClick={() => {
+                setTargetPosition([10, 0, 0]);
+                setCurrent("egypt");
+              }}
+            >
+              <Image
+                src={IconEgypt}
+                alt="EGYPT"
+                fill
+                className={`object-contain ${current !== "egypt" && "hidden"}`}
+              />
+            </button>
             <button
               id="dynasty"
-              className="size-12 pointer-events-auto absolute top-0 left-64 rounded-full "
-              onClick={() => setTargetPosition([20, 0, 0])}
-            />
+              className="size-10 pointer-events-auto absolute top-1 left-[16.25rem] rounded-full"
+              onClick={() => {
+                setTargetPosition([20, 0, 0]);
+                setCurrent("dynasty");
+              }}
+            >
+              <Image
+                src={IconDynasty}
+                alt="THREE KINGDOMS"
+                fill
+                className={`object-contain ${
+                  current !== "dynasty" && "hidden"
+                }`}
+              />
+            </button>
             <button
               id="ww2"
-              className="size-12 pointer-events-auto absolute top-0 right-32 rounded-full "
-              onClick={() => setTargetPosition([30, 0, 0])}
-            />
+              className="size-10 pointer-events-auto absolute top-1 right-[8.1rem] rounded-full"
+              onClick={() => {
+                setTargetPosition([30, 0, 0]);
+                setCurrent("ww2");
+              }}
+            >
+              <Image
+                src={IconWW2}
+                alt="WW2"
+                fill
+                className={`object-contain ${current !== "ww2" && "hidden"}`}
+              />
+            </button>
             <button
               id="nyc"
-              className="size-12 pointer-events-auto absolute top-0 right-0 rounded-full "
-              onClick={() => setTargetPosition([40, 0, 0])}
-            />
+              className="size-10 pointer-events-auto absolute top-1 right-1 rounded-full"
+              onClick={() => {
+                setTargetPosition([40, 0, 0]);
+                setCurrent("nyc");
+              }}
+            >
+              <Image
+                src={IconNYC}
+                alt="NYC"
+                fill
+                className={`object-contain ${current !== "nyc" && "hidden"}`}
+              />
+            </button>
           </div>
         </div>
       </div>

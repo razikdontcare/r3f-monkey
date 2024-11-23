@@ -55,8 +55,16 @@ function EgyptOverlay({ show }: { show: boolean }) {
       }`}
     >
       <div className="flex items-center gap-16 relative">
-        <Image src={tablet} alt="TABLETS" />
-        <Image src={tablet} alt="TABLETS" />
+        <Image
+          src={tablet}
+          alt="TABLETS"
+          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+        />
+        <Image
+          src={tablet}
+          alt="TABLETS"
+          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+        />
         <div className="absolute right-0 top-0 size-8">
           <Image
             onClick={() => setEvent(null)}
@@ -80,7 +88,11 @@ function DynastyOverlay({ show }: { show: boolean }) {
       }`}
     >
       <div className="flex items-center w-[28rem] mt-10 relative ">
-        <Image src={scroll} alt="SUN TZU SCROLL" />
+        <Image
+          src={scroll}
+          alt="SUN TZU SCROLL"
+          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+        />
         <div className="absolute right-20 top-2 size-8">
           <Image
             onClick={() => setEvent(null)}
@@ -103,7 +115,11 @@ function NYCOverlay({ show }: { show: boolean }) {
       }`}
     >
       <div className="flex items-center w-96 mt-10 relative">
-        <Image src={iphone} alt="IPHONE X" />
+        <Image
+          src={iphone}
+          alt="IPHONE X"
+          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+        />
         <div className="absolute right-0 top-0 size-8">
           <Image
             onClick={() => setEvent(null)}
@@ -126,8 +142,20 @@ function WW2Overlay({ show }: { show: boolean }) {
       }`}
     >
       <div className="flex items-center relative gap-16">
-        <Image src={textbox} alt="TEXTBOX" className="size-96" />
-        <Image src={textbox} alt="TEXTBOX" className="size-96" />
+        <Image
+          src={textbox}
+          alt="TEXTBOX"
+          className={`${
+            show ? "pointer-events-auto" : "pointer-events-none"
+          } size-96`}
+        />
+        <Image
+          src={textbox}
+          alt="TEXTBOX"
+          className={`${
+            show ? "pointer-events-auto" : "pointer-events-none"
+          } size-96`}
+        />
         <div className="absolute -right-1 -top-1 size-8">
           <Image
             onClick={() => setEvent(null)}

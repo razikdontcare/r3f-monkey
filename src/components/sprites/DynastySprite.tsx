@@ -43,11 +43,27 @@ const texturePath = {
     png: pngPath + "sniffer.png",
     json: jsonPath + "sniffer.json",
   },
+  snifferHover: {
+    png: pngPath + "sniffer-hover.png",
+    json: jsonPath + "sniffer-hover.json",
+  },
 };
 
 export default function DynastySprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
+  const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
+
+  const handleHover = {
+    enter: () => {
+      document.body.style.cursor = "pointer";
+      setIsHovered(true);
+    },
+    leave: () => {
+      document.body.style.cursor = "auto";
+      setIsHovered(false);
+    },
+  };
 
   const { setEvent } = useCharacterEvents();
 
@@ -91,7 +107,16 @@ export default function DynastySprite({ isInView }: { isInView: boolean }) {
         <GlowsSprite />
 
         <group onClick={() => setEvent("dynasty")}>
-          <SnifferSprite />
+          <mesh
+            visible={!isHovered}
+            onPointerEnter={handleHover.enter}
+            onPointerLeave={handleHover.leave}
+          >
+            <SnifferSprite />
+          </mesh>
+          <mesh visible={isHovered}>
+            <SnifferHoverSprite />
+          </mesh>
         </group>
       </group>
     </>
@@ -317,11 +342,43 @@ function SnifferSprite() {
   return (
     <>
       <SpriteAnimator
-        position={[-0.4, -0.3, -3.8]}
+        position={[-0.3, -0.3, -3.8]}
         startFrame={0}
         autoPlay={true}
         loop={true}
         scale={[scaleX, scaleX * 0.9703703703703703, 0.1]}
+        spriteDataset={spriteObj}
+        // textureImageURL={texture.image.src}
+        // textureDataURL={texturePath.grass.json}
+        asSprite={false}
+        fps={15}
+      />
+    </>
+  );
+}
+
+function SnifferHoverSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.snifferHover.png,
+    texturePath.snifferHover.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  const scaleX = 2.05;
+
+  return (
+    <>
+      <SpriteAnimator
+        position={[-0.38, -0.275, -3.8]}
+        startFrame={0}
+        autoPlay={true}
+        loop={true}
+        scale={[scaleX, scaleX * 0.8868852459016393, 0.1]}
         spriteDataset={spriteObj}
         // textureImageURL={texture.image.src}
         // textureDataURL={texturePath.grass.json}

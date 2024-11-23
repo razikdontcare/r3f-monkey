@@ -51,6 +51,10 @@ const texturePath = {
     png: pngPath + "sniffer.png",
     json: jsonPath + "sniffer.json",
   },
+  snifferHover: {
+    png: pngPath + "sniffer-hover.png",
+    json: jsonPath + "sniffer-hover.json",
+  },
   snake: {
     png: pngPath + "snake.png",
     json: jsonPath + "snake.json",
@@ -59,7 +63,19 @@ const texturePath = {
 
 export default function PrehistoricSprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
+  const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
+
+  const handleHover = {
+    enter: () => {
+      document.body.style.cursor = "pointer";
+      setIsHovered(true);
+    },
+    leave: () => {
+      document.body.style.cursor = "auto";
+      setIsHovered(false);
+    },
+  };
 
   useEffect(() => {
     if (isInView) {
@@ -101,10 +117,21 @@ export default function PrehistoricSprite({ isInView }: { isInView: boolean }) {
         <TRexSprite />
         <RTree />
         <LTree />
-        <SnifferSprite />
         <SnakeSprite />
         <RForegroundSillhouetteSprite />
         <LForegroundSillhouetteSprite />
+        <group>
+          <mesh
+            visible={!isHovered}
+            onPointerEnter={handleHover.enter}
+            onPointerLeave={handleHover.leave}
+          >
+            <SnifferSprite />
+          </mesh>
+          <mesh visible={isHovered}>
+            <SnifferHoverSprite />
+          </mesh>
+        </group>
       </group>
     </>
   );
@@ -434,6 +461,36 @@ function SnifferSprite() {
         autoPlay={true}
         loop={true}
         scale={[scaleX, scaleX * 0.7348484848484849, 0.1]}
+        spriteDataset={spriteObj}
+        asSprite={false}
+        fps={15}
+      />
+    </>
+  );
+}
+
+function SnifferHoverSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.snifferHover.png,
+    texturePath.snifferHover.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  const scaleX = 1.5;
+
+  return (
+    <>
+      <SpriteAnimator
+        position={[0, -0.85, -5]}
+        startFrame={0}
+        autoPlay={true}
+        loop={true}
+        scale={[scaleX, scaleX * 0.7602739726027397, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}

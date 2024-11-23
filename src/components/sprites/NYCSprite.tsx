@@ -48,11 +48,27 @@ const texturePath = {
     png: pngPath + "sniffer.png",
     json: jsonPath + "sniffer.json",
   },
+  snifferHover: {
+    png: pngPath + "sniffer-hover.png",
+    json: jsonPath + "sniffer-hover.json",
+  },
 };
 
 export default function NYCSprite({ isInView }: { isInView: boolean }) {
   const [isVisible, setIsVisible] = useState(isInView);
+  const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
+
+  const handleHover = {
+    enter: () => {
+      document.body.style.cursor = "pointer";
+      setIsHovered(true);
+    },
+    leave: () => {
+      document.body.style.cursor = "auto";
+      setIsHovered(false);
+    },
+  };
 
   const { setEvent } = useCharacterEvents();
 
@@ -99,7 +115,16 @@ export default function NYCSprite({ isInView }: { isInView: boolean }) {
         <ForegroundSilhouettesSprite />
 
         <group onClick={() => setEvent("nyc")}>
-          <SnifferSprite />
+          <mesh visible={!isHovered}>
+            <SnifferSprite />
+          </mesh>
+          <mesh
+            visible={isHovered}
+            onPointerEnter={handleHover.enter}
+            onPointerLeave={handleHover.leave}
+          >
+            <SnifferHoverSprite />
+          </mesh>
         </group>
       </group>
     </>
@@ -415,6 +440,39 @@ function SnifferSprite() {
     <>
       <SpriteAnimator
         position={[0.14, -0.6, -4.5]}
+        startFrame={0}
+        autoPlay={true}
+        loop={true}
+        scale={[scaleX, scaleY, 0.1]}
+        spriteDataset={spriteObj}
+        asSprite={false}
+        fps={15}
+      />
+    </>
+  );
+}
+
+function SnifferHoverSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.snifferHover.png,
+    texturePath.snifferHover.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  //   const { position } = useObjectControls();
+
+  const scaleX = 1.14;
+  const scaleY = scaleX * 0.5882352941176471;
+
+  return (
+    <>
+      <SpriteAnimator
+        position={[0.015, -0.58, -4.5]}
         startFrame={0}
         autoPlay={true}
         loop={true}
