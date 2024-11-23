@@ -8,14 +8,9 @@ import IconEgypt from "./assets/icons/icon-egypt.png";
 import IconDynasty from "./assets/icons/icon-three-kingdoms.png";
 import IconWW2 from "./assets/icons/icon-ww2.png";
 import IconNYC from "./assets/icons/icon-nyc.png";
-import { useState } from "react";
-
-type Scenes = "prehistoric" | "egypt" | "dynasty" | "ww2" | "nyc";
 
 export default function Milestones() {
-  const [current, setCurrent] = useState<Scenes>("prehistoric");
-
-  const { setTargetPosition } = useCameraPosition();
+  const { setTargetPosition, targetPosition } = useCameraPosition();
   return (
     <>
       <div className="w-full mx-auto flex items-center justify-center absolute top-0 left-0 h-full pointer-events-none">
@@ -27,7 +22,6 @@ export default function Milestones() {
               className="size-10 pointer-events-auto absolute top-1 left-1 rounded-full"
               onClick={() => {
                 setTargetPosition([0, 0, 0]);
-                setCurrent("prehistoric");
               }}
             >
               <Image
@@ -35,7 +29,7 @@ export default function Milestones() {
                 alt="PREHISTORIC"
                 fill
                 className={`object-contain ${
-                  current !== "prehistoric" && "hidden"
+                  targetPosition[0] !== 0 && "hidden"
                 }`}
               />
             </button>
@@ -44,14 +38,15 @@ export default function Milestones() {
               className="size-10 pointer-events-auto absolute top-1 left-[8.2rem] rounded-full"
               onClick={() => {
                 setTargetPosition([10, 0, 0]);
-                setCurrent("egypt");
               }}
             >
               <Image
                 src={IconEgypt}
                 alt="EGYPT"
                 fill
-                className={`object-contain ${current !== "egypt" && "hidden"}`}
+                className={`object-contain ${
+                  targetPosition[0] !== 10 && "hidden"
+                }`}
               />
             </button>
             <button
@@ -59,7 +54,6 @@ export default function Milestones() {
               className="size-10 pointer-events-auto absolute top-1 left-[16.25rem] rounded-full"
               onClick={() => {
                 setTargetPosition([20, 0, 0]);
-                setCurrent("dynasty");
               }}
             >
               <Image
@@ -67,7 +61,7 @@ export default function Milestones() {
                 alt="THREE KINGDOMS"
                 fill
                 className={`object-contain ${
-                  current !== "dynasty" && "hidden"
+                  targetPosition[0] !== 20 && "hidden"
                 }`}
               />
             </button>
@@ -76,14 +70,15 @@ export default function Milestones() {
               className="size-10 pointer-events-auto absolute top-1 right-[8.1rem] rounded-full"
               onClick={() => {
                 setTargetPosition([30, 0, 0]);
-                setCurrent("ww2");
               }}
             >
               <Image
                 src={IconWW2}
                 alt="WW2"
                 fill
-                className={`object-contain ${current !== "ww2" && "hidden"}`}
+                className={`object-contain ${
+                  targetPosition[0] !== 30 && "hidden"
+                }`}
               />
             </button>
             <button
@@ -91,14 +86,15 @@ export default function Milestones() {
               className="size-10 pointer-events-auto absolute top-1 right-1 rounded-full"
               onClick={() => {
                 setTargetPosition([40, 0, 0]);
-                setCurrent("nyc");
               }}
             >
               <Image
                 src={IconNYC}
                 alt="NYC"
                 fill
-                className={`object-contain ${current !== "nyc" && "hidden"}`}
+                className={`object-contain ${
+                  targetPosition[0] !== 40 && "hidden"
+                }`}
               />
             </button>
           </div>
