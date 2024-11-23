@@ -19,7 +19,7 @@ export function PrehistoricToEgypt({
   useFrame((state, delta) => {
     if (meshRef.current)
       if (target[0] === 0) {
-        easing.damp3(meshRef.current.position, [5.5, 0, -3.2], 0.4, delta);
+        easing.damp3(meshRef.current.position, [5.5, 0, -3], 0.4, delta);
       } else if (target[0] === 10) {
         easing.damp3(meshRef.current.position, [4.5, 0, -3.2], 0.4, delta);
       }

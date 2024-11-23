@@ -3,7 +3,8 @@ import textBox from "./assets/text-box.png";
 import Arrows from "@/components/overlay/Arrows";
 import Image from "next/image";
 import CharacterEvents from "@/components/overlay/CharacterEvents";
-import Milestones from "./Milestone";
+import Milestones from "@/components/overlay/Milestone";
+import Socials from "@/components/overlay/Socials";
 
 export default function UIOverlay() {
   return (
@@ -19,6 +20,7 @@ export default function UIOverlay() {
       <CharacterEvents />
       <Arrows />
       <Milestones />
+      <Socials />
     </div>
   );
 }

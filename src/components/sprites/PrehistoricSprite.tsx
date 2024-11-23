@@ -284,7 +284,7 @@ function GrassSprite() {
   return (
     <>
       <SpriteAnimator
-        position={[0, -0.88, -3.7]}
+        position={[0, -0.8, -3.5]}
         startFrame={0}
         autoPlay={true}
         loop={true}
@@ -367,14 +367,16 @@ function RTree() {
     }
   );
 
+  const scaleX = 6;
+
   return (
     <>
       <SpriteAnimator
-        position={[1.45, -0.2, -4]}
+        position={[1.45, -0.2, -4.1]}
         startFrame={0}
         autoPlay={true}
         loop={true}
-        scale={[5, 6.65, 0.1]}
+        scale={[scaleX, scaleX * 1.3314814814814815, 0.1]}
         spriteDataset={spriteObj}
         asSprite={false}
         fps={15}
