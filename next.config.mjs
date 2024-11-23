@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ["three"],
-  output: "standalone",
+  // output: "standalone",
   reactStrictMode: true,
 };
 
