@@ -1,3 +1,4 @@
+"use client";
 import textBox from "./assets/text-box.png";
 
 import Arrows from "@/components/overlay/Arrows";
@@ -5,7 +6,7 @@ import Image from "next/image";
 import CharacterEvents from "@/components/overlay/CharacterEvents";
 import Milestones from "@/components/overlay/Milestone";
 import Socials from "@/components/overlay/Socials";
-import BottomTextBox from "./BottomTextBox";
+import BottomTextBox from "@/components/overlay/BottomTextBox";
 
 export default function UIOverlay() {
   return (

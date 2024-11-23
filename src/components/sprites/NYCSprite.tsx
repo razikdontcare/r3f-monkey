@@ -6,7 +6,7 @@ import { useSpring } from "framer-motion";
 import { easing } from "maath";
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
-import VideoScreen from "./VideoScreen";
+import VideoScreen from "@/components/sprites/VideoScreen";
 
 const basePath = "/sprites/nyc/";
 const jsonPath = basePath + "json/";
