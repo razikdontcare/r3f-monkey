@@ -105,33 +105,7 @@ function DynastyOverlay({ show }: { show: boolean }) {
     </div>
   );
 }
-function NYCOverlay({ show }: { show: boolean }) {
-  const { setEvent } = useCharacterEvents();
 
-  return (
-    <div
-      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
-    >
-      <div className="flex items-center w-96 mt-10 relative">
-        <Image
-          src={iphone}
-          alt="IPHONE X"
-          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
-        />
-        <div className="absolute right-0 top-0 size-8">
-          <Image
-            onClick={() => setEvent(null)}
-            src={x}
-            alt="CLOSE"
-            className="pointer-events-auto cursor-pointer"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
 function WW2Overlay({ show }: { show: boolean }) {
   const { setEvent } = useCharacterEvents();
 
@@ -157,6 +131,34 @@ function WW2Overlay({ show }: { show: boolean }) {
           } size-96`}
         />
         <div className="absolute -right-1 -top-1 size-8">
+          <Image
+            onClick={() => setEvent(null)}
+            src={x}
+            alt="CLOSE"
+            className="pointer-events-auto cursor-pointer"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NYCOverlay({ show }: { show: boolean }) {
+  const { setEvent } = useCharacterEvents();
+
+  return (
+    <div
+      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
+        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+      }`}
+    >
+      <div className="flex items-center w-80 mt-10 relative">
+        <Image
+          src={iphone}
+          alt="IPHONE X"
+          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+        />
+        <div className="absolute right-0 top-0 size-8">
           <Image
             onClick={() => setEvent(null)}
             src={x}
