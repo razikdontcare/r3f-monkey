@@ -18,6 +18,7 @@
     "lottie-react": "^2.4.0",
     "maath": "^0.10.8",
     "next": "14.2.16",
+    "next-intl": "^3.25.1",
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.33.5",
