@@ -64,13 +64,11 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
     () => ({
       enter: () => {
         if (typeof window !== "undefined") {
-          document.body.style.cursor = "pointer";
           setIsHovered(true);
         }
       },
       leave: () => {
         if (typeof window !== "undefined") {
-          document.body.style.cursor = "auto";
           setIsHovered(false);
         }
       },
