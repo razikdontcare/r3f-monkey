@@ -6,7 +6,7 @@ import { useSpring } from "framer-motion";
 import { easing } from "maath";
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
-import VideoScreen from "@/components/sprites/VideoScreen";
+import VideoScreen from "./VideoScreen";
 
 const basePath = "/sprites/nyc/";
 const jsonPath = basePath + "json/";
@@ -64,11 +64,13 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
     () => ({
       enter: () => {
         if (typeof window !== "undefined") {
+          document.body.style.cursor = "pointer";
           setIsHovered(true);
         }
       },
       leave: () => {
         if (typeof window !== "undefined") {
+          document.body.style.cursor = "auto";
           setIsHovered(false);
         }
       },
