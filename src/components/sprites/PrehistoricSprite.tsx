@@ -7,51 +7,53 @@ import { useEffect, useRef, useState } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
 
 const basePath = "/sprites/prehistoric/";
+const jsonPath = basePath + "json/";
+const pngPath = basePath + "png/";
 
 const texturePath = {
   grass: {
-    png: basePath + "grass.png",
-    json: basePath + "grass.json",
+    png: pngPath + "grass.png",
+    json: jsonPath + "grass.json",
   },
   rForegroundSillhouette: {
-    png: basePath + "r-foreground-sillhouette.png",
-    json: basePath + "r-foreground-sillhouette.json",
+    png: pngPath + "r-foreground-sillhouette.png",
+    json: jsonPath + "r-foreground-sillhouette.json",
   },
   lForegroundSillhouette: {
-    png: basePath + "l-foreground-sillhouette.png",
-    json: basePath + "l-foreground-sillhouette.json",
+    png: pngPath + "l-foreground-sillhouette.png",
+    json: jsonPath + "l-foreground-sillhouette.json",
   },
   lTree: {
-    png: basePath + "l-tree.png",
-    json: basePath + "l-tree.json",
+    png: pngPath + "l-tree.png",
+    json: jsonPath + "l-tree.json",
   },
   rTree: {
-    png: basePath + "r-tree.png",
-    json: basePath + "r-tree.json",
+    png: pngPath + "r-tree.png",
+    json: jsonPath + "r-tree.json",
   },
   smoke: {
-    png: basePath + "smoke.png",
-    json: basePath + "smoke.json",
+    png: pngPath + "smoke.png",
+    json: jsonPath + "smoke.json",
   },
   raptor2: {
-    png: basePath + "raptor-2.png",
-    json: basePath + "raptor-2.json",
+    png: pngPath + "raptor-2.png",
+    json: jsonPath + "raptor-2.json",
   },
   tRex: {
-    png: basePath + "t-rex.png",
-    json: basePath + "t-rex.json",
+    png: pngPath + "t-rex.png",
+    json: jsonPath + "t-rex.json",
   },
   brachioAndRaptor: {
-    png: basePath + "brachio-and-raptor.png",
-    json: basePath + "brachio-and-raptor.json",
+    png: pngPath + "brachio-and-raptor.png",
+    json: jsonPath + "brachio-and-raptor.json",
   },
   sniffer: {
-    png: basePath + "sniffer.png",
-    json: basePath + "sniffer.json",
+    png: pngPath + "sniffer.png",
+    json: jsonPath + "sniffer.json",
   },
   snake: {
-    png: basePath + "snake.png",
-    json: basePath + "snake.json",
+    png: pngPath + "snake.png",
+    json: jsonPath + "snake.json",
   },
 };
 
@@ -109,7 +111,7 @@ export default function PrehistoricSprite({ isInView }: { isInView: boolean }) {
 }
 
 function MidGroundMesh() {
-  const texture = useLoader(TextureLoader, basePath + "mid-ground.png");
+  const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -124,7 +126,7 @@ function MidGroundMesh() {
 }
 
 function GroundMesh() {
-  const texture = useLoader(TextureLoader, basePath + "ground.png");
+  const texture = useLoader(TextureLoader, pngPath + "ground.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -139,7 +141,7 @@ function GroundMesh() {
 }
 
 function VolcanoMesh() {
-  const texture = useLoader(TextureLoader, basePath + "volcano.png");
+  const texture = useLoader(TextureLoader, pngPath + "volcano.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 

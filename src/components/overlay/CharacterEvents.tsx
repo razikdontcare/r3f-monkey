@@ -79,7 +79,7 @@ function DynastyOverlay({ show }: { show: boolean }) {
         show ? "scale-100 opacity-100" : "scale-50 opacity-0"
       }`}
     >
-      <div className="flex items-center w-[38rem] mt-10 relative">
+      <div className="flex items-center w-[28rem] mt-10 relative ">
         <Image src={scroll} alt="SUN TZU SCROLL" />
         <div className="absolute right-20 top-2 size-8">
           <Image

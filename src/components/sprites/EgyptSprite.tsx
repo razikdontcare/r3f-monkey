@@ -8,31 +8,33 @@ import { useEffect, useRef, useState } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
 
 const basePath = "/sprites/egypt/";
+const jsonPath = basePath + "json/";
+const pngPath = basePath + "png/";
 
 const texturePath = {
   birdsMid: {
-    png: basePath + "birds-mid.png",
-    json: basePath + "birds-mid.json",
+    png: pngPath + "birds-mid.png",
+    json: jsonPath + "birds-mid.json",
   },
   birdsRightCorner: {
-    png: basePath + "birds-right-corner.png",
-    json: basePath + "birds-right-corner.json",
+    png: pngPath + "birds-right-corner.png",
+    json: jsonPath + "birds-right-corner.json",
   },
   cornerGrass: {
-    png: basePath + "corner-grass.png",
-    json: basePath + "corner-grass.json",
+    png: pngPath + "corner-grass.png",
+    json: jsonPath + "corner-grass.json",
   },
   grass: {
-    png: basePath + "grass.png",
-    json: basePath + "grass.json",
+    png: pngPath + "grass.png",
+    json: jsonPath + "grass.json",
   },
   pyramidsAndNile: {
-    png: basePath + "pyramids-and-nile.png",
-    json: basePath + "pyramids-and-nile.json",
+    png: pngPath + "pyramids-and-nile.png",
+    json: jsonPath + "pyramids-and-nile.json",
   },
   sniffer: {
-    png: basePath + "sniffer.png",
-    json: basePath + "sniffer.json",
+    png: pngPath + "sniffer.png",
+    json: jsonPath + "sniffer.json",
   },
 };
 
@@ -91,7 +93,7 @@ export default function EgyptSprite({ isInView }: { isInView: boolean }) {
 }
 
 function SandMesh() {
-  const texture = useLoader(TextureLoader, basePath + "sand.png");
+  const texture = useLoader(TextureLoader, pngPath + "sand.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -108,7 +110,7 @@ function SandMesh() {
 }
 
 function ForegroundStuffMesh() {
-  const texture = useLoader(TextureLoader, basePath + "foreground-stuff.png");
+  const texture = useLoader(TextureLoader, pngPath + "foreground-stuff.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -125,7 +127,7 @@ function ForegroundStuffMesh() {
 }
 
 function CactusMesh() {
-  const texture = useLoader(TextureLoader, basePath + "cactus.png");
+  const texture = useLoader(TextureLoader, pngPath + "cactus.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -140,7 +142,7 @@ function CactusMesh() {
 }
 
 function SphinxMesh() {
-  const texture = useLoader(TextureLoader, basePath + "sphinx.png");
+  const texture = useLoader(TextureLoader, pngPath + "sphinx.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 

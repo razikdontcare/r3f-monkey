@@ -8,51 +8,53 @@ import { useEffect, useRef, useState } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
 
 const basePath = "/sprites/world-war-2/";
+const jsonPath = basePath + "json/";
+const pngPath = basePath + "png/";
 
 const texturePath = {
   bullets: {
-    png: basePath + "bullets.png",
-    json: basePath + "bullets.json",
+    png: pngPath + "bullets.png",
+    json: jsonPath + "bullets.json",
   },
   dust: {
-    png: basePath + "dust.png",
-    json: basePath + "dust.json",
+    png: pngPath + "dust.png",
+    json: jsonPath + "dust.json",
   },
   fire: {
-    png: basePath + "fire.png",
-    json: basePath + "fire.json",
+    png: pngPath + "fire.png",
+    json: jsonPath + "fire.json",
   },
   lBuildingSmoke: {
-    png: basePath + "l-building-smoke.png",
-    json: basePath + "l-building-smoke.json",
+    png: pngPath + "l-building-smoke.png",
+    json: jsonPath + "l-building-smoke.json",
   },
   rBuildingSmoke: {
-    png: basePath + "r-building-smoke.png",
-    json: basePath + "r-building-smoke.json",
+    png: pngPath + "r-building-smoke.png",
+    json: jsonPath + "r-building-smoke.json",
   },
   soldierDyingForeground: {
-    png: basePath + "soldier-dying-foreground.png",
-    json: basePath + "soldier-dying-foreground.json",
+    png: pngPath + "soldier-dying-foreground.png",
+    json: jsonPath + "soldier-dying-foreground.json",
   },
   soldiers: {
-    png: basePath + "soldiers.png",
-    json: basePath + "soldiers.json",
+    png: pngPath + "soldiers.png",
+    json: jsonPath + "soldiers.json",
   },
   sparksOverlay: {
-    png: basePath + "sparks-overlay.png",
-    json: basePath + "sparks-overlay.json",
+    png: pngPath + "sparks-overlay.png",
+    json: jsonPath + "sparks-overlay.json",
   },
   treeLine: {
-    png: basePath + "tree-line.png",
-    json: basePath + "tree-line.json",
+    png: pngPath + "tree-line.png",
+    json: jsonPath + "tree-line.json",
   },
   treeLineSmoke: {
-    png: basePath + "tree-line-smoke.png",
-    json: basePath + "tree-line-smoke.json",
+    png: pngPath + "tree-line-smoke.png",
+    json: jsonPath + "tree-line-smoke.json",
   },
   sniffer: {
-    png: basePath + "sniffer.png",
-    json: basePath + "sniffer.json",
+    png: pngPath + "sniffer.png",
+    json: jsonPath + "sniffer.json",
   },
 };
 
@@ -117,7 +119,7 @@ export default function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
 export function ForegroundSilhouetteMesh() {
   const texture = useLoader(
     TextureLoader,
-    basePath + "foreground-sillhouette.png"
+    pngPath + "foreground-sillhouette.png"
   );
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
@@ -135,7 +137,7 @@ export function ForegroundSilhouetteMesh() {
 }
 
 export function StatueMesh() {
-  const texture = useLoader(TextureLoader, basePath + "statue.png");
+  const texture = useLoader(TextureLoader, pngPath + "statue.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -154,7 +156,7 @@ export function StatueMesh() {
 }
 
 export function EnvironmentMesh() {
-  const texture = useLoader(TextureLoader, basePath + "environment.png");
+  const texture = useLoader(TextureLoader, pngPath + "environment.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -246,16 +248,14 @@ export function SoldiersSprite() {
   );
 
   const scaleX = 5;
-  const scaleY = scaleX * 2.2606924643584523;
+  const scaleY = scaleX * 2.3804573804573805;
 
-  //   const { position } = useObjectControls({
-  //     initialPosition: [0, 0, -4.5],
-  //   });
+  // const { position } = useObjectControls("Soldiers");
 
   return (
     <>
       <SpriteAnimator
-        position={[-0.07, -0.74, -4.5]}
+        position={[0, -0.5, -4.5]}
         startFrame={0}
         autoPlay={true}
         loop={true}

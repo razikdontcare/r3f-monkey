@@ -7,39 +7,41 @@ import { useEffect, useRef, useState } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
 
 const basePath = "/sprites/dynasty/";
+const jsonPath = basePath + "json/";
+const pngPath = basePath + "png/";
 
 const texturePath = {
   arrowsFlying: {
-    png: basePath + "arrows-flying.png",
-    json: basePath + "arrows-flying.json",
+    png: pngPath + "arrows-flying.png",
+    json: jsonPath + "arrows-flying.json",
   },
   city: {
-    png: basePath + "city.png",
-    json: basePath + "city.json",
+    png: pngPath + "city.png",
+    json: jsonPath + "city.json",
   },
   flag: {
-    png: basePath + "flag.png",
-    json: basePath + "flag.json",
+    png: pngPath + "flag.png",
+    json: jsonPath + "flag.json",
   },
   glows: {
-    png: basePath + "glows.png",
-    json: basePath + "glows.json",
+    png: pngPath + "glows.png",
+    json: jsonPath + "glows.json",
   },
   grass: {
-    png: basePath + "grass.png",
-    json: basePath + "grass.json",
+    png: pngPath + "grass.png",
+    json: jsonPath + "grass.json",
   },
   sunTzu: {
-    png: basePath + "sun-tzu.png",
-    json: basePath + "sun-tzu.json",
+    png: pngPath + "sun-tzu.png",
+    json: jsonPath + "sun-tzu.json",
   },
   warriorsFighting: {
-    png: basePath + "warriors-fighting.png",
-    json: basePath + "warriors-fighting.json",
+    png: pngPath + "warriors-fighting.png",
+    json: jsonPath + "warriors-fighting.json",
   },
   sniffer: {
-    png: basePath + "sniffer.png",
-    json: basePath + "sniffer.json",
+    png: pngPath + "sniffer.png",
+    json: jsonPath + "sniffer.json",
   },
 };
 
@@ -96,26 +98,8 @@ export default function DynastySprite({ isInView }: { isInView: boolean }) {
   );
 }
 
-export function CloudMesh() {
-  const texture = useLoader(TextureLoader, "/" + "cloud.png");
-  texture.minFilter = NearestFilter;
-  texture.magFilter = NearestFilter;
-
-  texture.repeat.set(0.72, 1);
-  texture.offset.set(0.14, 0);
-
-  return (
-    <>
-      <mesh position={[0, -1, -14]} scale={[3, 3, 0.1]}>
-        <planeGeometry args={[8.5, 5]} />
-        <meshBasicMaterial map={texture} transparent />
-      </mesh>
-    </>
-  );
-}
-
-export function PavedRoadMesh() {
-  const texture = useLoader(TextureLoader, basePath + "paved-road.png");
+function PavedRoadMesh() {
+  const texture = useLoader(TextureLoader, pngPath + "paved-road.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -129,8 +113,8 @@ export function PavedRoadMesh() {
   );
 }
 
-export function MidGroundMesh() {
-  const texture = useLoader(TextureLoader, basePath + "mid-ground.png");
+function MidGroundMesh() {
+  const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -143,7 +127,7 @@ export function MidGroundMesh() {
     </>
   );
 }
-export function GrassSprite() {
+function GrassSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.grass.png,
     texturePath.grass.json,
@@ -170,7 +154,7 @@ export function GrassSprite() {
   );
 }
 
-export function GlowsSprite() {
+function GlowsSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.glows.png,
     texturePath.glows.json,
@@ -199,7 +183,7 @@ export function GlowsSprite() {
   );
 }
 
-export function WarriorsFightingSprite() {
+function WarriorsFightingSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.warriorsFighting.png,
     texturePath.warriorsFighting.json,
@@ -228,7 +212,7 @@ export function WarriorsFightingSprite() {
   );
 }
 
-export function SunTzuSprite() {
+function SunTzuSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.sunTzu.png,
     texturePath.sunTzu.json,
@@ -257,7 +241,7 @@ export function SunTzuSprite() {
   );
 }
 
-export function CitySprite() {
+function CitySprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.city.png,
     texturePath.city.json,
@@ -286,7 +270,7 @@ export function CitySprite() {
   );
 }
 
-export function ArrowsFlyingSprite() {
+function ArrowsFlyingSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.arrowsFlying.png,
     texturePath.arrowsFlying.json,
@@ -316,7 +300,7 @@ export function ArrowsFlyingSprite() {
   );
 }
 
-export function SnifferSprite() {
+function SnifferSprite() {
   const { spriteObj } = useSpriteLoader(
     texturePath.sniffer.png,
     texturePath.sniffer.json,

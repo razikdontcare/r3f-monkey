@@ -8,43 +8,45 @@ import { useEffect, useRef, useState } from "react";
 import { Group, NearestFilter, TextureLoader } from "three";
 
 const basePath = "/sprites/nyc/";
+const jsonPath = basePath + "json/";
+const pngPath = basePath + "png/";
 
 const texturePath = {
   flag: {
-    png: basePath + "flag.png",
-    json: basePath + "flag.json",
+    png: pngPath + "flag.png",
+    json: jsonPath + "flag.json",
   },
   foregroundSilhouettes: {
-    png: basePath + "foreground-silhouettes.png",
-    json: basePath + "foreground-silhouettes.json",
+    png: pngPath + "foreground-silhouettes.png",
+    json: jsonPath + "foreground-silhouettes.json",
   },
   guyWithFedora: {
-    png: basePath + "guy-with-fedora.png",
-    json: basePath + "guy-with-fedora.json",
+    png: pngPath + "guy-with-fedora.png",
+    json: jsonPath + "guy-with-fedora.json",
   },
   officer: {
-    png: basePath + "officer.png",
-    json: basePath + "officer.json",
+    png: pngPath + "officer.png",
+    json: jsonPath + "officer.json",
   },
   peoples: {
-    png: basePath + "peoples.png",
-    json: basePath + "peoples.json",
+    png: pngPath + "peoples.png",
+    json: jsonPath + "peoples.json",
   },
   sewerSmoke: {
-    png: basePath + "sewer-smoke.png",
-    json: basePath + "sewer-smoke.json",
+    png: pngPath + "sewer-smoke.png",
+    json: jsonPath + "sewer-smoke.json",
   },
   sewerSmoke2: {
-    png: basePath + "sewer-smoke-2.png",
-    json: basePath + "sewer-smoke-2.json",
+    png: pngPath + "sewer-smoke-2.png",
+    json: jsonPath + "sewer-smoke-2.json",
   },
   taxi: {
-    png: basePath + "taxi.png",
-    json: basePath + "taxi.json",
+    png: pngPath + "taxi.png",
+    json: jsonPath + "taxi.json",
   },
   sniffer: {
-    png: basePath + "sniffer.png",
-    json: basePath + "sniffer.json",
+    png: pngPath + "sniffer.png",
+    json: jsonPath + "sniffer.json",
   },
 };
 
@@ -105,7 +107,7 @@ export default function NYCSprite({ isInView }: { isInView: boolean }) {
 }
 
 function SideBuildingsMesh() {
-  const texture = useLoader(TextureLoader, basePath + "side-buildings.png");
+  const texture = useLoader(TextureLoader, pngPath + "side-buildings.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -124,7 +126,7 @@ function SideBuildingsMesh() {
 }
 
 function MidGroundMesh() {
-  const texture = useLoader(TextureLoader, basePath + "mid-ground.png");
+  const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -143,7 +145,7 @@ function MidGroundMesh() {
 }
 
 function MidBuildingMesh() {
-  const texture = useLoader(TextureLoader, basePath + "mid-building.png");
+  const texture = useLoader(TextureLoader, pngPath + "mid-building.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
