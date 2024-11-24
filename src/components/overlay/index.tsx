@@ -1,3 +1,4 @@
+"use client";
 import textBox from "./assets/text-box.png";
 
 import Arrows from "@/components/overlay/Arrows";

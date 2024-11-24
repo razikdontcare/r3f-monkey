@@ -39,7 +39,7 @@ export default function CameraRig({
     [animatedPositionX, animatedPositionY, animatedPositionZ]
   );
 
-  const sensitivity = [10, 40];
+  const sensitivity = [16, 38];
 
   useFrame((state, delta) => {
     const x = state.pointer.x * 0.05;
