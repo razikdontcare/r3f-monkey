@@ -9,7 +9,7 @@ import ipad from "./assets/ipad.png";
 import FaceSwap from "../FaceSwap";
 
 import x from "./assets/x.png";
-import InstaWeb from "../instaWeb";
+import Tiktok from "../tiktok";
 
 export default function CharacterEvents() {
   const { event } = useCharacterEvents();
@@ -153,7 +153,7 @@ function NYCOverlay({ show }: { show: boolean }) {
         <div className={`absolute w-[100%] px-[2%] top-[3.5%] h-[95%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
           <div className="h-full">
             {
-             <InstaWeb/>
+             <Tiktok/>
             }
           </div>
         </div>
