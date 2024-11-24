@@ -12,7 +12,7 @@ export default function FaceSwap({ show }: { show: boolean }) {
   const [isToast, setToast] = useState(false);
   const [showRegenerate, setShowRegenerate] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const totalMonkeyFaces = 20; // Total number of images in /public/monkeyFaces
+  const totalMonkeyFaces = 11; // Total number of images in /public/monkeyFaces
 
   // Load face-api.js models
   useEffect(() => {
@@ -201,6 +201,16 @@ export default function FaceSwap({ show }: { show: boolean }) {
                   />
                 </label>
           </div>
+          {showRegenerate && (
+            <div className="w-full flex items-center justify-center">
+              <button
+                onClick={replaceFaceOnImage}
+                className={`absolute bg-[#936857] text-white/80 w-[12vw] bottom-[-3vw] border-solid border-2 border-[#a97f65] p-[.3vw] rounded-md hover:scale-110 cursor-pointer  ${show ? "pointer-events-auto" : "pointer-events-none"}`}
+              >
+                Regenerate
+              </button>
+            </div>
+          )}
         </div>
         <div className={`relative ${show ? "pointer-events-auto" : "pointer-events-none"}`}>
           <Image
@@ -209,41 +219,33 @@ export default function FaceSwap({ show }: { show: boolean }) {
             className={`size-96`}
           />
           <div className="absolute top-0 w-full h-full p-[.5%] flex flex-col items-center">
-              <div className="relative top-0 w-full h-full flex items-center justify-center">
-                {resultLoading ? (
-                  <div className="loader"></div>
-                ) : result ? (
-                  <img
-                    src={result}
-                    alt="Replacement Result"
-                    className="w-auto h-auto max-w-full max-h-full"
-                  />
-                ) : null}
-              </div>
+            <div className="relative top-0 w-full h-full flex items-center justify-center">
+              {resultLoading ? (
+                <div className="loader"></div>
+              ) : result ? (
+                <img
+                  src={result}
+                  alt="Replacement Result"
+                  className="w-auto h-auto max-w-full max-h-full"
+                />
+              ) : null}
             </div>
-            <canvas ref={canvasRef} style={{ display: "none" }} />
+          </div>
+          <canvas ref={canvasRef} style={{ display: "none" }} />
+
+          {result && (
+            <div className="w-full flex items-center justify-center">
+              <button
+                onClick={downloadImageResult}
+                className={`absolute bg-[#936857] text-white/80 w-[12vw] bottom-[-3vw] border-solid border-2 border-[#a97f65] p-[.3vw] rounded-md hover:scale-110 cursor-pointer ${show ? "pointer-events-auto" : "pointer-events-none"}`}
+              >
+                Export
+              </button>
+            </div>
+          )}
         </div>
       </div>
-      <div className="container relative flex justify-center items-center">
-        {showRegenerate && (
-          <button
-            onClick={replaceFaceOnImage}
-            className={`absolute bg-white left-[4vw] w-[12vw] top-[1vw] hover:scale-110 cursor-pointer  ${show ? "pointer-events-auto" : "pointer-events-none"}`}
-          >
-            Regenerate
-          </button>
-        )}
-        {result && (
-            <button
-            onClick={downloadImageResult}
-            className={`absolute right-[4vw] bg-white w-[12vw] top-[1vw] hover:scale-110 cursor-pointer ${show ? "pointer-events-auto" : "pointer-events-none"}`}
-          >
-            Export
-          </button>
-        )}
-      </div>
-       
-        <style jsx>{`
+      <style jsx>{`
           .loader {
             border: 4px solid rgba(255, 255, 255, 0.3);
             border-top: 4px solid #3498db;
@@ -261,7 +263,7 @@ export default function FaceSwap({ show }: { show: boolean }) {
               transform: rotate(360deg);
             }
           }
-        `}</style>
+      `}</style>
     </div>
   );
 }

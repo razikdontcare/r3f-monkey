@@ -140,7 +140,7 @@ function NYCOverlay({ show }: { show: boolean }) {
         show ? "scale-100 opacity-100" : "scale-50 opacity-0"
       }`}
     >
-      <div className="flex items-center md:w-[28vw] w-[80vw] mt-10 relative">
+      <div className="flex items-center md:w-[28vw] w-[80vw] mt-5 relative">
         <Image src={ipad} alt="IPAD" />
         <div className="absolute right-[-2vw] top-0 size-8">
           <Image
@@ -150,11 +150,11 @@ function NYCOverlay({ show }: { show: boolean }) {
             className="pointer-events-auto cursor-pointer"
           />
         </div>
-        <div className={`absolute w-[100%] px-[2%] top-[3.5%] h-[95%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
+        <div className={`absolute w-[100%] px-[1.5%] top-[3.5%] h-[95.3%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
           <div className="h-full">
-            {
-             <Tiktok/>
-            }
+            { show && (
+              <Tiktok/>
+            )}
           </div>
         </div>
       </div>
