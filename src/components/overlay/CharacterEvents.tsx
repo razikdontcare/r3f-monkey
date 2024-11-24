@@ -150,12 +150,12 @@ function NYCOverlay({ show }: { show: boolean }) {
             className="pointer-events-auto cursor-pointer"
           />
         </div>
-        <div className={`absolute w-[100%] px-[2%] top-[3.5%] h-[95%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
-          <div className="h-full">
-            {
-             <InstaWeb/>
-            }
-          </div>
+        <div
+          className={`absolute w-[100%] px-[2%] top-[3.5%] h-[95%] overflow-y-auto no-scrollbar ${
+            show && "pointer-events-auto"
+          } `}
+        >
+          <div className="h-full">{<InstaWeb />}</div>
         </div>
       </div>
     </div>
