@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 
 import tablet from "./assets/tablet.png";
 import scroll from "./assets/sun-tzu-scroll.png";
-import iphone from "./assets/iphone-x.png";
+import ipad from "./assets/ipad.png";
 import FaceSwap from "../FaceSwap";
 
 import x from "./assets/x.png";
+import InstaWeb from "../instaWeb";
 
 export default function CharacterEvents() {
   const { event } = useCharacterEvents();
@@ -139,19 +140,22 @@ function NYCOverlay({ show }: { show: boolean }) {
         show ? "scale-100 opacity-100" : "scale-50 opacity-0"
       }`}
     >
-      <div className="flex items-center w-80 mt-10 relative">
-        <Image
-          src={iphone}
-          alt="IPHONE X"
-          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
-        />
-        <div className="absolute right-0 top-0 size-8">
+      <div className="flex items-center md:w-[28vw] w-[80vw] mt-10 relative">
+        <Image src={ipad} alt="IPAD" />
+        <div className="absolute right-[-2vw] top-0 size-8">
           <Image
             onClick={() => setEvent(null)}
             src={x}
             alt="CLOSE"
             className="pointer-events-auto cursor-pointer"
           />
+        </div>
+        <div className={`absolute w-[100%] px-[2%] top-[3.5%] h-[95%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
+          <div className="h-full">
+            {
+             <InstaWeb/>
+            }
+          </div>
         </div>
       </div>
     </div>
