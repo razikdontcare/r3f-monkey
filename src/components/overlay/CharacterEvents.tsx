@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import tablet from "./assets/tablet.png";
 import scroll from "./assets/sun-tzu-scroll.png";
 import iphone from "./assets/iphone-x.png";
-import textbox from "./assets/text-box-square.png";
+import FaceSwap from "../FaceSwap";
 
 import x from "./assets/x.png";
 
@@ -116,20 +116,7 @@ function WW2Overlay({ show }: { show: boolean }) {
       }`}
     >
       <div className="flex items-center relative gap-16">
-        <Image
-          src={textbox}
-          alt="TEXTBOX"
-          className={`${
-            show ? "pointer-events-auto" : "pointer-events-none"
-          } size-96`}
-        />
-        <Image
-          src={textbox}
-          alt="TEXTBOX"
-          className={`${
-            show ? "pointer-events-auto" : "pointer-events-none"
-          } size-96`}
-        />
+        <FaceSwap show={show} />
         <div className="absolute -right-1 -top-1 size-8">
           <Image
             onClick={() => setEvent(null)}
