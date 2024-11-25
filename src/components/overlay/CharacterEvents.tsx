@@ -150,7 +150,7 @@ function NYCOverlay({ show }: { show: boolean }) {
             className="pointer-events-auto cursor-pointer"
           />
         </div>
-        <div className={`absolute w-[100%] px-[1.5%] top-[3.5%] h-[95.3%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
+        <div className={`absolute w-[100%] px-[1.5%] top-[1.5%] h-[97.3%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
           <div className="h-full">
             { show && (
               <Tiktok/>
