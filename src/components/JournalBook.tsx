@@ -20,7 +20,7 @@ export default function JournalBook() {
 
       <div className="w-full h-full flex absolute pt-[5%]">
         <div className="w-1/2 pl-[8%] flex flex-col items-center">
-            <div className=" text-[2.5vw]">HIM's Journal</div>
+            <div className="text-[2.5vw]">{`HIM's Journal`}</div>
             <div className="py-5 flex items-center">
               <div className="flex space-x-4 items-center">
                 <div className="flex-shrink-0">
