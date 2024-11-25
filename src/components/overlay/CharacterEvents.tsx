@@ -9,6 +9,7 @@ import FaceSwap from "../FaceSwap";
 
 import x from "./assets/x.png";
 import Tiktok from "../tiktok";
+import JournalBook from "../JournalBook";
 
 export default function CharacterEvents({ bgAudioRef }: {bgAudioRef:MutableRefObject<HTMLAudioElement | null>}) {
   const { event } = useCharacterEvents();
@@ -109,22 +110,23 @@ function DynastyOverlay({ show }: { show: boolean }) {
 function WW2Overlay({ show }: { show: boolean }) {
   const { setEvent } = useCharacterEvents();
 
+  const handleOverlayClick = () => {
+    setEvent(null);
+  };
+
+  const handleContentClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
+
   return (
     <div
-      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
+      onClick={handleOverlayClick}
+      className={`w-full h-full ${ show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
         show ? "scale-100 opacity-100" : "scale-50 opacity-0"
       }`}
     >
-      <div className="flex items-center relative gap-16">
-        <FaceSwap show={show} />
-        <div className="absolute -right-1 -top-1 size-8">
-          <Image
-            onClick={() => setEvent(null)}
-            src={x}
-            alt="CLOSE"
-            className="pointer-events-auto cursor-pointer"
-          />
-        </div>
+      <div onClick={handleContentClick} className={`flex items-center relative gap-16 ${show && 'pointer-events-auto'}`}>
+        <JournalBook />
       </div>
     </div>
   );
