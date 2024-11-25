@@ -4,7 +4,6 @@ import { useEffect, useState, MutableRefObject } from "react";
 import tablet from "./assets/tablet.png";
 import scroll from "./assets/sun-tzu-scroll.png";
 import ipad from "./assets/ipad.png";
-import x from "./assets/x.png";
 import Tiktok from "../tiktok";
 import JournalBook from "../JournalBook";
 
