@@ -1,8 +1,7 @@
 "use client";
 import { useCameraPosition, useCharacterEvents } from "@/utils/context";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-
+import { useEffect, useState,MutableRefObject } from "react";
 import tablet from "./assets/tablet.png";
 import scroll from "./assets/sun-tzu-scroll.png";
 import ipad from "./assets/ipad.png";
@@ -11,7 +10,7 @@ import FaceSwap from "../FaceSwap";
 import x from "./assets/x.png";
 import Tiktok from "../tiktok";
 
-export default function CharacterEvents() {
+export default function CharacterEvents({ bgAudioRef }: {bgAudioRef:MutableRefObject<HTMLAudioElement | null>}) {
   const { event } = useCharacterEvents();
   const { targetPosition } = useCameraPosition();
   const [visibleEvent, setVisibleEvent] = useState<
@@ -41,7 +40,7 @@ export default function CharacterEvents() {
         show={visibleEvent === "dynasty" && targetPosition[0] === 20}
       />
       <WW2Overlay show={visibleEvent === "ww2" && targetPosition[0] === 30} />
-      <NYCOverlay show={visibleEvent === "nyc" && targetPosition[0] === 40} />
+      <NYCOverlay show={visibleEvent === "nyc" && targetPosition[0] === 40} bgAudioRef={bgAudioRef} />
     </>
   );
 }
@@ -131,16 +130,28 @@ function WW2Overlay({ show }: { show: boolean }) {
   );
 }
 
-function NYCOverlay({ show }: { show: boolean }) {
+function NYCOverlay({ show, bgAudioRef }: { show: boolean , bgAudioRef:MutableRefObject<HTMLAudioElement | null> }) {
   const { setEvent } = useCharacterEvents();
+
+  const handleOverlayClick = () => {
+    setEvent(null);
+    if (bgAudioRef.current) {
+        bgAudioRef.current.play()
+    }
+  };
+
+  const handleContentClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
+  };
 
   return (
     <div
-      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
+      onClick={handleOverlayClick}
+      className={`w-full h-full ${ show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
         show ? "scale-100 opacity-100" : "scale-50 opacity-0"
       }`}
     >
-      <div className="flex items-center md:w-[28vw] w-[80vw] mt-5 relative">
+      <div  onClick={handleContentClick} className="flex items-center md:w-[28vw] w-[80vw] mt-5 relative">
         <Image src={ipad} alt="IPAD" />
         <div className="absolute right-[-2vw] top-0 size-8">
           <Image
@@ -150,10 +161,10 @@ function NYCOverlay({ show }: { show: boolean }) {
             className="pointer-events-auto cursor-pointer"
           />
         </div>
-        <div className={`absolute w-[100%] px-[1.5%] top-[1.5%] h-[97.3%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
+        <div className={`absolute w-[100%] px-[1.5%] top-[1%] h-[98%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
           <div className="h-full">
             { show && (
-              <Tiktok/>
+              <Tiktok bgAudioRef={bgAudioRef}/>
             )}
           </div>
         </div>
