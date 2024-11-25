@@ -7,6 +7,12 @@
     src: url('./fonts/RealityStone.ttf') format('truetype');
 }
 
+@font-face{
+    
+    font-family: 'Procopius Regular';
+    src: url('./fonts/ProcopiusRegular.ttf') format('truetype');
+}
+
 @layer utilities {
     .no-scrollbar::-webkit-scrollbar {
         display: none;
