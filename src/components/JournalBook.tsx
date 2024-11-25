@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import journalBook from "./overlay/assets/journal/journal-book.png";
 import photoCard from "./overlay/assets/journal/photo-card-blank.png";

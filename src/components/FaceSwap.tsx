@@ -161,8 +161,6 @@ export default function FaceSwap({ show }: { show: boolean }) {
 
   return (
     <div>
-       
-
       <div className="flex items-center relative gap-16">
         <div className={`relative ${show ? "pointer-events-auto" : "pointer-events-none"}`}>
           <Image
