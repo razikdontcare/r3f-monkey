@@ -7,7 +7,7 @@ import scroll from "./assets/sun-tzu-scroll.png";
 import ipad from "./assets/ipad.png";
 
 import Tiktok from "../tiktok";
-import JournalBook from "../JournalBook";
+import JournalBook from "../journalBook/index";
 
 export default function CharacterEvents({ bgAudioRef }: {bgAudioRef:MutableRefObject<HTMLAudioElement | null>}) {
   const { event } = useCharacterEvents();
