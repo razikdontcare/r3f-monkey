@@ -64,6 +64,8 @@ export default function LoadingScreen() {
         </div>
         {/* } */}
       </div>
+
+      {!loading && <ConfirmationBox yes={() => setConfirmation('yes')} no={() => setConfirmation('no')} />}
     </div>
   ) : (
     <></>
@@ -71,6 +73,20 @@ export default function LoadingScreen() {
     //   <div className="text-white text-2xl">Loading Finished</div>
     // </div>
   );
+}
+
+const ConfirmationBox = ({ yes, no }: { yes: () => void, no: () => void }) => {
+  return (
+    <div className="pt-20 pb-[186px] rounded-xl absolute max-w-[35%] w-full h-fit z-[1056]" style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}>
+      <div className="flex flex-col items-center text-center">
+        <p className="text-white text-lg font-realityStine">Are you ready to meet your Ancestor?</p>
+
+
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
+      </div>
+    </div>
+  )
 }
 
 // Function to load and play sound
