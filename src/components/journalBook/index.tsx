@@ -89,7 +89,7 @@ export default function JournalBook() {
 
       <div className="w-full h-full flex absolute pt-[4%]">
         <div className="w-1/2 pl-[5%] flex flex-col items-center">
-          <div className="text-[2.5vw]">HIM's Journal</div>
+          <div className="text-[2.5vw]">{`HIM's Journal`}</div>
           <div className="py-1 flex items-center">
             <div className="flex space-x-4 items-center">
               <div
