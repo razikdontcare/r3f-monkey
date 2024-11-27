@@ -8,6 +8,7 @@ import Milestones from "@/components/overlay/Milestone";
 import Socials from "@/components/overlay/Socials";
 import BottomTextBox from "./BottomTextBox";
 import PreloadTextures from "../utils/PreloadTextures";
+import MuteSound from "./MuteSound";
 
 export default function UIOverlay() {
   const bgAudioRef = useRef<HTMLAudioElement>(null);
@@ -50,6 +51,7 @@ export default function UIOverlay() {
       <Milestones />
       <Socials />
       <BottomTextBox />
+      <MuteSound />
     </div>
   );
 }
