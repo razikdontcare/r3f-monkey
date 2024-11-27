@@ -1,5 +1,6 @@
 "use client";
 import { useCameraPosition } from "@/utils/context";
+import Image from "next/image";
 import React from "react";
 
 export default function Arrows() {
@@ -34,9 +35,10 @@ export default function Arrows() {
           <div className="w-full mx-auto px-4 flex items-center justify-between gap-5 text-white pointer-events-none">
             <button
               onClick={handlePrev}
-              className="bg-[#b98c63] hover:bg-[#cc9c73] disabled:bg-[#946b54] rounded text-white p-2 pointer-events-auto"
+              className="rounded pointer-events-auto hidden sm:block"
             >
-              <svg
+              <Image src="/arrow-button/left.png" className="w-10 h-10" width={40} height={40} alt="Arrow Left" />
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -49,13 +51,14 @@ export default function Arrows() {
                   strokeLinejoin="round"
                   d="M15.75 19.5 8.25 12l7.5-7.5"
                 />
-              </svg>
+              </svg> */}
             </button>
             <button
               onClick={handleNext}
-              className="bg-[#b98c63] hover:bg-[#cc9c73] disabled:bg-[#946b54] rounded p-2 pointer-events-auto"
+              className="rounded pointer-events-auto hidden sm:block"
             >
-              <svg
+              <Image src="/arrow-button/right.png" className="w-10 h-10" width={40} height={40} alt="Arrow Left" />
+              {/* <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -68,7 +71,7 @@ export default function Arrows() {
                   strokeLinejoin="round"
                   d="m8.25 4.5 7.5 7.5-7.5 7.5"
                 />
-              </svg>
+              </svg> */}
             </button>
           </div>
         </div>
