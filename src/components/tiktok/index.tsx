@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, MutableRefObject } from 'react';
 import { motion, AnimatePresence, useMotionValue, useAnimation } from "framer-motion";
 import Image from 'next/image';
 
@@ -24,9 +24,9 @@ interface Video {
   bLiked: boolean;
 }
 
-export default function Tiktok() {
+export default function Tiktok({ bgAudioRef }: { bgAudioRef: MutableRefObject<HTMLAudioElement | null> }) {
   const initialVideos: Video[] = videosData;
-
+  const [loadedVideos, setLoadedVideos] = useState<Record<number, boolean>>({});
   const [videos, setVideos] = useState<Video[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isForYou, setIsForYou] = useState(true);
@@ -56,8 +56,8 @@ export default function Tiktok() {
       });
 
       currentVideoElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
+        behavior: "smooth",
+        block: "center",
       });
       currentVideoElement.muted = false;
       currentVideoElement.play();
@@ -77,6 +77,19 @@ export default function Tiktok() {
       }
     }
   }, [isPaused, currentIndex]);
+
+  // Sync bgAudioRef with isPaused
+  useEffect(() => {
+    if (bgAudioRef.current) {
+      if (isPaused) {
+        bgAudioRef.current.play().catch((error) => {
+          console.error("Error playing audio:", error);
+        });
+      } else {
+        bgAudioRef.current.pause();
+      }
+    }
+  }, [isPaused, bgAudioRef]);
 
   const handleSwipe = (offsetY: number) => {
     if (offsetY > 50) {
@@ -112,16 +125,20 @@ export default function Tiktok() {
     videoRefs.current[index] = el;
   }, []);
 
-  const handleVideoLoaded = () => {
+  const handleVideoLoaded = (index: number) => {
+    setLoadedVideos((prev) => ({ ...prev, [index]: true }));
     setIsLoading(false);
   };
 
-  const handleVideoLoading = () => {
+  const handleVideoLoading = (index: number) => {
+    if (loadedVideos[index]) {
+      return;
+    }
     setIsLoading(true);
   };
 
   return (
-    <div className="h-full w-full bg-black text-white overflow-hidden relative rounded-b-2xl">
+    <div className="h-full w-full bg-black text-white overflow-hidden relative rounded-3xl">
       {/* Blurry Background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -176,8 +193,8 @@ export default function Tiktok() {
               src={videos[currentIndex]?.src}
               loop
               autoPlay
-              onLoadedData={handleVideoLoaded}
-              onWaiting={handleVideoLoading}
+              onLoadedData={() => handleVideoLoaded(currentIndex)}
+              onWaiting={() => handleVideoLoading(currentIndex)}
             />
 
             {/* Loading Indicator */}

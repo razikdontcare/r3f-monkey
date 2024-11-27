@@ -13,7 +13,8 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        realityStine: ['Reality stone']
+        realityStone: ['Reality stone'],
+        procopius: ['Procopius Regular']
       },
     },
   },
