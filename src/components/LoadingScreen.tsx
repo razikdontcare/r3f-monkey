@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useProgress } from "@react-three/drei";
 import { useState, useEffect } from "react";
 import { useThree } from '@react-three/fiber';
 import React, { useRef } from 'react';
@@ -10,10 +9,40 @@ import { useTexture } from '@react-three/drei';
 import { SpriteMaterial, LinearFilter, NoToneMapping, Sprite, Object3DEventMap, Mesh, BufferGeometry, NormalBufferAttributes, Material, Texture } from 'three';
 
 export default function LoadingScreen() {
+  const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
+  const targetSize = 100; // Target dalam MB
+
+  useEffect(() => {
+    const observer = new PerformanceObserver((list) => {
+      const entries = list.getEntriesByType("resource");
+      let totalSize = 0;
+
+      entries.forEach((entry: any) => {
+        // Menambahkan ukuran setiap resource yang dimuat
+        if (entry.encodedBodySize) {
+          totalSize += entry.encodedBodySize; // encodedBodySize dalam byte
+        }
+      });
+
+      setLoadedSize((prev) => {
+        const newSize = prev + totalSize / (1024 * 1024); // Convert byte ke MB
+        return newSize > targetSize ? targetSize : newSize; // Maksimal 100MB
+      });
+    });
+
+    observer.observe({ type: "resource", buffered: true });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const progress = Math.min((loadedSize / targetSize) * 100, 100); // Persentase progress
+
+
+
   const [loading, setLoading] = useState(true);
   const [openApp, setOpenApp] = useState<boolean | undefined>(undefined)
-  const [confirmation, setConfirmation] = useState<'yes' | 'no'>()
-  const { progress } = useProgress();
+  const [confirmation, setConfirmation] = useState<'yes' | 'no' | null>(null)
+  // const { progress } = useProgress();
 
   const [lastMousePosition, setLastMousePosition] = useState([0, 0]); // Track last mouse position
   const [mouseIdle, setMouseIdle] = useState(false); // Track if mouse is idle
@@ -28,6 +57,11 @@ export default function LoadingScreen() {
     if (confirmation === 'yes') {
       setTimeout(() => {
         setOpenApp(true)
+        setConfirmation(null)
+      }, 1000);
+    } else if (confirmation === 'no') {
+      setTimeout(() => {
+        setConfirmation(null)
       }, 1000);
     }
   }, [confirmation])
@@ -58,11 +92,14 @@ export default function LoadingScreen() {
         </Canvas>
 
         {/* Loading Bar */}
-        {/* {loading &&  */}
-        <div className="flex h-3 overflow-hidden text-[1.2rem] bg-[#343a40] rounded-sm" role="progressbar">
-          <div className="flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap bg-[#EEDBD6]" id="progress-bar" style={{ width: `${progress}%`, transition: 'width 1s ease' }}></div>
-        </div>
-        {/* } */}
+        {loading &&
+          <div className="w-full flex items-center gap-2">
+            <div className="w-full flex h-3 overflow-hidden text-[1.2rem] bg-[#343a40] rounded-sm" role="progressbar">
+              <div className="flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap bg-white" id="progress-bar" style={{ width: `${Math.round(progress)}%`, transition: 'width 0.5s ease' }}></div>
+            </div>
+            <p className="font-serif text-sm text-white">{Math.round(progress)}%</p>
+          </div>
+        }
       </div>
 
       {!loading && <ConfirmationBox yes={() => setConfirmation('yes')} no={() => setConfirmation('no')} />}
@@ -77,13 +114,13 @@ export default function LoadingScreen() {
 
 const ConfirmationBox = ({ yes, no }: { yes: () => void, no: () => void }) => {
   return (
-    <div className="pt-20 pb-[186px] rounded-xl absolute max-w-[35%] w-full h-fit z-[1056]" style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}>
+    <div className="pt-20 pb-[186px] rounded-xl absolute max-w-[588px] w-full h-fit z-[1056]" style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}>
       <div className="flex flex-col items-center text-center">
         <p className="text-white text-lg font-realityStine">Are you ready to meet your Ancestor?</p>
 
 
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
       </div>
     </div>
   )
@@ -95,10 +132,12 @@ const playSFX = (audio: string) => {
   sound.play();
 };
 
-const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefined }) => {
+const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }) => {
   const meshRef = useRef<Sprite<Object3DEventMap> | null>(null);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [blink, setBlink] = useState(false); // For blink effect
+  const [stopAnimation, setStopAnimation] = useState(false);
+  const [texture, setTexture] = useState<'textureYes' | 'textureNo' | null>(null)
 
 
   const texturesYes = useTexture(['/preloader/variant1.png'])
@@ -106,26 +145,17 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefi
 
   // Load the sprite textures
   const texturesCommon = useTexture([
-    '/preloader/1.png', // Ganti dengan path ke gambar pertama
-    '/preloader/2.png', // Ganti dengan path ke gambar kedua
-    '/preloader/3.png', // Ganti dengan path ke gambar ketiga
-    '/preloader/4.png', // Ganti dengan path ke gambar keempat
-    '/preloader/5.png', // Ganti dengan path ke gambar kelima
-    '/preloader/6.png', // Ganti dengan path ke gambar keenam
+    '/preloader/1.png',
+    '/preloader/2.png',
+    '/preloader/3.png',
+    '/preloader/4.png',
+    '/preloader/5.png',
+    '/preloader/6.png',
   ]);
 
   // Ensure textures use linear filtering and encoding
-  texturesYes.forEach((texture) => {
-    texture.minFilter = LinearFilter; // Avoid mipmap effects
-    texture.magFilter = LinearFilter;
-    texture.needsUpdate = true;
-  });
-  texturesNo.forEach((texture) => {
-    texture.minFilter = LinearFilter; // Avoid mipmap effects
-    texture.magFilter = LinearFilter;
-    texture.needsUpdate = true;
-  });
-  texturesCommon.forEach((texture) => {
+  const allTextures = [...texturesCommon, ...texturesYes, ...texturesNo];
+  allTextures.forEach((texture) => {
     texture.minFilter = LinearFilter; // Avoid mipmap effects
     texture.magFilter = LinearFilter;
     texture.needsUpdate = true;
@@ -136,22 +166,12 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefi
 
   // Control animation speed
   useFrame((state, delta) => {
+    if (stopAnimation) return; // Stop spinning if stopAnimation is true
+
     elapsed += delta;
     if (elapsed > 0.2) {
       setCurrentFrame((prev) => (prev + 1) % texturesCommon.length);
       elapsed = 0;
-    }
-
-    // Blink effect (for "No" input)
-    if (blink) {
-      if (meshRef.current) {
-        meshRef.current.material.color.set(0xff0000); // Red color for blink
-      }
-      setTimeout(() => {
-        setBlink(false);
-      }, 300); // Blink duration
-    } else if (meshRef.current) {
-      meshRef.current.material.color.set(0xffffff); // Reset color to white
     }
   });
 
@@ -159,19 +179,27 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefi
   useEffect(() => {
     if (confirmation === "no") {
       playSFX('/preloader/beep-choice-no.mp3'); // Play error beep sound
+      setTexture("textureNo")
+      setStopAnimation(true);
       setBlink(true); // Trigger red blink effect
+      setTimeout(() => {
+        setBlink(false); // Reset blink effect
+        setTexture("textureYes"); // Switch to Yes after 1 second
+      }, 1000);
+    } else if (confirmation === "yes") {
+      setTexture('textureYes')
     }
   }, [confirmation])
 
 
   // Apply the current texture to the sprite material
   // useEffect(() => {
-  const selectedTexture = confirmation === "yes" ? texturesYes[0] : confirmation === "no" ? texturesNo[0] : texturesCommon[currentFrame];
+  const selectedTexture = texture === "textureYes" ? texturesYes[0] : texture === "textureNo" ? texturesNo[0] : texturesCommon[currentFrame];
 
   if (meshRef.current) {
     meshRef.current.material = new SpriteMaterial({
       map: selectedTexture,
-      color: 0xffffff, // Ensure no color tint is applied
+      color: blink ? 0xff0000 : 0xffffff, // Ensure no color tint is applied
       transparent: true, // Support transparency if needed
     });
   }
@@ -183,18 +211,16 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefi
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const ParallaxPlane = ({ image, depth, scale, position, speed, opacity, direction }: {
+const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
   image: Texture
   depth: number
-  scale: any
   position: any
   speed: number
   opacity: number
   direction: number
 }) => {
   const ref = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
-  // const { size } = useThree();
-  // const aspectRatio = size.width / size.height;
+  const { viewport } = useThree();
   const targetPosition = useRef([0, 0, 0]);
 
   // Update position based on mouse movement with lerp for smoothness
@@ -223,7 +249,15 @@ const ParallaxPlane = ({ image, depth, scale, position, speed, opacity, directio
 
 
   return (
-    <mesh ref={ref} position={position} scale={scale}>
+    <mesh
+      ref={ref}
+      position={position}
+      scale={[
+        viewport.width, // Full width
+        viewport.height, // Full height
+        1, // Fixed depth
+      ]}
+    >
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial map={image} transparent={true} opacity={opacity} />
       {/* alphaTest={0} */}
@@ -239,38 +273,16 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
   const [imageIndex, setImageIndex] = useState(0);
   const [opacity, setOpacity] = useState(1);
   // const [fadeDirection, setFadeDirection] = useState('out');
+  const [batchIndex, setBatchIndex] = useState(0); // Track the active batch (0–1)
 
-  const backgroundTexture = [
-    useTexture('/preloader/preloader-images/first-Sequence/adams-creation/background.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/austrian-painter/background.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/background.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/boxing/background.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/moses/background.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/three-kingdom/background.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/abraham/background.jpeg'),
-    useTexture('/preloader/preloader-images/second-Sequence/adam-eve/background.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/leonardo/background.jpg'),
-    useTexture('/preloader/preloader-images/second-Sequence/mlk/background.png')
+  const backgroundTexturesBatch = [
+    ['/preloader/preloader-images/first-Sequence/adams-creation/background.png', '/preloader/preloader-images/first-Sequence/austrian-painter/background.png', '/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/background.png', '/preloader/preloader-images/first-Sequence/boxing/background.png', '/preloader/preloader-images/first-Sequence/moses/background.png'],
+    ['/preloader/preloader-images/second-Sequence/three-kingdom/background.png', '/preloader/preloader-images/second-Sequence/abraham/background.jpeg', '/preloader/preloader-images/second-Sequence/adam-eve/background.png', '/preloader/preloader-images/second-Sequence/leonardo/background.jpg', '/preloader/preloader-images/second-Sequence/mlk/background.png']
   ];
-  const characterTexture = [
-    useTexture('/preloader/preloader-images/first-Sequence/adams-creation/character.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/austrian-painter/character.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/character.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/boxing/character.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/moses/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/three-kingdom/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/abraham/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/adam-eve/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/leonardo/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/mlk/character.png')
+  const characterTexturesBatch = [
+    ['/preloader/preloader-images/first-Sequence/adams-creation/character.png', '/preloader/preloader-images/first-Sequence/austrian-painter/character.png', '/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/character.png', '/preloader/preloader-images/first-Sequence/boxing/character.png', '/preloader/preloader-images/first-Sequence/moses/character.png'],
+    ['/preloader/preloader-images/second-Sequence/three-kingdom/character.png', '/preloader/preloader-images/second-Sequence/abraham/character.png', '/preloader/preloader-images/second-Sequence/adam-eve/character.png', '/preloader/preloader-images/second-Sequence/leonardo/character.png', '/preloader/preloader-images/second-Sequence/mlk/character.png']
   ];
-
-  // Get the size of the canvas
-  const { width, height } = useThree().size;
-
-  // Update scale and position to fill the full screen for the background
-  const backgroundScale = [width / 100, height / 100, 1];
-  const characterScale = [width / 100, height / 100, 1]; // Set the desired scale for the character
 
   const speed = 0.1; // Speed for smooth movement (lower value = smoother)
 
@@ -302,15 +314,26 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
     };
 
     const interval = setInterval(() => {
-      fadeOut(); // Start fade-out when it's time to change image
+      fadeOut();
       setTimeout(() => {
-        setImageIndex((prevIndex) => (prevIndex + 1) % 2); // Change image index
-        fadeIn(); // Start fade-in after changing image
-      }, 1000); // Wait for 1 second for fade-out before fading in new image
-    }, 4000); // Change images every 4 seconds
+        // Update image index within the current batch
+        setImageIndex((prevIndex) => {
+          const nextIndex = (prevIndex + 1) % 5; // Cycle within current batch
+          if (nextIndex === 0) {
+            // Switch to the next batch after finishing current batch
+            setBatchIndex((prevBatch) => (prevBatch + 1) % 2);
+          }
+          return nextIndex;
+        });
+        fadeIn();
+      }, 1000); // Wait for fade-out before fade-in
+    }, 4000);
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
+
+  const backgroundTextures = useTexture(backgroundTexturesBatch[batchIndex]);
+  const characterTextures = useTexture(characterTexturesBatch[batchIndex]);
 
   // Set idle after 2 seconds of inactivity
   useEffect(() => {
@@ -337,9 +360,8 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
   return (
     <>
       <ParallaxPlane
-        image={backgroundTexture[imageIndex]}
+        image={backgroundTextures[imageIndex]}
         depth={0.1}
-        scale={backgroundScale}
         position={[0, 0, -1]}
         // transparent={false}
         speed={speed}
@@ -347,9 +369,8 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
         direction={backgroundDirection}
       />
       <ParallaxPlane
-        image={characterTexture[imageIndex]}
+        image={characterTextures[imageIndex]}
         depth={0.3}
-        scale={characterScale}
         position={[0, 0, 0]} // Character stays on top
         // transparent={true}
         speed={speed}
