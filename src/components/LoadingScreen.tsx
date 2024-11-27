@@ -58,11 +58,14 @@ export default function LoadingScreen() {
         </Canvas>
 
         {/* Loading Bar */}
-        {/* {loading &&  */}
-        <div className="flex h-3 overflow-hidden text-[1.2rem] bg-[#343a40] rounded-sm" role="progressbar">
-          <div className="flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap bg-[#EEDBD6]" id="progress-bar" style={{ width: `${progress}%`, transition: 'width 1s ease' }}></div>
-        </div>
-        {/* } */}
+        {loading &&
+          <div className="w-full flex items-center gap-2">
+            <div className="w-full flex h-3 overflow-hidden text-[1.2rem] bg-[#343a40] rounded-sm" role="progressbar">
+              <div className="flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap bg-white" id="progress-bar" style={{ width: `${Math.round(progress)}%`, transition: 'width 0.1s ease' }}></div>
+            </div>
+            <p className="font-serif text-sm text-white">{Math.round(progress)}%</p>
+          </div>
+        }
       </div>
 
       {!loading && <ConfirmationBox yes={() => setConfirmation('yes')} no={() => setConfirmation('no')} />}
@@ -239,30 +242,15 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
   const [imageIndex, setImageIndex] = useState(0);
   const [opacity, setOpacity] = useState(1);
   // const [fadeDirection, setFadeDirection] = useState('out');
+  const [batchIndex, setBatchIndex] = useState(0); // Track the active batch (0–1)
 
-  const backgroundTexture = [
-    useTexture('/preloader/preloader-images/first-Sequence/adams-creation/background.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/austrian-painter/background.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/background.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/boxing/background.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/moses/background.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/three-kingdom/background.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/abraham/background.jpeg'),
-    useTexture('/preloader/preloader-images/second-Sequence/adam-eve/background.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/leonardo/background.jpg'),
-    useTexture('/preloader/preloader-images/second-Sequence/mlk/background.png')
+  const backgroundTexturesBatch = [
+    ['/preloader/preloader-images/first-Sequence/adams-creation/background.png', '/preloader/preloader-images/first-Sequence/austrian-painter/background.png', '/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/background.png', '/preloader/preloader-images/first-Sequence/boxing/background.png', '/preloader/preloader-images/first-Sequence/moses/background.png'],
+    ['/preloader/preloader-images/second-Sequence/three-kingdom/background.png', '/preloader/preloader-images/second-Sequence/abraham/background.jpeg', '/preloader/preloader-images/second-Sequence/adam-eve/background.png', '/preloader/preloader-images/second-Sequence/leonardo/background.jpg', '/preloader/preloader-images/second-Sequence/mlk/background.png']
   ];
-  const characterTexture = [
-    useTexture('/preloader/preloader-images/first-Sequence/adams-creation/character.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/austrian-painter/character.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/character.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/boxing/character.png'),
-    useTexture('/preloader/preloader-images/first-Sequence/moses/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/three-kingdom/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/abraham/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/adam-eve/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/leonardo/character.png'),
-    useTexture('/preloader/preloader-images/second-Sequence/mlk/character.png')
+  const characterTexturesBatch = [
+    ['/preloader/preloader-images/first-Sequence/adams-creation/character.png', '/preloader/preloader-images/first-Sequence/austrian-painter/character.png', '/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/character.png', '/preloader/preloader-images/first-Sequence/boxing/character.png', '/preloader/preloader-images/first-Sequence/moses/character.png'],
+    ['/preloader/preloader-images/second-Sequence/three-kingdom/character.png', '/preloader/preloader-images/second-Sequence/abraham/character.png', '/preloader/preloader-images/second-Sequence/adam-eve/character.png', '/preloader/preloader-images/second-Sequence/leonardo/character.png', '/preloader/preloader-images/second-Sequence/mlk/character.png']
   ];
 
   // Get the size of the canvas
@@ -302,15 +290,26 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
     };
 
     const interval = setInterval(() => {
-      fadeOut(); // Start fade-out when it's time to change image
+      fadeOut();
       setTimeout(() => {
-        setImageIndex((prevIndex) => (prevIndex + 1) % 2); // Change image index
-        fadeIn(); // Start fade-in after changing image
-      }, 1000); // Wait for 1 second for fade-out before fading in new image
-    }, 4000); // Change images every 4 seconds
+        // Update image index within the current batch
+        setImageIndex((prevIndex) => {
+          const nextIndex = (prevIndex + 1) % 5; // Cycle within current batch
+          if (nextIndex === 0) {
+            // Switch to the next batch after finishing current batch
+            setBatchIndex((prevBatch) => (prevBatch + 1) % 2);
+          }
+          return nextIndex;
+        });
+        fadeIn();
+      }, 1000); // Wait for fade-out before fade-in
+    }, 4000);
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
+
+  const backgroundTextures = useTexture(backgroundTexturesBatch[batchIndex]);
+  const characterTextures = useTexture(characterTexturesBatch[batchIndex]);
 
   // Set idle after 2 seconds of inactivity
   useEffect(() => {
@@ -337,7 +336,7 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
   return (
     <>
       <ParallaxPlane
-        image={backgroundTexture[imageIndex]}
+        image={backgroundTextures[imageIndex]}
         depth={0.1}
         scale={backgroundScale}
         position={[0, 0, -1]}
@@ -347,7 +346,7 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
         direction={backgroundDirection}
       />
       <ParallaxPlane
-        image={characterTexture[imageIndex]}
+        image={characterTextures[imageIndex]}
         depth={0.3}
         scale={characterScale}
         position={[0, 0, 0]} // Character stays on top
