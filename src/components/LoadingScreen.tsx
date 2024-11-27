@@ -186,18 +186,16 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefi
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const ParallaxPlane = ({ image, depth, scale, position, speed, opacity, direction }: {
+const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
   image: Texture
   depth: number
-  scale: any
   position: any
   speed: number
   opacity: number
   direction: number
 }) => {
   const ref = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
-  // const { size } = useThree();
-  // const aspectRatio = size.width / size.height;
+  const { viewport } = useThree();
   const targetPosition = useRef([0, 0, 0]);
 
   // Update position based on mouse movement with lerp for smoothness
@@ -226,7 +224,15 @@ const ParallaxPlane = ({ image, depth, scale, position, speed, opacity, directio
 
 
   return (
-    <mesh ref={ref} position={position} scale={scale}>
+    <mesh
+      ref={ref}
+      position={position}
+      scale={[
+        viewport.width, // Full width
+        viewport.height, // Full height
+        1, // Fixed depth
+      ]}
+    >
       <planeGeometry args={[1, 1]} />
       <meshBasicMaterial map={image} transparent={true} opacity={opacity} />
       {/* alphaTest={0} */}
@@ -252,13 +258,6 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
     ['/preloader/preloader-images/first-Sequence/adams-creation/character.png', '/preloader/preloader-images/first-Sequence/austrian-painter/character.png', '/preloader/preloader-images/first-Sequence/battle-of-hu-lao-gate-2/character.png', '/preloader/preloader-images/first-Sequence/boxing/character.png', '/preloader/preloader-images/first-Sequence/moses/character.png'],
     ['/preloader/preloader-images/second-Sequence/three-kingdom/character.png', '/preloader/preloader-images/second-Sequence/abraham/character.png', '/preloader/preloader-images/second-Sequence/adam-eve/character.png', '/preloader/preloader-images/second-Sequence/leonardo/character.png', '/preloader/preloader-images/second-Sequence/mlk/character.png']
   ];
-
-  // Get the size of the canvas
-  const { width, height } = useThree().size;
-
-  // Update scale and position to fill the full screen for the background
-  const backgroundScale = [width / 100, height / 100, 1];
-  const characterScale = [width / 100, height / 100, 1]; // Set the desired scale for the character
 
   const speed = 0.1; // Speed for smooth movement (lower value = smoother)
 
@@ -338,7 +337,6 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
       <ParallaxPlane
         image={backgroundTextures[imageIndex]}
         depth={0.1}
-        scale={backgroundScale}
         position={[0, 0, -1]}
         // transparent={false}
         speed={speed}
@@ -348,7 +346,6 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
       <ParallaxPlane
         image={characterTextures[imageIndex]}
         depth={0.3}
-        scale={characterScale}
         position={[0, 0, 0]} // Character stays on top
         // transparent={true}
         speed={speed}
