@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import { useThree } from '@react-three/fiber';
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useTexture } from '@react-three/drei';
+import { Preload, useTexture } from '@react-three/drei';
 import { SpriteMaterial, LinearFilter, NoToneMapping, Sprite, Object3DEventMap, Mesh, BufferGeometry, NormalBufferAttributes, Material, Texture } from 'three';
 
 export default function LoadingScreen() {
   const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
-  const targetSize = 150; // Target dalam MB
+  const targetSize = 400; // Target dalam MB
 
   useEffect(() => {
     const observer = new PerformanceObserver((list) => {
@@ -91,14 +91,15 @@ export default function LoadingScreen() {
           <SpriteAnimation confirmation={confirmation} />
         </Canvas>
 
-        <p className="text-white">{loadedSize}MB</p>
+        {/* <p className="text-white font-procopius">{Math.round(loadedSize)}MB</p> */}
+
         {/* Loading Bar */}
         {loading &&
           <div className="w-full flex items-center gap-2">
             <div className="w-full flex h-3 overflow-hidden text-[1.2rem] bg-[#343a40] rounded-sm" role="progressbar">
               <div className="flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap bg-white" id="progress-bar" style={{ width: `${Math.round(progress)}%`, transition: 'width 0.5s ease' }}></div>
             </div>
-            <p className="font-serif text-sm text-white">{Math.round(progress)}%</p>
+            <p className="absolute ml-2 left-full font-procopius font-bold text-base text-white">{Math.round(progress)}%</p>
           </div>
         }
       </div>
@@ -117,11 +118,11 @@ const ConfirmationBox = ({ yes, no }: { yes: () => void, no: () => void }) => {
   return (
     <div className="pt-20 pb-[186px] rounded-xl absolute max-w-[588px] w-full h-fit z-[1056]" style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}>
       <div className="flex flex-col items-center text-center">
-        <p className="text-white text-lg font-realityStine">Are you ready to meet your Ancestor?</p>
+        <p className="text-white text-lg font-procopius">Are you ready to meet your Ancestor?</p>
 
 
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
       </div>
     </div>
   )
@@ -207,7 +208,7 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }
   // }, [currentFrame, textures]);
 
   return (
-    <sprite ref={meshRef} position={[0, 0, 0]} scale={[10, 10, 10]} />
+    <sprite ref={meshRef} position={[0, 0, 0]} scale={[15, 15, 15]} />
   );
 };
 
@@ -396,6 +397,7 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
 
   return (
     <>
+      <Preload all />
       <ParallaxPlane
         image={backgroundTextures[imageIndex]}
         depth={0.1}
