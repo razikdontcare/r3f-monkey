@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useProgress } from "@react-three/drei";
 import { useState, useEffect } from "react";
 import { useThree } from '@react-three/fiber';
 import React, { useRef } from 'react';
@@ -10,10 +9,40 @@ import { useTexture } from '@react-three/drei';
 import { SpriteMaterial, LinearFilter, NoToneMapping, Sprite, Object3DEventMap, Mesh, BufferGeometry, NormalBufferAttributes, Material, Texture } from 'three';
 
 export default function LoadingScreen() {
+  const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
+  const targetSize = 100; // Target dalam MB
+
+  useEffect(() => {
+    const observer = new PerformanceObserver((list) => {
+      const entries = list.getEntriesByType("resource");
+      let totalSize = 0;
+
+      entries.forEach((entry: any) => {
+        // Menambahkan ukuran setiap resource yang dimuat
+        if (entry.encodedBodySize) {
+          totalSize += entry.encodedBodySize; // encodedBodySize dalam byte
+        }
+      });
+
+      setLoadedSize((prev) => {
+        const newSize = prev + totalSize / (1024 * 1024); // Convert byte ke MB
+        return newSize > targetSize ? targetSize : newSize; // Maksimal 100MB
+      });
+    });
+
+    observer.observe({ type: "resource", buffered: true });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const progress = Math.min((loadedSize / targetSize) * 100, 100); // Persentase progress
+
+
+
   const [loading, setLoading] = useState(true);
   const [openApp, setOpenApp] = useState<boolean | undefined>(undefined)
   const [confirmation, setConfirmation] = useState<'yes' | 'no' | null>(null)
-  const { progress } = useProgress();
+  // const { progress } = useProgress();
 
   const [lastMousePosition, setLastMousePosition] = useState([0, 0]); // Track last mouse position
   const [mouseIdle, setMouseIdle] = useState(false); // Track if mouse is idle
@@ -66,7 +95,7 @@ export default function LoadingScreen() {
         {loading &&
           <div className="w-full flex items-center gap-2">
             <div className="w-full flex h-3 overflow-hidden text-[1.2rem] bg-[#343a40] rounded-sm" role="progressbar">
-              <div className="flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap bg-white" id="progress-bar" style={{ width: `${Math.round(progress)}%`, transition: 'width 0.1s ease' }}></div>
+              <div className="flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap bg-white" id="progress-bar" style={{ width: `${Math.round(progress)}%`, transition: 'width 0.5s ease' }}></div>
             </div>
             <p className="font-serif text-sm text-white">{Math.round(progress)}%</p>
           </div>
