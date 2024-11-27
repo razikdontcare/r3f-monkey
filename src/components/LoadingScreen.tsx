@@ -12,7 +12,7 @@ import { SpriteMaterial, LinearFilter, NoToneMapping, Sprite, Object3DEventMap, 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
   const [openApp, setOpenApp] = useState<boolean | undefined>(undefined)
-  const [confirmation, setConfirmation] = useState<'yes' | 'no'>()
+  const [confirmation, setConfirmation] = useState<'yes' | 'no' | null>(null)
   const { progress } = useProgress();
 
   const [lastMousePosition, setLastMousePosition] = useState([0, 0]); // Track last mouse position
@@ -28,6 +28,11 @@ export default function LoadingScreen() {
     if (confirmation === 'yes') {
       setTimeout(() => {
         setOpenApp(true)
+        setConfirmation(null)
+      }, 1000);
+    } else if (confirmation === 'no') {
+      setTimeout(() => {
+        setConfirmation(null)
       }, 1000);
     }
   }, [confirmation])
@@ -80,13 +85,13 @@ export default function LoadingScreen() {
 
 const ConfirmationBox = ({ yes, no }: { yes: () => void, no: () => void }) => {
   return (
-    <div className="pt-20 pb-[186px] rounded-xl absolute max-w-[35%] w-full h-fit z-[1056]" style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}>
+    <div className="pt-20 pb-[186px] rounded-xl absolute max-w-[588px] w-full h-fit z-[1056]" style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}>
       <div className="flex flex-col items-center text-center">
         <p className="text-white text-lg font-realityStine">Are you ready to meet your Ancestor?</p>
 
 
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
       </div>
     </div>
   )
@@ -98,10 +103,12 @@ const playSFX = (audio: string) => {
   sound.play();
 };
 
-const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefined }) => {
+const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }) => {
   const meshRef = useRef<Sprite<Object3DEventMap> | null>(null);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [blink, setBlink] = useState(false); // For blink effect
+  const [stopAnimation, setStopAnimation] = useState(false);
+  const [texture, setTexture] = useState<'textureYes' | 'textureNo' | null>(null)
 
 
   const texturesYes = useTexture(['/preloader/variant1.png'])
@@ -109,26 +116,17 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefi
 
   // Load the sprite textures
   const texturesCommon = useTexture([
-    '/preloader/1.png', // Ganti dengan path ke gambar pertama
-    '/preloader/2.png', // Ganti dengan path ke gambar kedua
-    '/preloader/3.png', // Ganti dengan path ke gambar ketiga
-    '/preloader/4.png', // Ganti dengan path ke gambar keempat
-    '/preloader/5.png', // Ganti dengan path ke gambar kelima
-    '/preloader/6.png', // Ganti dengan path ke gambar keenam
+    '/preloader/1.png',
+    '/preloader/2.png',
+    '/preloader/3.png',
+    '/preloader/4.png',
+    '/preloader/5.png',
+    '/preloader/6.png',
   ]);
 
   // Ensure textures use linear filtering and encoding
-  texturesYes.forEach((texture) => {
-    texture.minFilter = LinearFilter; // Avoid mipmap effects
-    texture.magFilter = LinearFilter;
-    texture.needsUpdate = true;
-  });
-  texturesNo.forEach((texture) => {
-    texture.minFilter = LinearFilter; // Avoid mipmap effects
-    texture.magFilter = LinearFilter;
-    texture.needsUpdate = true;
-  });
-  texturesCommon.forEach((texture) => {
+  const allTextures = [...texturesCommon, ...texturesYes, ...texturesNo];
+  allTextures.forEach((texture) => {
     texture.minFilter = LinearFilter; // Avoid mipmap effects
     texture.magFilter = LinearFilter;
     texture.needsUpdate = true;
@@ -139,22 +137,12 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefi
 
   // Control animation speed
   useFrame((state, delta) => {
+    if (stopAnimation) return; // Stop spinning if stopAnimation is true
+
     elapsed += delta;
     if (elapsed > 0.2) {
       setCurrentFrame((prev) => (prev + 1) % texturesCommon.length);
       elapsed = 0;
-    }
-
-    // Blink effect (for "No" input)
-    if (blink) {
-      if (meshRef.current) {
-        meshRef.current.material.color.set(0xff0000); // Red color for blink
-      }
-      setTimeout(() => {
-        setBlink(false);
-      }, 300); // Blink duration
-    } else if (meshRef.current) {
-      meshRef.current.material.color.set(0xffffff); // Reset color to white
     }
   });
 
@@ -162,19 +150,27 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | undefi
   useEffect(() => {
     if (confirmation === "no") {
       playSFX('/preloader/beep-choice-no.mp3'); // Play error beep sound
+      setTexture("textureNo")
+      setStopAnimation(true);
       setBlink(true); // Trigger red blink effect
+      setTimeout(() => {
+        setBlink(false); // Reset blink effect
+        setTexture("textureYes"); // Switch to Yes after 1 second
+      }, 1000);
+    } else if (confirmation === "yes") {
+      setTexture('textureYes')
     }
   }, [confirmation])
 
 
   // Apply the current texture to the sprite material
   // useEffect(() => {
-  const selectedTexture = confirmation === "yes" ? texturesYes[0] : confirmation === "no" ? texturesNo[0] : texturesCommon[currentFrame];
+  const selectedTexture = texture === "textureYes" ? texturesYes[0] : texture === "textureNo" ? texturesNo[0] : texturesCommon[currentFrame];
 
   if (meshRef.current) {
     meshRef.current.material = new SpriteMaterial({
       map: selectedTexture,
-      color: 0xffffff, // Ensure no color tint is applied
+      color: blink ? 0xff0000 : 0xffffff, // Ensure no color tint is applied
       transparent: true, // Support transparency if needed
     });
   }
