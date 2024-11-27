@@ -223,6 +223,27 @@ const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
   const ref = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
   const { viewport } = useThree();
   const targetPosition = useRef([0, 0, 0]);
+  const [planeScale, setPlaneScale] = useState<any>([1, 1, 1]);
+
+  useEffect(() => {
+    // Update scale to mimic background-size: cover
+    const updateScale = () => {
+      const imgAspect = image.source.data.width / image.source.data.height; // Aspect ratio of the image
+      const viewportAspect = viewport.width / viewport.height; // Aspect ratio of the viewport
+
+      if (imgAspect > viewportAspect) {
+        // Image is wider than the viewport
+        setPlaneScale([viewport.height * imgAspect, viewport.height, 1]);
+      } else {
+        // Image is taller than the viewport
+        setPlaneScale([viewport.width, viewport.width / imgAspect, 1]);
+      }
+    };
+
+    updateScale();
+    window.addEventListener('resize', updateScale);
+    return () => window.removeEventListener('resize', updateScale);
+  }, [image, viewport]);
 
   // Update position based on mouse movement with lerp for smoothness
   useFrame(({ mouse }) => {
@@ -253,15 +274,17 @@ const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
     <mesh
       ref={ref}
       position={position}
-      scale={[
-        viewport.width, // Full width
-        viewport.height, // Full height
-        1, // Fixed depth
-      ]}
+      scale={planeScale}
     >
       <planeGeometry args={[1, 1]} />
-      <meshBasicMaterial map={image} toneMapped={false} transparent={true} opacity={opacity} />
-      {/* alphaTest={0} */}
+      <meshBasicMaterial
+        map={image}
+        transparent={true}
+        premultipliedAlpha={true} // Prevent blending artifacts
+        depthWrite={false} // Optimize rendering
+        toneMapped={false} // Disable tone mapping
+        opacity={opacity}
+      />
     </mesh>
   );
 }
@@ -335,6 +358,19 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
 
   const backgroundTextures = useTexture(backgroundTexturesBatch[batchIndex]);
   const characterTextures = useTexture(characterTexturesBatch[batchIndex]);
+
+  useEffect(() => {
+    backgroundTextures.forEach((texture) => {
+      texture.minFilter = LinearFilter; // Avoid mipmap effects
+      texture.magFilter = LinearFilter;
+      texture.needsUpdate = true;
+    });
+    characterTextures.forEach((texture) => {
+      texture.minFilter = LinearFilter; // Avoid mipmap effects
+      texture.magFilter = LinearFilter;
+      texture.needsUpdate = true;
+    });
+  }, [backgroundTextures, characterTextures]);
 
   // Set idle after 2 seconds of inactivity
   useEffect(() => {
