@@ -1,6 +1,7 @@
 import LoadingScreen from "@/components/LoadingScreen";
 import Scene from "@/components/Scene";
 import UIOverlay from "@/components/overlay";
+import { MusicProvider } from "@/utils/MusicContext";
 import {
   CameraPositionProvider,
   CharacterEventsProvider,
@@ -11,11 +12,13 @@ export default function Home() {
     <>
       <CameraPositionProvider>
         <CharacterEventsProvider>
-          <LoadingScreen />
-          <div className="h-screen relative mx-auto flex items-center justify-center overflow-hidden">
-            <Scene />
-            <UIOverlay />
-          </div>
+          <MusicProvider>
+            <LoadingScreen />
+            <div className="h-screen relative mx-auto flex items-center justify-center overflow-hidden">
+              <Scene />
+              <UIOverlay />
+            </div>
+          </MusicProvider>
         </CharacterEventsProvider>
       </CameraPositionProvider>
     </>

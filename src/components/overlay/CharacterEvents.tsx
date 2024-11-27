@@ -3,7 +3,9 @@ import { useCameraPosition, useCharacterEvents } from "@/utils/context";
 import Image from "next/image";
 import { useEffect, useState, MutableRefObject } from "react";
 import tablet from "./assets/tablet.png";
-import scroll from "./assets/sun-tzu-scroll.png";
+import longTablet from "./assets/long-tablet.png";
+import sunTzuScrollSmall from "./assets/sun-tzu-scroll-small.png";
+import sunTzuScrollLarge from "./assets/sun-tzu-scroll-large.png";
 import ipad from "./assets/ipad.png";
 
 import Tiktok from "../tiktok";
@@ -61,20 +63,28 @@ function EgyptOverlay({ show }: { show: boolean }) {
       className={`w-full h-full  ${show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 bottom-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
         }`}
     >
-      <div onClick={handleContentClick} className="flex items-center gap-16 relative">
-        <Image
-          src={tablet}
-          alt="TABLETS"
-          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
-          fetchPriority="low"
-        />
-        <Image
-          src={tablet}
-          alt="TABLETS"
-          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
-          fetchPriority="low"
-        />
-      </div>
+      {show && (
+        <div onClick={handleContentClick} className="flex items-center gap-16 relative lg:w-[35rem]">
+          <Image
+            src={tablet}
+            alt="TABLETS"
+            className={`${show ? "block md:hidden pointer-events-auto" : "pointer-events-none"}`}
+            fetchPriority="low"
+          />
+          <Image
+            src={tablet}
+            alt="TABLETS"
+            className={`${show ? "block md:hidden pointer-events-auto" : "pointer-events-none"}`}
+            fetchPriority="low"
+          />
+          <Image
+            src={longTablet}
+            alt="LONG TABLETS"
+            className={`${show ? "hidden sm:block pointer-events-auto" : "pointer-events-none"}`}
+            fetchPriority="low"
+          />
+        </div>
+      )}
     </div>
   );
 }
@@ -96,14 +106,22 @@ function DynastyOverlay({ show }: { show: boolean }) {
       className={`w-full h-full ${show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
         }`}
     >
-      <div onClick={handleContentClick} className="flex items-center w-[28rem] mt-10 relative " >
-        <Image
-          src={scroll}
-          alt="SUN TZU SCROLL"
-          className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
-          fetchPriority="low"
-        />
-      </div>
+      {show && (
+        <div onClick={handleContentClick} className="flex items-center w-[28rem] lg:w-[35rem] mt-10 relative " >
+          <Image
+            src={sunTzuScrollSmall}
+            alt="SUN TZU SCROLL"
+            className={`${show ? "block sm:hidden pointer-events-auto" : "pointer-events-none"}`}
+            fetchPriority="low"
+          />
+          <Image
+            src={sunTzuScrollLarge}
+            alt="SUN TZU SCROLL"
+            className={`${show ? "hidden sm:block pointer-events-auto" : "pointer-events-none"}`}
+            fetchPriority="low"
+          />
+        </div>
+      )}
     </div>
   );
 }
