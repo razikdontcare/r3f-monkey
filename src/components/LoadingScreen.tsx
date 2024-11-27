@@ -7,6 +7,7 @@ import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Preload, useTexture } from '@react-three/drei';
 import { SpriteMaterial, LinearFilter, NoToneMapping, Sprite, Object3DEventMap, Mesh, BufferGeometry, NormalBufferAttributes, Material, Texture } from 'three';
+import { useMusic } from "@/utils/MusicContext";
 
 export default function LoadingScreen() {
   const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
@@ -53,10 +54,13 @@ export default function LoadingScreen() {
     setMouseIdle(false);
   };
 
+  const { playMusic } = useMusic();
+
   useEffect(() => {
     if (confirmation === 'yes') {
       setTimeout(() => {
         setOpenApp(true)
+        playMusic()
         setConfirmation(null)
       }, 1000);
     } else if (confirmation === 'no') {
