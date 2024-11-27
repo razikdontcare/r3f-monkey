@@ -10,7 +10,7 @@ import { SpriteMaterial, LinearFilter, NoToneMapping, Sprite, Object3DEventMap, 
 
 export default function LoadingScreen() {
   const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
-  const targetSize = 100; // Target dalam MB
+  const targetSize = 150; // Target dalam MB
 
   useEffect(() => {
     const observer = new PerformanceObserver((list) => {
@@ -91,6 +91,7 @@ export default function LoadingScreen() {
           <SpriteAnimation confirmation={confirmation} />
         </Canvas>
 
+        <p className="text-white">{loadedSize}MB</p>
         {/* Loading Bar */}
         {loading &&
           <div className="w-full flex items-center gap-2">
@@ -259,7 +260,7 @@ const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
       ]}
     >
       <planeGeometry args={[1, 1]} />
-      <meshBasicMaterial map={image} transparent={true} opacity={opacity} />
+      <meshBasicMaterial map={image} toneMapped={false} transparent={true} opacity={opacity} />
       {/* alphaTest={0} */}
     </mesh>
   );

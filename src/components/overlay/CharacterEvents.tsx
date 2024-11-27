@@ -1,7 +1,7 @@
 "use client";
 import { useCameraPosition, useCharacterEvents } from "@/utils/context";
 import Image from "next/image";
-import { useEffect, useState,MutableRefObject } from "react";
+import { useEffect, useState, MutableRefObject } from "react";
 import tablet from "./assets/tablet.png";
 import scroll from "./assets/sun-tzu-scroll.png";
 import ipad from "./assets/ipad.png";
@@ -9,7 +9,7 @@ import ipad from "./assets/ipad.png";
 import Tiktok from "../tiktok";
 import JournalBook from "../journalBook/index";
 
-export default function CharacterEvents({ bgAudioRef }: {bgAudioRef:MutableRefObject<HTMLAudioElement | null>}) {
+export default function CharacterEvents({ bgAudioRef }: { bgAudioRef: MutableRefObject<HTMLAudioElement | null> }) {
   const { event } = useCharacterEvents();
   const { targetPosition } = useCameraPosition();
   const [visibleEvent, setVisibleEvent] = useState<
@@ -58,20 +58,21 @@ function EgyptOverlay({ show }: { show: boolean }) {
   return (
     <div
       onClick={handleOverlayClick}
-      className={`w-full h-full  ${ show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 bottom-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
+      className={`w-full h-full  ${show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 bottom-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}
     >
       <div onClick={handleContentClick} className="flex items-center gap-16 relative">
         <Image
           src={tablet}
           alt="TABLETS"
           className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+          fetchPriority="low"
         />
         <Image
           src={tablet}
           alt="TABLETS"
           className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+          fetchPriority="low"
         />
       </div>
     </div>
@@ -92,15 +93,15 @@ function DynastyOverlay({ show }: { show: boolean }) {
   return (
     <div
       onClick={handleOverlayClick}
-      className={`w-full h-full ${ show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
+      className={`w-full h-full ${show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}
     >
       <div onClick={handleContentClick} className="flex items-center w-[28rem] mt-10 relative " >
         <Image
           src={scroll}
           alt="SUN TZU SCROLL"
           className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+          fetchPriority="low"
         />
       </div>
     </div>
@@ -121,9 +122,8 @@ function WW2Overlay({ show }: { show: boolean }) {
   return (
     <div
       onClick={handleOverlayClick}
-      className={`w-full h-full ${ show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
+      className={`w-full h-full ${show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}
     >
       <div onClick={handleContentClick} className={`flex items-center relative gap-16 ${show && 'pointer-events-auto'}`}>
         <JournalBook />
@@ -132,13 +132,13 @@ function WW2Overlay({ show }: { show: boolean }) {
   );
 }
 
-function NYCOverlay({ show, bgAudioRef }: { show: boolean , bgAudioRef:MutableRefObject<HTMLAudioElement | null> }) {
+function NYCOverlay({ show, bgAudioRef }: { show: boolean, bgAudioRef: MutableRefObject<HTMLAudioElement | null> }) {
   const { setEvent } = useCharacterEvents();
 
   const handleOverlayClick = () => {
     setEvent(null);
     if (bgAudioRef.current) {
-        bgAudioRef.current.play()
+      bgAudioRef.current.play()
     }
   };
 
@@ -149,16 +149,15 @@ function NYCOverlay({ show, bgAudioRef }: { show: boolean , bgAudioRef:MutableRe
   return (
     <div
       onClick={handleOverlayClick}
-      className={`w-full h-full ${ show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
+      className={`w-full h-full ${show ? 'pointer-events-auto' : 'pointer-events-none'} absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}
     >
-      <div  onClick={handleContentClick} className="flex items-center md:w-[28vw] w-[80vw] mt-5 relative">
+      <div onClick={handleContentClick} className="flex items-center md:w-[28vw] w-[80vw] mt-5 relative">
         <Image src={ipad} alt="IPAD" />
         <div className={`absolute w-[100%] px-[1.5%] top-[1%] h-[98%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
           <div className="h-full">
-            { show && (
-              <Tiktok bgAudioRef={bgAudioRef}/>
+            {show && (
+              <Tiktok bgAudioRef={bgAudioRef} />
             )}
           </div>
         </div>
