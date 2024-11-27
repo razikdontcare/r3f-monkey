@@ -14,7 +14,7 @@ export default function UIOverlay() {
       <div className="w-full h-full flex pointer-events-none p-2">
         <div className="h-full flex items-center justify-center pl-2">
           <div className="w-fit h-fit pl-10">
-            <Image src={textBox} alt="TEXT BOX" className="w-[28rem]" />
+            <Image src={textBox} alt="TEXT BOX" className="w-[28rem]" fetchPriority="low" />
           </div>
         </div>
       </div>

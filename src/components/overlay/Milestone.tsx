@@ -16,7 +16,7 @@ export default function Milestones() {
       <div className="w-full mx-auto flex items-center justify-center absolute top-0 left-0 h-full pointer-events-none">
         <div className="absolute top-10  size-fit">
           <div className="relative">
-            <Image src={milestones} alt="MILESTONES" className="w-[35rem]" />
+            <Image src={milestones} alt="MILESTONES" className="w-[35rem]" fetchPriority="low" />
             <button
               id="prehistoric"
               className="size-10 pointer-events-auto absolute top-1 left-1 rounded-full"
@@ -28,9 +28,9 @@ export default function Milestones() {
                 src={IconPrehistoric}
                 alt="PREHISTORIC"
                 fill
-                className={`object-contain ${
-                  targetPosition[0] !== 0 && "hidden"
-                }`}
+                className={`object-contain ${targetPosition[0] !== 0 && "hidden"
+                  }`}
+                fetchPriority="low"
               />
             </button>
             <button
@@ -44,9 +44,9 @@ export default function Milestones() {
                 src={IconEgypt}
                 alt="EGYPT"
                 fill
-                className={`object-contain ${
-                  targetPosition[0] !== 10 && "hidden"
-                }`}
+                className={`object-contain ${targetPosition[0] !== 10 && "hidden"
+                  }`}
+                fetchPriority="low"
               />
             </button>
             <button
@@ -60,9 +60,9 @@ export default function Milestones() {
                 src={IconDynasty}
                 alt="THREE KINGDOMS"
                 fill
-                className={`object-contain ${
-                  targetPosition[0] !== 20 && "hidden"
-                }`}
+                className={`object-contain ${targetPosition[0] !== 20 && "hidden"
+                  }`}
+                fetchPriority="low"
               />
             </button>
             <button
@@ -76,9 +76,9 @@ export default function Milestones() {
                 src={IconWW2}
                 alt="WW2"
                 fill
-                className={`object-contain ${
-                  targetPosition[0] !== 30 && "hidden"
-                }`}
+                className={`object-contain ${targetPosition[0] !== 30 && "hidden"
+                  }`}
+                fetchPriority="low"
               />
             </button>
             <button
@@ -92,9 +92,9 @@ export default function Milestones() {
                 src={IconNYC}
                 alt="NYC"
                 fill
-                className={`object-contain ${
-                  targetPosition[0] !== 40 && "hidden"
-                }`}
+                className={`object-contain ${targetPosition[0] !== 40 && "hidden"
+                  }`}
+                fetchPriority="low"
               />
             </button>
           </div>

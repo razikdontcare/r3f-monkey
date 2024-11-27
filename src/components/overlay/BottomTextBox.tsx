@@ -25,6 +25,7 @@ export default function BottomTextBox() {
           alt="TEXT BOX"
           fill
           className="pointer-events-auto cursor-pointer object-contain"
+          fetchPriority="low"
         />
         <div className="absolute inset-0 flex items-center justify-center">
           {copied ? (

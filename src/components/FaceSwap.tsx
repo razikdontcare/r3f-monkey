@@ -161,7 +161,7 @@ export default function FaceSwap({ show }: { show: boolean }) {
 
   return (
     <div>
-       
+
 
       <div className="flex items-center relative gap-16">
         <div className={`relative ${show ? "pointer-events-auto" : "pointer-events-none"}`}>
@@ -169,37 +169,38 @@ export default function FaceSwap({ show }: { show: boolean }) {
             src={textbox}
             alt="TEXTBOX"
             className={`size-96`}
+            fetchPriority="low"
           />
           <div className="absolute top-0 w-full h-full p-[.5%] flex flex-col items-center">
-                {isToast && (
-                  <div className="absolute bg-red-500 text-white p-[.5vw] text-[.8vw] top-[1vw] rounded shadow-lg z-[9999]">
-                    Sorry, no face detected. Please try another image.
-                  </div>
-                )}
+            {isToast && (
+              <div className="absolute bg-red-500 text-white p-[.5vw] text-[.8vw] top-[1vw] rounded shadow-lg z-[9999]">
+                Sorry, no face detected. Please try another image.
+              </div>
+            )}
 
-                <label
-                  htmlFor="image"
-                  className="relative top-0 w-full h-full cursor-pointer flex items-center justify-center"
-                >
-                  {image ? (
-                    <img
-                      src={image}
-                      alt="Uploaded"
-                      className="w-auto h-auto max-w-full max-h-full"
-                    />
-                  ) : (
-                    <span className="text-gray-500 text-[1vw]">
-                      Click to upload an image
-                    </span>
-                  )}
-                  <input
-                    id="image"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                  />
-                </label>
+            <label
+              htmlFor="image"
+              className="relative top-0 w-full h-full cursor-pointer flex items-center justify-center"
+            >
+              {image ? (
+                <img
+                  src={image}
+                  alt="Uploaded"
+                  className="w-auto h-auto max-w-full max-h-full"
+                />
+              ) : (
+                <span className="text-gray-500 text-[1vw]">
+                  Click to upload an image
+                </span>
+              )}
+              <input
+                id="image"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
+            </label>
           </div>
           {showRegenerate && (
             <div className="w-full flex items-center justify-center">
@@ -217,6 +218,7 @@ export default function FaceSwap({ show }: { show: boolean }) {
             src={textbox}
             alt="TEXTBOX"
             className={`size-96`}
+            fetchPriority="low"
           />
           <div className="absolute top-0 w-full h-full p-[.5%] flex flex-col items-center">
             <div className="relative top-0 w-full h-full flex items-center justify-center">

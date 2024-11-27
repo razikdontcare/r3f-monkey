@@ -51,20 +51,21 @@ function EgyptOverlay({ show }: { show: boolean }) {
 
   return (
     <div
-      className={`w-full h-full pointer-events-none absolute left-0 bottom-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
+      className={`w-full h-full pointer-events-none absolute left-0 bottom-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}
     >
       <div className="flex items-center gap-16 relative">
         <Image
           src={tablet}
           alt="TABLETS"
           className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+          fetchPriority="low"
         />
         <Image
           src={tablet}
           alt="TABLETS"
           className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+          fetchPriority="low"
         />
         <div className="absolute right-0 top-0 size-8">
           <Image
@@ -72,6 +73,7 @@ function EgyptOverlay({ show }: { show: boolean }) {
             src={x}
             alt="CLOSE"
             className="pointer-events-auto cursor-pointer"
+            fetchPriority="low"
           />
         </div>
       </div>
@@ -84,15 +86,15 @@ function DynastyOverlay({ show }: { show: boolean }) {
 
   return (
     <div
-      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
+      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}
     >
       <div className="flex items-center w-[28rem] mt-10 relative ">
         <Image
           src={scroll}
           alt="SUN TZU SCROLL"
           className={`${show ? "pointer-events-auto" : "pointer-events-none"}`}
+          fetchPriority="low"
         />
         <div className="absolute right-20 top-2 size-8">
           <Image
@@ -100,6 +102,7 @@ function DynastyOverlay({ show }: { show: boolean }) {
             src={x}
             alt="CLOSE"
             className="pointer-events-auto cursor-pointer"
+            fetchPriority="low"
           />
         </div>
       </div>
@@ -112,9 +115,8 @@ function WW2Overlay({ show }: { show: boolean }) {
 
   return (
     <div
-      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
+      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}
     >
       <div className="flex items-center relative gap-16">
         <FaceSwap show={show} />
@@ -124,6 +126,7 @@ function WW2Overlay({ show }: { show: boolean }) {
             src={x}
             alt="CLOSE"
             className="pointer-events-auto cursor-pointer"
+            fetchPriority="low"
           />
         </div>
       </div>
@@ -136,24 +139,24 @@ function NYCOverlay({ show }: { show: boolean }) {
 
   return (
     <div
-      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${
-        show ? "scale-100 opacity-100" : "scale-50 opacity-0"
-      }`}
+      className={`w-full h-full pointer-events-none absolute left-0 top-0 flex items-center justify-center transition-all duration-300 ${show ? "scale-100 opacity-100" : "scale-50 opacity-0"
+        }`}
     >
       <div className="flex items-center md:w-[28vw] w-[80vw] mt-5 relative">
-        <Image src={ipad} alt="IPAD" />
+        <Image src={ipad} alt="IPAD" fetchPriority="low" />
         <div className="absolute right-[-2vw] top-0 size-8">
           <Image
             onClick={() => setEvent(null)}
             src={x}
             alt="CLOSE"
             className="pointer-events-auto cursor-pointer"
+            fetchPriority="low"
           />
         </div>
         <div className={`absolute w-[100%] px-[1.5%] top-[1.5%] h-[97.3%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
           <div className="h-full">
-            { show && (
-              <Tiktok/>
+            {show && (
+              <Tiktok />
             )}
           </div>
         </div>
