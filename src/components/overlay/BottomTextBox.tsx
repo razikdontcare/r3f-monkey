@@ -24,7 +24,7 @@ export default function BottomTextBox() {
           src={textBoxLong}
           alt="TEXT BOX"
           fill
-          className="pointer-events-auto cursor-pointer object-contain"
+          className="pointer-events-auto custom-cursor-hover object-contain"
           fetchPriority="low"
         />
         <div className="absolute inset-0 flex items-center justify-center">

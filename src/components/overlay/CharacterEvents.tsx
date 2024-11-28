@@ -10,8 +10,10 @@ import ipad from "./assets/ipad.png";
 
 import Tiktok from "../tiktok";
 import JournalBook from "../journalBook/index";
+import { useMusic } from "@/utils/MusicContext";
 
-export default function CharacterEvents({ bgAudioRef }: { bgAudioRef: MutableRefObject<HTMLAudioElement | null> }) {
+
+export default function CharacterEvents() {
   const { event } = useCharacterEvents();
   const { targetPosition } = useCameraPosition();
   const [visibleEvent, setVisibleEvent] = useState<
@@ -41,7 +43,7 @@ export default function CharacterEvents({ bgAudioRef }: { bgAudioRef: MutableRef
         show={visibleEvent === "dynasty" && targetPosition[0] === 20}
       />
       <WW2Overlay show={visibleEvent === "ww2" && targetPosition[0] === 30} />
-      <NYCOverlay show={visibleEvent === "nyc" && targetPosition[0] === 40} bgAudioRef={bgAudioRef} />
+      <NYCOverlay show={visibleEvent === "nyc" && targetPosition[0] === 40}/>
     </>
   );
 }
@@ -152,14 +154,13 @@ function WW2Overlay({ show }: { show: boolean }) {
   );
 }
 
-function NYCOverlay({ show, bgAudioRef }: { show: boolean, bgAudioRef: MutableRefObject<HTMLAudioElement | null> }) {
+function NYCOverlay({ show }: { show: boolean}) {
   const { setEvent } = useCharacterEvents();
+  const { playMusic } = useMusic();
 
   const handleOverlayClick = () => {
     setEvent(null);
-    if (bgAudioRef.current) {
-      bgAudioRef.current.play()
-    }
+    playMusic()
   };
 
   const handleContentClick = (event: React.MouseEvent) => {
@@ -177,7 +178,7 @@ function NYCOverlay({ show, bgAudioRef }: { show: boolean, bgAudioRef: MutableRe
         <div className={`absolute w-[100%] px-[1.5%] top-[1%] h-[98%] overflow-y-auto no-scrollbar ${show && 'pointer-events-auto'} `}>
           <div className="h-full">
             {show && (
-              <Tiktok bgAudioRef={bgAudioRef} />
+              <Tiktok />
             )}
           </div>
         </div>

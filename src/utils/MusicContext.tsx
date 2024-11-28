@@ -55,7 +55,7 @@ export const MusicProvider: React.FC<MusicProviderProps> = ({ children }) => {
       }}
     >
       {/* Elemen audio tersembunyi */}
-      <audio ref={audioRef} src="/audio/Indila - Tourner Dans Le Vide (no vocal) (Instrumental).mp3" />
+      <audio ref={audioRef} src="/audio/Indila - Tourner Dans Le Vide (no vocal) (Instrumental).mp3" loop={true}/>
       {children}
     </MusicContext.Provider>
   );
