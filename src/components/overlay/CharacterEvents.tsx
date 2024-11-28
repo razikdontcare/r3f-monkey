@@ -126,7 +126,9 @@ function WW2Overlay({ show }: { show: boolean }) {
       }`}
     >
       <div onClick={handleContentClick} className={`flex items-center relative gap-16 ${show && 'pointer-events-auto'}`}>
-        <JournalBook />
+        { show && (
+            <JournalBook />
+        )}
       </div>
     </div>
   );
