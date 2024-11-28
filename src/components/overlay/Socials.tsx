@@ -16,6 +16,7 @@ export default function Socials() {
             src={dex}
             alt="Dex"
             className="object-contain w-full h-full pointer-events-auto"
+            fetchPriority="low"
           />
         </Link>
         <Link href={"https://instagram.com"} className="w-10 h-10">
@@ -23,6 +24,7 @@ export default function Socials() {
             src={insta}
             alt="Instagram"
             className="object-contain w-full h-full pointer-events-auto"
+            fetchPriority="low"
           />
         </Link>
         <Link href={"https://telegram.org"} className="w-10 h-10">
@@ -30,6 +32,7 @@ export default function Socials() {
             src={telegram}
             alt="Telegram"
             className="object-contain w-full h-full pointer-events-auto"
+            fetchPriority="low"
           />
         </Link>
         <Link href={"https://tiktok.com"} className="w-10 h-10">
@@ -37,6 +40,7 @@ export default function Socials() {
             src={tiktok}
             alt="Tiktok"
             className="object-contain w-full h-full pointer-events-auto"
+            fetchPriority="low"
           />
         </Link>
         <Link href={"https://x.com"} className="w-10 h-10">
@@ -44,6 +48,7 @@ export default function Socials() {
             src={xTwitter}
             alt="Twitter"
             className="object-contain w-full h-full pointer-events-auto"
+            fetchPriority="low"
           />
         </Link>
       </div>

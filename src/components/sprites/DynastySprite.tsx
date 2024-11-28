@@ -32,7 +32,7 @@ const texturePath = {
     json: jsonPath + "grass.json",
   },
   sunTzu: {
-    png: pngPath + "sun-tzu.png",
+    png: pngPath + "sun-tzu-2.png",
     json: jsonPath + "sun-tzu.json",
   },
   warriorsFighting: {
@@ -90,7 +90,7 @@ function DynastySprite({ isInView }: { isInView: boolean }) {
     stiffness: 200,
   }).get();
 
-  useFrame(({}, delta) => {
+  useFrame(({ }, delta) => {
     if (meshRef.current) {
       if (isVisible) {
         easing.damp3(meshRef.current.position, [0, 0, 0], 0.5, delta);
@@ -247,31 +247,23 @@ function WarriorsFightingSprite() {
 }
 
 function SunTzuSprite() {
-  const { spriteObj } = useSpriteLoader(
-    texturePath.sunTzu.png,
-    texturePath.sunTzu.json,
-    null,
-    32,
-    (tex) => {
-      tex.minFilter = NearestFilter;
-      tex.magFilter = NearestFilter;
-    }
-  );
+  // Load the image texture
+  const texture = useLoader(TextureLoader, texturePath.sunTzu.png);
+
+  // Apply texture filtering
+  texture.minFilter = NearestFilter;
+  texture.magFilter = NearestFilter;
+
+  // Define the sprite size
+  const spriteWidth = 1.4; // Corresponds to previous scale.x
+  const spriteHeight = 1.7; // Corresponds to previous scale.y
+
   return (
-    <>
-      <SpriteAnimator
-        position={[2.8, 0.3, -4.5]}
-        startFrame={0}
-        autoPlay={true}
-        loop={true}
-        scale={[1.6, 1.24, 0.1]}
-        spriteDataset={spriteObj}
-        // textureImageURL={texture.image.src}
-        // textureDataURL={texturePath.grass.json}
-        asSprite={false}
-        fps={15}
-      />
-    </>
+    <mesh position={[2.8, 0.3, -4.5]}>
+      {/* Plane geometry to display the image */}
+      <planeGeometry args={[spriteWidth, spriteHeight]} />
+      <meshBasicMaterial map={texture} transparent={true} />
+    </mesh>
   );
 }
 

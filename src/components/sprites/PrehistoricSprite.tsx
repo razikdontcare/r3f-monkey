@@ -99,7 +99,7 @@ function PrehistoricSprite({ isInView }: { isInView: boolean }) {
     stiffness: 200,
   }).get();
 
-  useFrame(({}, delta) => {
+  useFrame(({ }, delta) => {
     if (meshRef.current) {
       if (isVisible) {
         easing.damp3(meshRef.current.position, [0, 0, 0], 0.5, delta);

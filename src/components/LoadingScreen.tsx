@@ -5,12 +5,13 @@ import { useState, useEffect } from "react";
 import { useThree } from '@react-three/fiber';
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useTexture } from '@react-three/drei';
+import { Preload, useTexture } from '@react-three/drei';
 import { SpriteMaterial, LinearFilter, NoToneMapping, Sprite, Object3DEventMap, Mesh, BufferGeometry, NormalBufferAttributes, Material, Texture } from 'three';
+import { useMusic } from "@/utils/MusicContext";
 
 export default function LoadingScreen() {
   const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
-  const targetSize = 100; // Target dalam MB
+  const targetSize = 400; // Target dalam MB
 
   useEffect(() => {
     const observer = new PerformanceObserver((list) => {
@@ -53,10 +54,13 @@ export default function LoadingScreen() {
     setMouseIdle(false);
   };
 
+  const { playMusic } = useMusic();
+
   useEffect(() => {
     if (confirmation === 'yes') {
       setTimeout(() => {
         setOpenApp(true)
+        playMusic()
         setConfirmation(null)
       }, 1000);
     } else if (confirmation === 'no') {
@@ -91,13 +95,15 @@ export default function LoadingScreen() {
           <SpriteAnimation confirmation={confirmation} />
         </Canvas>
 
+        {/* <p className="text-white font-procopius">{Math.round(loadedSize)}MB</p> */}
+
         {/* Loading Bar */}
         {loading &&
           <div className="w-full flex items-center gap-2">
             <div className="w-full flex h-3 overflow-hidden text-[1.2rem] bg-[#343a40] rounded-sm" role="progressbar">
               <div className="flex flex-col justify-center overflow-hidden text-white text-center whitespace-nowrap bg-white" id="progress-bar" style={{ width: `${Math.round(progress)}%`, transition: 'width 0.5s ease' }}></div>
             </div>
-            <p className="font-serif text-sm text-white">{Math.round(progress)}%</p>
+            <p className="absolute ml-2 left-full font-procopius font-bold text-base text-white">{Math.round(progress)}%</p>
           </div>
         }
       </div>
@@ -116,11 +122,11 @@ const ConfirmationBox = ({ yes, no }: { yes: () => void, no: () => void }) => {
   return (
     <div className="pt-20 pb-[186px] rounded-xl absolute max-w-[588px] w-full h-fit z-[1056]" style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}>
       <div className="flex flex-col items-center text-center">
-        <p className="text-white text-lg font-realityStine">Are you ready to meet your Ancestor?</p>
+        <p className="text-white text-lg font-procopius">Are you ready to meet your Ancestor?</p>
 
 
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-realityStine font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
       </div>
     </div>
   )
@@ -206,7 +212,7 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }
   // }, [currentFrame, textures]);
 
   return (
-    <sprite ref={meshRef} position={[0, 0, 0]} scale={[10, 10, 10]} />
+    <sprite ref={meshRef} position={[0, 0, 0]} scale={[15, 15, 15]} />
   );
 };
 
@@ -222,6 +228,27 @@ const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
   const ref = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
   const { viewport } = useThree();
   const targetPosition = useRef([0, 0, 0]);
+  const [planeScale, setPlaneScale] = useState<any>([1, 1, 1]);
+
+  useEffect(() => {
+    // Update scale to mimic background-size: cover
+    const updateScale = () => {
+      const imgAspect = image.source.data.width / image.source.data.height; // Aspect ratio of the image
+      const viewportAspect = viewport.width / viewport.height; // Aspect ratio of the viewport
+
+      if (imgAspect > viewportAspect) {
+        // Image is wider than the viewport
+        setPlaneScale([viewport.height * imgAspect, viewport.height, 1]);
+      } else {
+        // Image is taller than the viewport
+        setPlaneScale([viewport.width, viewport.width / imgAspect, 1]);
+      }
+    };
+
+    updateScale();
+    window.addEventListener('resize', updateScale);
+    return () => window.removeEventListener('resize', updateScale);
+  }, [image, viewport]);
 
   // Update position based on mouse movement with lerp for smoothness
   useFrame(({ mouse }) => {
@@ -252,15 +279,17 @@ const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
     <mesh
       ref={ref}
       position={position}
-      scale={[
-        viewport.width, // Full width
-        viewport.height, // Full height
-        1, // Fixed depth
-      ]}
+      scale={planeScale}
     >
       <planeGeometry args={[1, 1]} />
-      <meshBasicMaterial map={image} transparent={true} opacity={opacity} />
-      {/* alphaTest={0} */}
+      <meshBasicMaterial
+        map={image}
+        transparent={true}
+        premultipliedAlpha={true} // Prevent blending artifacts
+        depthWrite={false} // Optimize rendering
+        toneMapped={false} // Disable tone mapping
+        opacity={opacity}
+      />
     </mesh>
   );
 }
@@ -335,6 +364,19 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
   const backgroundTextures = useTexture(backgroundTexturesBatch[batchIndex]);
   const characterTextures = useTexture(characterTexturesBatch[batchIndex]);
 
+  useEffect(() => {
+    backgroundTextures.forEach((texture) => {
+      texture.minFilter = LinearFilter; // Avoid mipmap effects
+      texture.magFilter = LinearFilter;
+      texture.needsUpdate = true;
+    });
+    characterTextures.forEach((texture) => {
+      texture.minFilter = LinearFilter; // Avoid mipmap effects
+      texture.magFilter = LinearFilter;
+      texture.needsUpdate = true;
+    });
+  }, [backgroundTextures, characterTextures]);
+
   // Set idle after 2 seconds of inactivity
   useEffect(() => {
     const idleTimeout = setTimeout(() => {
@@ -359,6 +401,7 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
 
   return (
     <>
+      <Preload all />
       <ParallaxPlane
         image={backgroundTextures[imageIndex]}
         depth={0.1}
