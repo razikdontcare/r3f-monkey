@@ -45,15 +45,6 @@ export default function LoadingScreen() {
   const [confirmation, setConfirmation] = useState<'yes' | 'no' | null>(null)
   // const { progress } = useProgress();
 
-  const [lastMousePosition, setLastMousePosition] = useState([0, 0]); // Track last mouse position
-  const [mouseIdle, setMouseIdle] = useState(false); // Track if mouse is idle
-
-  // Handle mouse movement
-  const handleMouseMove = (event: any) => {
-    setLastMousePosition([event.clientX, event.clientY]);
-    setMouseIdle(false);
-  };
-
   const { playMusic } = useMusic();
 
   useEffect(() => {
@@ -81,8 +72,8 @@ export default function LoadingScreen() {
   return !openApp ? (
     <div className="h-screen w-screen flex absolute z-50 top-0 left-0 items-center justify-center bg-black">
       <div className="h-full w-full overflow-hidden absolute inset-0">
-        <Canvas onMouseMove={handleMouseMove}>
-          <ParallaxScene lastMousePosition={lastMousePosition} mouseIdle={mouseIdle} setMouseIdle={setMouseIdle} />
+        <Canvas>
+          <ParallaxScene />
         </Canvas>
       </div>
 
@@ -90,8 +81,8 @@ export default function LoadingScreen() {
       <div className="absolute left-20 bottom-10 text-center w-[15%]">
         {/* Spinner Monkey Loader */}
         <Canvas gl={{ toneMapping: NoToneMapping, }}>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
+          {/* <ambientLight intensity={0.5} /> */}
+          {/* <pointLight position={[10, 10, 10]} /> */}
           <SpriteAnimation confirmation={confirmation} />
         </Canvas>
 
@@ -126,7 +117,7 @@ const ConfirmationBox = ({ yes, no }: { yes: () => void, no: () => void }) => {
 
 
         <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
-        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>no</button>
+        <button className="flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>No</button>
       </div>
     </div>
   )
@@ -167,6 +158,8 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }
     texture.needsUpdate = true;
   });
 
+  const textureFrames = texturesCommon.length;
+  const animationSpeed = 0.2; // Adjust to control speed
   let elapsed = 0; // Accumulator to control speed
 
 
@@ -175,8 +168,8 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }
     if (stopAnimation) return; // Stop spinning if stopAnimation is true
 
     elapsed += delta;
-    if (elapsed > 0.2) {
-      setCurrentFrame((prev) => (prev + 1) % texturesCommon.length);
+    if (elapsed > animationSpeed) {
+      setCurrentFrame((prev) => (prev + 1) % textureFrames);
       elapsed = 0;
     }
   });
@@ -200,15 +193,20 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }
 
   // Apply the current texture to the sprite material
   // useEffect(() => {
-  const selectedTexture = texture === "textureYes" ? texturesYes[0] : texture === "textureNo" ? texturesNo[0] : texturesCommon[currentFrame];
+  const selectedTexture =
+    texture === "textureYes"
+      ? texturesYes[0] : texture === "textureNo"
+        ? texturesNo[0] : texturesCommon[currentFrame];
 
-  if (meshRef.current) {
-    meshRef.current.material = new SpriteMaterial({
-      map: selectedTexture,
-      color: blink ? 0xff0000 : 0xffffff, // Ensure no color tint is applied
-      transparent: true, // Support transparency if needed
-    });
-  }
+  useEffect(() => {
+    if (meshRef.current) {
+      meshRef.current.material = new SpriteMaterial({
+        map: selectedTexture,
+        color: blink ? 0xff0000 : 0xffffff, // Ensure no color tint is applied
+        transparent: true, // Support transparency if needed
+      });
+    }
+  }, [selectedTexture, blink]);
   // }, [currentFrame, textures]);
 
   return (
@@ -217,13 +215,12 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
+const ParallaxPlane = ({ image, depth, position, speed, opacity }: {
   image: Texture
   depth: number
   position: any
   speed: number
   opacity: number
-  direction: number
 }) => {
   const ref = useRef<Mesh<BufferGeometry<NormalBufferAttributes>, Material | Material[], Object3DEventMap>>(null);
   const { viewport } = useThree();
@@ -262,18 +259,6 @@ const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
     ref.current?.position.set(targetPosition.current[0], targetPosition.current[1], 0);
   });
 
-  // Update position with mouse or automatic movement
-  useFrame(() => {
-    targetPosition.current[1] += direction * speed; // Move up or down based on direction
-
-    // Reset position when it goes out of view to create an infinite scroll effect
-    if (targetPosition.current[1] > 1 || targetPosition.current[1] < -1) {
-      targetPosition.current[1] = direction > 0 ? -1 : 1;
-    }
-
-    ref.current?.position.set(targetPosition.current[0], targetPosition.current[1], 0);
-  });
-
 
   return (
     <mesh
@@ -294,11 +279,7 @@ const ParallaxPlane = ({ image, depth, position, speed, opacity, direction }: {
   );
 }
 
-const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
-  lastMousePosition: number[]
-  mouseIdle: boolean
-  setMouseIdle: (value: boolean) => void
-}) => {
+const ParallaxScene = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const [opacity, setOpacity] = useState(1);
   // const [fadeDirection, setFadeDirection] = useState('out');
@@ -377,27 +358,6 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
     });
   }, [backgroundTextures, characterTextures]);
 
-  // Set idle after 2 seconds of inactivity
-  useEffect(() => {
-    const idleTimeout = setTimeout(() => {
-      setMouseIdle(true);
-    }, 2000); // After 2 seconds of no mouse movement, mark as idle
-
-    return () => clearTimeout(idleTimeout);
-  }, [lastMousePosition]);
-
-  const getParallaxDirection = () => {
-    if (mouseIdle) {
-      return [0.01, -0.01]; // Automatic movement when idle
-    } else {
-      const [mouseX, mouseY] = lastMousePosition;
-      const xOffset = (mouseX / window.innerWidth) * 2 - 1;
-      const yOffset = (mouseY / window.innerHeight) * 2 - 1;
-      return [xOffset * 0.05, yOffset * 0.05]; // Mouse-based parallax movement
-    }
-  };
-
-  const [backgroundDirection, characterDirection] = getParallaxDirection();
 
   return (
     <>
@@ -409,7 +369,6 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
         // transparent={false}
         speed={speed}
         opacity={opacity}
-        direction={backgroundDirection}
       />
       <ParallaxPlane
         image={characterTextures[imageIndex]}
@@ -418,7 +377,6 @@ const ParallaxScene = ({ lastMousePosition, mouseIdle, setMouseIdle }: {
         // transparent={true}
         speed={speed}
         opacity={opacity}
-        direction={characterDirection}
       />
     </>
   );

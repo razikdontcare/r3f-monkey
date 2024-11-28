@@ -19,7 +19,7 @@ export default function Milestones() {
             <Image src={milestones} alt="MILESTONES" className="w-[35rem]" fetchPriority="low" />
             <button
               id="prehistoric"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 left-1 rounded-full ${targetPosition[0] !== 0 && "bg-black/70"}`}
+              className={`size-10 p-2 pointer-events-auto absolute top-1 left-1 rounded-full ${targetPosition[0] !== 0 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
               onClick={() => {
                 setTargetPosition([0, 0, 0]);
               }}
@@ -29,14 +29,14 @@ export default function Milestones() {
                   src={IconPrehistoric}
                   alt="PREHISTORIC"
                   fill
-                  className={`object-contain`}
+                  className={`object-contain icon`}
                   fetchPriority="low"
                 />
               </div>
             </button>
             <button
               id="egypt"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 left-[8.2rem] rounded-full ${targetPosition[0] !== 10 && "bg-black/70"}`}
+              className={`size-10 p-2 pointer-events-auto absolute top-1 left-[8.2rem] rounded-full ${targetPosition[0] !== 10 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
               onClick={() => {
                 setTargetPosition([10, 0, 0]);
               }}
@@ -46,14 +46,14 @@ export default function Milestones() {
                   src={IconEgypt}
                   alt="EGYPT"
                   fill
-                  className={`object-contain`}
+                  className={`object-contain icon`}
                   fetchPriority="low"
                 />
               </div>
             </button>
             <button
               id="dynasty"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 left-[16.25rem] rounded-full ${targetPosition[0] !== 20 && "bg-black/70"}`}
+              className={`size-10 p-2 pointer-events-auto absolute top-1 left-[16.25rem] rounded-full ${targetPosition[0] !== 20 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
               onClick={() => {
                 setTargetPosition([20, 0, 0]);
               }}
@@ -63,14 +63,14 @@ export default function Milestones() {
                   src={IconDynasty}
                   alt="THREE KINGDOMS"
                   fill
-                  className={`object-contain`}
+                  className={`object-contain icon`}
                   fetchPriority="low"
                 />
               </div>
             </button>
             <button
               id="ww2"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 right-[8.1rem] rounded-full ${targetPosition[0] !== 30 && "bg-black/70"}`}
+              className={`size-10 p-2 pointer-events-auto absolute top-1 right-[8.1rem] rounded-full ${targetPosition[0] !== 30 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
               onClick={() => {
                 setTargetPosition([30, 0, 0]);
               }}
@@ -80,14 +80,14 @@ export default function Milestones() {
                   src={IconWW2}
                   alt="WW2"
                   fill
-                  className={`object-contain`}
+                  className={`object-contain icon`}
                   fetchPriority="low"
                 />
               </div>
             </button>
             <button
               id="nyc"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 right-1 rounded-full ${targetPosition[0] !== 40 && "bg-black/70"}`}
+              className={`size-10 p-2 pointer-events-auto absolute top-1 right-1 rounded-full ${targetPosition[0] !== 40 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
               onClick={() => {
                 setTargetPosition([40, 0, 0]);
               }}
@@ -97,7 +97,7 @@ export default function Milestones() {
                   src={IconNYC}
                   alt="NYC"
                   fill
-                  className={`object-contain`}
+                  className={`object-contain icon`}
                   fetchPriority="low"
                 />
               </div>
