@@ -23,6 +23,18 @@
   }
 }
 
+.custom-cursor-grab{
+    cursor: url('/cursor/grab cursor.png'), auto;
+}
+
+.custom-cursor-hover{
+    cursor: url('/cursor/hover cursor.png'), auto;
+}
+
+.custom-cursor-select{
+    cursor: url('/cursor/select cursor.png'), auto;
+}
+
 .striped-border {
     border: 1px dashed white;
 }
