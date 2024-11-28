@@ -14,7 +14,7 @@ export default function Home() {
       <CameraPositionProvider>
         <CharacterEventsProvider>
           <MusicProvider>
-            {/* <LoadingScreen /> */}
+            <LoadingScreen />
             <div className="h-screen relative mx-auto flex items-center justify-center overflow-hidden ">
               <Scene />
               <UIOverlay />
