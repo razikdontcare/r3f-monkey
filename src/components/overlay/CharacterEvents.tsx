@@ -1,7 +1,7 @@
 "use client";
 import { useCameraPosition, useCharacterEvents } from "@/utils/context";
 import Image from "next/image";
-import { useEffect, useState, MutableRefObject } from "react";
+import { useEffect, useState } from "react";
 import tablet from "./assets/tablet.png";
 import longTablet from "./assets/long-tablet.png";
 import sunTzuScrollSmall from "./assets/sun-tzu-scroll-small.png";
