@@ -1,10 +1,12 @@
-'use client'
+'use client';
 import { createContext, useContext, useRef, useState, ReactNode } from 'react';
 
 interface MusicContextType {
   playMusic: () => void;
   pauseMusic: () => void;
   toggleMute: () => void;
+  increaseVolume: () => void;
+  decreaseVolume: () => void;
   isPlaying: boolean;
   isMuted: boolean;
 }
@@ -16,11 +18,11 @@ interface MusicProviderProps {
 }
 
 export const MusicProvider: React.FC<MusicProviderProps> = ({ children }) => {
-  const audioRef = useRef<HTMLAudioElement | null>(null); // Referensi ke elemen audio
+  const audioRef = useRef<HTMLAudioElement | null>(null); // Reference to audio element
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
 
-  // Fungsi untuk memutar audio
+  // Function to play audio
   const playMusic = () => {
     if (audioRef.current) {
       audioRef.current.play();
@@ -28,7 +30,7 @@ export const MusicProvider: React.FC<MusicProviderProps> = ({ children }) => {
     }
   };
 
-  // Fungsi untuk menghentikan audio
+  // Function to pause audio
   const pauseMusic = () => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -36,11 +38,25 @@ export const MusicProvider: React.FC<MusicProviderProps> = ({ children }) => {
     }
   };
 
-  // Fungsi untuk mute/unmute audio
+  // Function to toggle mute
   const toggleMute = () => {
     if (audioRef.current) {
       audioRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
+    }
+  };
+
+  // Function to increase volume by 50%
+  const increaseVolume = () => {
+    if (audioRef.current) {
+      audioRef.current.volume = 1;
+    }
+  };
+
+  // Function to decrease volume by 50%
+  const decreaseVolume = () => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.2;
     }
   };
 
@@ -50,18 +66,24 @@ export const MusicProvider: React.FC<MusicProviderProps> = ({ children }) => {
         playMusic,
         pauseMusic,
         toggleMute,
+        increaseVolume,
+        decreaseVolume,
         isPlaying,
         isMuted,
       }}
     >
-      {/* Elemen audio tersembunyi */}
-      <audio ref={audioRef} src="/audio/Indila - Tourner Dans Le Vide (no vocal) (Instrumental).mp3" loop={true}/>
+      {/* Hidden audio element */}
+      <audio
+        ref={audioRef}
+        src="/audio/Indila - Tourner Dans Le Vide (no vocal) (Instrumental).mp3"
+        loop={true}
+      />
       {children}
     </MusicContext.Provider>
   );
 };
 
-// Custom hook untuk menggunakan context
+// Custom hook to use the MusicContext
 export const useMusic = (): MusicContextType => {
   const context = useContext(MusicContext);
   if (!context) {
