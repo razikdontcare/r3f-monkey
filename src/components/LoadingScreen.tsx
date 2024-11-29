@@ -11,7 +11,7 @@ import { useMusic } from "@/utils/MusicContext";
 
 export default function LoadingScreen() {
   const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
-  const targetSize = 400; // Target dalam MB
+  const targetSize = 125; // Target dalam MB
 
   useEffect(() => {
     const observer = new PerformanceObserver((list) => {
@@ -86,7 +86,7 @@ export default function LoadingScreen() {
           <SpriteAnimation confirmation={confirmation} />
         </Canvas>
 
-        {/* <p className="text-white font-procopius">{Math.round(loadedSize)}MB</p> */}
+        <p className="text-white font-procopius">{Math.round(loadedSize)}MB</p>
 
         {/* Loading Bar */}
         {loading &&

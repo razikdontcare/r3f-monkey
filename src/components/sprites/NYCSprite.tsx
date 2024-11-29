@@ -55,7 +55,7 @@ const texturePath = {
   },
 };
 
-function NYCSprite({ isInView }: { isInView: boolean }) {
+function NYCSprite({ isInView, position }: { isInView: boolean, position: [number, number, number] }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
@@ -96,7 +96,7 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
     stiffness: 200,
   }).get();
 
-  useFrame(({}, delta) => {
+  useFrame(({ }, delta) => {
     if (meshRef.current) {
       if (isVisible) {
         easing.damp3(meshRef.current.position, [0, 0, 0], 0.3, delta);
@@ -110,7 +110,7 @@ function NYCSprite({ isInView }: { isInView: boolean }) {
 
   return (
     <>
-      <group position={[40, 0, 0]}>
+      <group position={position}>
         <group ref={meshRef} position={[0, animatedPositionY, 0]}>
           <SideBuildingsMesh />
           <VideoScreen

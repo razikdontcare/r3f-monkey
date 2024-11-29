@@ -62,7 +62,7 @@ const texturePath = {
   },
 };
 
-function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
+function WorldWar2Sprite({ isInView, position }: { isInView: boolean, position: [number, number, number] }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
@@ -99,7 +99,7 @@ function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
     stiffness: 200,
   });
 
-  useFrame(({}, delta) => {
+  useFrame(({ }, delta) => {
     if (meshRef.current) {
       if (isVisible) {
         easing.damp3(meshRef.current.position, [0, 0, 0], 0.5, delta);
@@ -113,7 +113,7 @@ function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
 
   return (
     <>
-      <group position={[30, 0, 0]}>
+      <group position={position}>
         <group ref={meshRef} position={[0, animatedPositionY.get(), 0]}>
           <StatueMesh />
           <TreeLineSprite />
@@ -155,6 +155,8 @@ function ForegroundSilhouetteMesh() {
   );
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   const scale = 3.7;
 
@@ -172,6 +174,8 @@ function StatueMesh() {
   const texture = useLoader(TextureLoader, pngPath + "statue.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   const scale = 12;
 
@@ -188,9 +192,11 @@ function StatueMesh() {
 }
 
 function EnvironmentMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "environment.png");
+  const texture = useLoader(TextureLoader, pngPath + "environment.webp");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   const scale = 10.3;
 
@@ -213,6 +219,8 @@ function DustSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -241,6 +249,8 @@ function FireSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -276,6 +286,8 @@ function SoldiersSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -309,6 +321,8 @@ function SparksOverlaySprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -344,6 +358,8 @@ function RBuildingSmokeSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -377,6 +393,8 @@ function LBuildingSmokeSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -410,6 +428,8 @@ function SoldierDyingForegroundSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -443,6 +463,8 @@ function TreeLineSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -476,6 +498,8 @@ function TreeLineSmokeSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -509,6 +533,8 @@ function SnifferSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -542,6 +568,8 @@ function SnifferHoverSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 

@@ -28,7 +28,7 @@ const texturePath = {
     json: jsonPath + "glows.json",
   },
   grass: {
-    png: pngPath + "grass.png",
+    png: pngPath + "grass.webp",
     json: jsonPath + "grass.json",
   },
   sunTzu: {
@@ -49,7 +49,7 @@ const texturePath = {
   },
 };
 
-function DynastySprite({ isInView }: { isInView: boolean }) {
+function DynastySprite({ isInView, position }: { isInView: boolean, position: [number, number, number] }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
@@ -101,7 +101,7 @@ function DynastySprite({ isInView }: { isInView: boolean }) {
   });
   return (
     <>
-      <group position={[20, 0, 0]}>
+      <group position={position}>
         <group ref={meshRef} position={[0, animatedPositionY, 0]}>
           <CitySprite />
         </group>
@@ -136,6 +136,8 @@ function PavedRoadMesh() {
   const texture = useLoader(TextureLoader, pngPath + "paved-road.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   return (
     <>
@@ -151,6 +153,8 @@ function MidGroundMesh() {
   const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   return (
     <>
@@ -170,6 +174,8 @@ function GrassSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
   return (
@@ -197,6 +203,8 @@ function GlowsSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
   const scaleX = 8;
@@ -226,6 +234,8 @@ function WarriorsFightingSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
   return (
@@ -253,6 +263,8 @@ function SunTzuSprite() {
   // Apply texture filtering
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   // Define the sprite size
   const spriteWidth = 1.4; // Corresponds to previous scale.x
@@ -276,6 +288,8 @@ function CitySprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
   return (
@@ -305,6 +319,8 @@ function ArrowsFlyingSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
   return (
@@ -335,6 +351,8 @@ function SnifferSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -367,6 +385,8 @@ function SnifferHoverSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
