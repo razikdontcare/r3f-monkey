@@ -40,6 +40,10 @@ const texturePath = {
     png: pngPath + "sniffer-hover.png",
     json: jsonPath + "sniffer-hover.json",
   },
+  clickHim: {
+    png: "/sprites/click-him-text/click-him-text.png",
+    json: "/sprites/click-him-text/click-him-text.json",
+  },
 };
 
 function EgyptSprite({ isInView, position }: { isInView: boolean, position: [number, number, number] }) {
@@ -103,6 +107,7 @@ function EgyptSprite({ isInView, position }: { isInView: boolean, position: [num
       <GrassSprite />
       <CornerGrassSprite />
       <ForegroundStuffMesh />
+      <ClickHimSprite />
 
       <group onClick={() => setEvent("egypt")}>
         <mesh
@@ -313,6 +318,32 @@ function SnifferHoverSprite() {
       autoPlay={true}
       loop={true}
       scale={[scaleX, scaleX * 0.6784511784511785, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
+  );
+}
+
+function ClickHimSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.clickHim.png,
+    texturePath.clickHim.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  return (
+    <SpriteAnimator
+      position={[0, 0.65, -5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[0.7, 1.1, 0.1]}
       spriteDataset={spriteObj}
       asSprite={false}
       fps={15}

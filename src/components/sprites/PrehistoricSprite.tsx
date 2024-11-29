@@ -58,6 +58,10 @@ const texturePath = {
     png: pngPath + "snake.png",
     json: jsonPath + "snake.json",
   },
+  clickHim: {
+    png: "/sprites/click-him-text/click-him-text.png",
+    json: "/sprites/click-him-text/click-him-text.json",
+  },
 };
 
 function PrehistoricSprite({ isInView }: { isInView: boolean }) {
@@ -126,6 +130,7 @@ function PrehistoricSprite({ isInView }: { isInView: boolean }) {
       <SnakeSprite />
       <RForegroundSillhouetteSprite />
       <LForegroundSillhouetteSprite />
+      <ClickHimSprite />
       <group>
         <mesh
           visible={!isHovered}
@@ -496,6 +501,32 @@ function SnakeSprite() {
       autoPlay={true}
       loop={true}
       scale={[3.2, 4, 2.4]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
+  );
+}
+
+function ClickHimSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.clickHim.png,
+    texturePath.clickHim.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  return (
+    <SpriteAnimator
+      position={[0, -0.05, -4.75]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[0.7, 1.1, 0.1]}
       spriteDataset={spriteObj}
       asSprite={false}
       fps={15}

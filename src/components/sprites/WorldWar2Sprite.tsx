@@ -60,6 +60,10 @@ const texturePath = {
     png: pngPath + "sniffer-hover.png",
     json: jsonPath + "sniffer-hover.json",
   },
+  clickHim: {
+    png: "/sprites/click-him-text/click-him-text.png",
+    json: "/sprites/click-him-text/click-him-text.json",
+  },
 };
 
 function WorldWar2Sprite({ isInView, position }: { isInView: boolean, position: [number, number, number] }) {
@@ -128,6 +132,7 @@ function WorldWar2Sprite({ isInView, position }: { isInView: boolean, position: 
         <LBuildingSmokeSprite />
         <SoldierDyingForegroundSprite />
         <ForegroundSilhouetteMesh />
+        <ClickHimSprite />
 
         <group onClick={() => setEvent("ww2")}>
           <mesh
@@ -591,5 +596,32 @@ function SnifferHoverSprite() {
         fps={15}
       />
     </>
+  );
+}
+
+
+function ClickHimSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.clickHim.png,
+    texturePath.clickHim.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  return (
+    <SpriteAnimator
+      position={[0, 0.7, -4.5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[0.7, 1.1, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }

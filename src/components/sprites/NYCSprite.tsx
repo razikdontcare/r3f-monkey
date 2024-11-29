@@ -53,6 +53,10 @@ const texturePath = {
     png: pngPath + "sniffer-hover.png",
     json: jsonPath + "sniffer-hover.json",
   },
+  clickHim: {
+    png: "/sprites/click-him-text/click-him-text.png",
+    json: "/sprites/click-him-text/click-him-text.json",
+  },
 };
 
 function NYCSprite({ isInView, position }: { isInView: boolean, position: [number, number, number] }) {
@@ -196,6 +200,7 @@ function NYCSprite({ isInView, position }: { isInView: boolean, position: [numbe
         <PeoplesSprite />
         <GuyWithFedoraSprite />
         <ForegroundSilhouettesSprite />
+        <ClickHimSprite />
 
         <group onClick={() => setEvent("nyc")}>
           <mesh visible={!isHovered}>
@@ -567,5 +572,32 @@ function SnifferHoverSprite() {
         fps={15}
       />
     </>
+  );
+}
+
+
+function ClickHimSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.clickHim.png,
+    texturePath.clickHim.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  return (
+    <SpriteAnimator
+      position={[0, 0.35, -4.5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[0.7, 1.1, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }
