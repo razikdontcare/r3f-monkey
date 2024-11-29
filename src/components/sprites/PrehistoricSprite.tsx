@@ -491,11 +491,11 @@ function SnakeSprite() {
 
   return (
     <SpriteAnimator
-      position={[3, 0.78, -3.8]}
+      position={[2.8, 0.75, -3.8]}
       startFrame={0}
       autoPlay={true}
       loop={true}
-      scale={[1.1, 1.04, 0.1]}
+      scale={[3.2, 4, 2.4]}
       spriteDataset={spriteObj}
       asSprite={false}
       fps={15}
