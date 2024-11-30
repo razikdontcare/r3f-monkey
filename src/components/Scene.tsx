@@ -37,7 +37,7 @@ export default function Scene() {
         setDynastyPosition([20, 0, 0])
         setWorldWarPosition([30, 0, 0])
         setNYCPosition([40, 0, 0])
-      }, 5000);
+      }, 12500);
     }
   }, [texturesReady])
 

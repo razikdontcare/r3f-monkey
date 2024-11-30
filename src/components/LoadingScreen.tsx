@@ -16,7 +16,7 @@ export default function LoadingScreen() {
   useEffect(() => {
     const observer = new PerformanceObserver((list) => {
       const entries = list.getEntriesByType("resource");
-      let totalSize = 0;
+      let totalSize = 100;
 
       entries.forEach((entry: any) => {
         // Menambahkan ukuran setiap resource yang dimuat

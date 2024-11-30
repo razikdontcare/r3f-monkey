@@ -16,7 +16,7 @@ const texturePath = {
     json: jsonPath + "arrows-flying.json",
   },
   city: {
-    png: pngPath + "city.png",
+    png: pngPath + "city.webp",
     json: jsonPath + "city.json",
   },
   flag: {
@@ -28,7 +28,7 @@ const texturePath = {
     json: jsonPath + "glows.json",
   },
   grass: {
-    png: pngPath + "grass-2.png",
+    png: pngPath + "grass-2.webp",
     json: jsonPath + "grass-2.json",
   },
   sunTzu: {
@@ -138,7 +138,7 @@ function DynastySprite({ isInView, position }: { isInView: boolean, position: [n
 export default React.memo(DynastySprite);
 
 function PavedRoadMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "paved-road.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/64b7fa03-20d7-4a3e-b427-bc04f38c2600/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
   texture.generateMipmaps = false;
@@ -155,7 +155,7 @@ function PavedRoadMesh() {
 }
 
 function MidGroundMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/0115cdd0-d370-4dce-68e4-86302e60cc00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
   texture.generateMipmaps = false;
@@ -263,7 +263,7 @@ function WarriorsFightingSprite() {
 
 function SunTzuSprite() {
   // Load the image texture
-  const texture = useLoader(TextureLoader, texturePath.sunTzu.png);
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/d961b91e-bce6-492d-4179-916815288500/public");
 
   // Apply texture filtering
   texture.minFilter = NearestFilter;

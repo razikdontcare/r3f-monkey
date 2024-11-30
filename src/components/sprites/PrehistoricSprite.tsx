@@ -150,7 +150,7 @@ function PrehistoricSprite({ isInView }: { isInView: boolean }) {
 export default React.memo(PrehistoricSprite);
 
 function MidGroundMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/78bef30f-61eb-4aa6-928b-84659ae77d00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -163,7 +163,7 @@ function MidGroundMesh() {
 }
 
 function GroundMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "ground.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/471736ca-9fce-4bfe-a2e1-4ea69e70d300/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -176,7 +176,7 @@ function GroundMesh() {
 }
 
 function VolcanoMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "volcano.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/6e8dd02a-1ab3-4a5b-890f-aaec01de9100/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 

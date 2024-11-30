@@ -10,7 +10,7 @@ export function PrehistoricToEgypt({
   target: [number, number, number];
 }) {
   const meshRef = useRef<Mesh>(null);
-  const texture = useLoader(TextureLoader, "/transitions/" + "plant.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/18850813-9fd2-465d-57ee-4eb2029cb800/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -37,7 +37,7 @@ export function PrehistoricToEgypt({
       ref={meshRef}
       scale={[scale, scale, 0.1]}
       position={position.get()}
-      // visible={isInView}
+    // visible={isInView}
     >
       <planeGeometry args={[1, 0.421875]} />
       <meshBasicMaterial map={texture} transparent />
@@ -51,7 +51,7 @@ export function EgyptToDynasty({
   target: [number, number, number];
 }) {
   const meshRef = useRef<Mesh>(null);
-  const texture = useLoader(TextureLoader, "/transitions/" + "cactus.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/2b6758f5-65ea-4eb0-2be0-1e3954abae00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -78,7 +78,7 @@ export function EgyptToDynasty({
       ref={meshRef}
       scale={[scale, scale, 0.1]}
       position={position.get()}
-      // visible={isInView}
+    // visible={isInView}
     >
       <planeGeometry args={[1, 0.421875]} />
       <meshBasicMaterial map={texture} transparent />
@@ -90,7 +90,7 @@ export function DynastyToWW2({ target }: { target: [number, number, number] }) {
   const meshRef = useRef<Mesh>(null);
   const texture = useLoader(
     TextureLoader,
-    "/transitions/" + "glass-flower-stone.png"
+    "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/e1c211b6-d355-4300-b3ad-6ea1ddc00c00/public"
   );
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
@@ -118,7 +118,7 @@ export function DynastyToWW2({ target }: { target: [number, number, number] }) {
       ref={meshRef}
       scale={[scale, scale, 0.1]}
       position={position.get()}
-      // visible={isInView}
+    // visible={isInView}
     >
       <planeGeometry args={[1, 0.421875]} />
       <meshBasicMaterial map={texture} transparent />
@@ -128,7 +128,7 @@ export function DynastyToWW2({ target }: { target: [number, number, number] }) {
 
 export function WW2ToNYC({ target }: { target: [number, number, number] }) {
   const meshRef = useRef<Mesh>(null);
-  const texture = useLoader(TextureLoader, "/transitions/" + "rubble.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/491c10e4-0a48-4c87-98d1-34f744771400/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -155,7 +155,7 @@ export function WW2ToNYC({ target }: { target: [number, number, number] }) {
       ref={meshRef}
       scale={[scale, scale, 0.1]}
       position={position.get()}
-      // visible={isInView}
+    // visible={isInView}
     >
       <planeGeometry args={[1, 0.421875]} />
       <meshBasicMaterial map={texture} transparent />

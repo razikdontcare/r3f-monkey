@@ -18,7 +18,7 @@ const texturePath = {
     json: jsonPath + "flag.json",
   },
   foregroundSilhouettes: {
-    png: pngPath + "foreground-silhouettes.png",
+    png: pngPath + "foreground-silhouettes.webp",
     json: jsonPath + "foreground-silhouettes.json",
   },
   guyWithFedora: {
@@ -118,73 +118,73 @@ function NYCSprite({ isInView, position }: { isInView: boolean, position: [numbe
         <group ref={meshRef} position={[0, animatedPositionY, 0]}>
           <SideBuildingsMesh />
           <VideoScreen
-            src="16.mp4"
+            src="16.mp4" //290afb82652590076bd3442dc218af82
             size={[1, 0.37]}
             position={[-0.03, 0.215, -4.9]}
             scale={0.82}
           />
           <VideoScreen
-            src="12.mp4"
+            src="12.mp4" //5f275877ded08b5420bf2a561706c591 
             size={[1, 1.45]}
             position={[-0.01, 0.95, -4.9]}
             scale={0.78}
           />
           <VideoScreen
-            src="15.mp4"
+            src="15.mp4" // c34172c742ebf289544ca033b162a614
             size={[1, 0.5]}
             position={[-0.001, 1.75, -4.9]}
             scale={0.67}
           />
           <VideoScreen
-            src="3.mp4"
+            src="3.mp4" // 2a359cea3b58d47657d3fd50bb2a8bcc
             size={[1, 0.24]}
             position={[0, 2.01, -4.9]}
             scale={0.71}
           />
           <VideoScreen
-            src="14.mp4"
+            src="14.mp4" //895e59efcf26ea3ffe260e2878704eac
             size={[1, 1]}
             position={[3.88, 3.46, -12.1]}
             scale={1.2}
             rotation={[0, -0.11, 0.04]}
           />
           <VideoScreen
-            src="7.mp4"
+            src="7.mp4" // b10729baf8b0e4d1fb44e5444d818ff5
             size={[1, 0.71]}
             position={[-2.6, 0.68, -12.1]}
             scale={0.92}
             rotation={[0, 0, -0.01]}
           />
           <VideoScreen
-            src="6.mp4"
+            src="6.mp4" // 1046837ba2927e343f53b3aa8ed3bdd2 
             size={[2.05, 2.95]}
             position={[-5.8, 0.37, -10.5]}
             scale={0.74}
             rotation={[-1.23, 1.47, 1.03]}
           />
           <VideoScreen
-            src="2.mp4"
+            src="2.mp4" //ee5a6022a9cf51faf9f58ceed4bf3566
             size={[1, 0.74]}
             position={[-8.46, 3.04, -10]}
             scale={3.07}
             rotation={[-1.2, 1.43, 1.03]}
           />
           <VideoScreen
-            src="13-2-compressed.mp4"
+            src="13-2-compressed.mp4" // 7c919a605985333e79ba0d447fb96a34
             size={[1, 0.74]}
             position={[5.51, -0.06, -10]}
             scale={1.95}
             rotation={[-0.03, 0.41, -0.01]}
           />
           <VideoScreen
-            src="13-1-compressed.mp4"
+            src="13-1-compressed.mp4" // d0d005875cd1e634b88fab76b288b26b
             size={[1, 0.74]}
             position={[4.39, -0.17, -10]}
             scale={1.83}
             rotation={[-0.28, -1.55, -0.13]}
           />
           <VideoScreen
-            src="17.mp4"
+            src="17.mp4" // 4b97894e4f85f710f849c7706e036b3d
             size={[1, 0.56]}
             position={[6.81, 3.65, -10]}
             scale={6.0}
@@ -222,7 +222,7 @@ function NYCSprite({ isInView, position }: { isInView: boolean, position: [numbe
 export default React.memo(NYCSprite);
 
 function SideBuildingsMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "side-buildings.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/21da5825-b818-4bc1-7895-2698e264cf00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -241,7 +241,7 @@ function SideBuildingsMesh() {
 }
 
 function MidGroundMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/858906fe-85e1-4b63-8118-f4d610550500/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -260,7 +260,7 @@ function MidGroundMesh() {
 }
 
 function MidBuildingMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "mid-building.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/25f15850-4f02-40df-af2f-022ae0094500/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 

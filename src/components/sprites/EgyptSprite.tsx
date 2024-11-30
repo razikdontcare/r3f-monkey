@@ -128,7 +128,7 @@ function EgyptSprite({ isInView, position }: { isInView: boolean, position: [num
 export default React.memo(EgyptSprite);
 
 function SandMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "sand.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/7f9bde79-db8a-4377-428e-6298ad52bb00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -143,7 +143,7 @@ function SandMesh() {
 }
 
 function ForegroundStuffMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "foreground-stuff.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/b74753e3-687e-4700-196d-817c1f011c00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -158,7 +158,7 @@ function ForegroundStuffMesh() {
 }
 
 function CactusMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "cactus.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/493a03d1-35b6-4f5e-053b-f79d7b75f400/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -171,7 +171,7 @@ function CactusMesh() {
 }
 
 function SphinxMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "sphinx.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/4b79e959-0809-42b3-1dda-7f8f30da9d00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 

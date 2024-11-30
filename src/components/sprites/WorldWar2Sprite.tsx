@@ -21,8 +21,8 @@ const texturePath = {
     json: jsonPath + "dust.json",
   },
   fire: {
-    png: pngPath + "fire-2.png",
-    json: jsonPath + "fire-2.json",
+    png: pngPath + "fire.png",
+    json: jsonPath + "fire.json",
   },
   lBuildingSmoke: {
     png: pngPath + "l-building-smoke.png",
@@ -156,7 +156,7 @@ export default React.memo(WorldWar2Sprite);
 function ForegroundSilhouetteMesh() {
   const texture = useLoader(
     TextureLoader,
-    pngPath + "foreground-sillhouette-2.png"
+    "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/1b644df9-534d-4f87-0413-33e3b33a6400/public"
   );
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
@@ -176,7 +176,7 @@ function ForegroundSilhouetteMesh() {
 }
 
 function StatueMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "statue.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/dc344f24-0309-423f-42b5-b5efe578fb00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
   texture.generateMipmaps = false;
@@ -197,7 +197,7 @@ function StatueMesh() {
 }
 
 function EnvironmentMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "environment.webp");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/557ce150-dc2d-446a-5809-3ea200a55c00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
   texture.generateMipmaps = false;
