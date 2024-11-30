@@ -24,10 +24,10 @@ export default function Scene() {
 
   const [texturesReady, setTexturesReady] = useState(false);
 
-  const [egyptPosition, setEgyptPosition] = useState<[number, number, number]>([0, 0, 0])
-  const [dynastyPosition, setDynastyPosition] = useState<[number, number, number]>([0, 0, 0])
-  const [worldWarPosition, setWorldWarPosition] = useState<[number, number, number]>([0, 0, 0])
-  const [nycPosition, setNYCPosition] = useState<[number, number, number]>([0, 0, 0])
+  const [egyptPosition, setEgyptPosition] = useState<[number, number, number]>([10, 0, 0])
+  const [dynastyPosition, setDynastyPosition] = useState<[number, number, number]>([20, 0, 0])
+  const [worldWarPosition, setWorldWarPosition] = useState<[number, number, number]>([30, 0, 0])
+  const [nycPosition, setNYCPosition] = useState<[number, number, number]>([40, 0, 0])
 
 
   useEffect(() => {
