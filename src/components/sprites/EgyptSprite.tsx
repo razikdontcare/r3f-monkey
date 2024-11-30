@@ -29,8 +29,8 @@ const texturePath = {
     json: jsonPath + "grass.json",
   },
   pyramidsAndNile: {
-    png: pngPath + "pyramids-and-nile.png",
-    json: jsonPath + "pyramids-and-nile.json",
+    png: pngPath + "pyramids-and-nile-2.png",
+    json: jsonPath + "pyramids-and-nile-2.json",
   },
   sniffer: {
     png: pngPath + "sniffer.png",
@@ -190,7 +190,7 @@ function PyramidsAndNileSprite() {
     texturePath.pyramidsAndNile.png,
     texturePath.pyramidsAndNile.json,
     null,
-    15,
+    64,
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;

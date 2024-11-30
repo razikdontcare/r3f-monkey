@@ -21,8 +21,8 @@ const texturePath = {
     json: jsonPath + "dust.json",
   },
   fire: {
-    png: pngPath + "fire.png",
-    json: jsonPath + "fire.json",
+    png: pngPath + "fire-2.png",
+    json: jsonPath + "fire-2.json",
   },
   lBuildingSmoke: {
     png: pngPath + "l-building-smoke.png",
@@ -45,8 +45,8 @@ const texturePath = {
     json: jsonPath + "sparks-overlay.json",
   },
   treeLine: {
-    png: pngPath + "tree-line.png",
-    json: jsonPath + "tree-line.json",
+    png: pngPath + "tree-line-2.png",
+    json: jsonPath + "tree-line-2.json",
   },
   treeLineSmoke: {
     png: pngPath + "tree-line-smoke.png",
@@ -156,7 +156,7 @@ export default React.memo(WorldWar2Sprite);
 function ForegroundSilhouetteMesh() {
   const texture = useLoader(
     TextureLoader,
-    pngPath + "foreground-sillhouette.png"
+    pngPath + "foreground-sillhouette-2.png"
   );
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
@@ -250,7 +250,7 @@ function FireSprite() {
     texturePath.fire.png,
     texturePath.fire.json,
     null,
-    24,
+    32,
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;

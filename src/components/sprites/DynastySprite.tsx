@@ -28,8 +28,8 @@ const texturePath = {
     json: jsonPath + "glows.json",
   },
   grass: {
-    png: pngPath + "grass.webp",
-    json: jsonPath + "grass.json",
+    png: pngPath + "grass-2.png",
+    json: jsonPath + "grass-2.json",
   },
   sunTzu: {
     png: pngPath + "sun-tzu-2.png",
