@@ -3,6 +3,8 @@ import { useRef, useEffect, useState } from "react";
 import { useVideoTexture } from "@react-three/drei";
 import { Mesh } from "three";
 
+// const videoUrl = "https://videodelivery.net/";
+// const videoPostUrl = "/downloads/default.mp4";
 const basePath = "/sprites/nyc/";
 const videoPath = basePath + "video/";
 
@@ -24,6 +26,7 @@ export default function VideoScreen({
   part = "center",
 }: VideoScreenProps) {
   const [start, setStart] = useState(false);
+  // const texture = useVideoTexture(videoUrl + src + videoPostUrl, { start });
   const texture = useVideoTexture(videoPath + src, { start });
   const meshRef = useRef<Mesh>(null);
   const [aspectRatio, setAspectRatio] = useState(1);

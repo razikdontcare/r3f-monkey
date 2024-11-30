@@ -45,8 +45,8 @@ const texturePath = {
     json: jsonPath + "sparks-overlay.json",
   },
   treeLine: {
-    png: pngPath + "tree-line.png",
-    json: jsonPath + "tree-line.json",
+    png: pngPath + "tree-line-2.png",
+    json: jsonPath + "tree-line-2.json",
   },
   treeLineSmoke: {
     png: pngPath + "tree-line-smoke.png",
@@ -60,9 +60,13 @@ const texturePath = {
     png: pngPath + "sniffer-hover.png",
     json: jsonPath + "sniffer-hover.json",
   },
+  clickHim: {
+    png: "/sprites/click-him-text/click-him-text.png",
+    json: "/sprites/click-him-text/click-him-text.json",
+  },
 };
 
-function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
+function WorldWar2Sprite({ isInView, position }: { isInView: boolean, position: [number, number, number] }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
@@ -99,7 +103,7 @@ function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
     stiffness: 200,
   });
 
-  useFrame(({}, delta) => {
+  useFrame(({ }, delta) => {
     if (meshRef.current) {
       if (isVisible) {
         easing.damp3(meshRef.current.position, [0, 0, 0], 0.5, delta);
@@ -113,7 +117,7 @@ function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
 
   return (
     <>
-      <group position={[30, 0, 0]}>
+      <group position={position}>
         <group ref={meshRef} position={[0, animatedPositionY.get(), 0]}>
           <StatueMesh />
           <TreeLineSprite />
@@ -128,6 +132,7 @@ function WorldWar2Sprite({ isInView }: { isInView: boolean }) {
         <LBuildingSmokeSprite />
         <SoldierDyingForegroundSprite />
         <ForegroundSilhouetteMesh />
+        <ClickHimSprite />
 
         <group onClick={() => setEvent("ww2")}>
           <mesh
@@ -151,10 +156,12 @@ export default React.memo(WorldWar2Sprite);
 function ForegroundSilhouetteMesh() {
   const texture = useLoader(
     TextureLoader,
-    pngPath + "foreground-sillhouette.png"
+    "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/1b644df9-534d-4f87-0413-33e3b33a6400/public"
   );
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   const scale = 3.7;
 
@@ -169,9 +176,11 @@ function ForegroundSilhouetteMesh() {
 }
 
 function StatueMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "statue.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/dc344f24-0309-423f-42b5-b5efe578fb00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   const scale = 12;
 
@@ -188,9 +197,11 @@ function StatueMesh() {
 }
 
 function EnvironmentMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "environment.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/557ce150-dc2d-446a-5809-3ea200a55c00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
+  texture.generateMipmaps = false;
+  texture.needsUpdate = true;
 
   const scale = 10.3;
 
@@ -213,6 +224,8 @@ function DustSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -237,10 +250,12 @@ function FireSprite() {
     texturePath.fire.png,
     texturePath.fire.json,
     null,
-    24,
+    32,
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -276,6 +291,8 @@ function SoldiersSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -309,6 +326,8 @@ function SparksOverlaySprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -344,6 +363,8 @@ function RBuildingSmokeSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -377,6 +398,8 @@ function LBuildingSmokeSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -410,6 +433,8 @@ function SoldierDyingForegroundSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -443,6 +468,8 @@ function TreeLineSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -476,6 +503,8 @@ function TreeLineSmokeSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -509,6 +538,8 @@ function SnifferSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -542,6 +573,8 @@ function SnifferHoverSprite() {
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
+      tex.generateMipmaps = false;
+      tex.needsUpdate = true;
     }
   );
 
@@ -563,5 +596,32 @@ function SnifferHoverSprite() {
         fps={15}
       />
     </>
+  );
+}
+
+
+function ClickHimSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.clickHim.png,
+    texturePath.clickHim.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  return (
+    <SpriteAnimator
+      position={[0, 0.7, -4.5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[0.7, 1.1, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
   );
 }

@@ -60,6 +60,10 @@ const texturePath = {
     png: pngPath + "snake.png",
     json: jsonPath + "snake.json",
   },
+  clickHim: {
+    png: "/sprites/click-him-text/click-him-text.png",
+    json: "/sprites/click-him-text/click-him-text.json",
+  },
 };
 
 function PrehistoricSprite({ isInView }: { isInView: boolean }) {
@@ -212,6 +216,8 @@ function PrehistoricSprite({ isInView }: { isInView: boolean }) {
       <SnakeSprite />
       <RForegroundSillhouetteSprite />
       <LForegroundSillhouetteSprite />
+      <ClickHimSprite />
+
       <group onClick={playRandomAudio}>
         <mesh
           visible={!isHovered}
@@ -231,7 +237,7 @@ function PrehistoricSprite({ isInView }: { isInView: boolean }) {
 export default React.memo(PrehistoricSprite);
 
 function MidGroundMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "mid-ground.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/78bef30f-61eb-4aa6-928b-84659ae77d00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -244,7 +250,7 @@ function MidGroundMesh() {
 }
 
 function GroundMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "ground.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/471736ca-9fce-4bfe-a2e1-4ea69e70d300/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -257,7 +263,7 @@ function GroundMesh() {
 }
 
 function VolcanoMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "volcano.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/6e8dd02a-1ab3-4a5b-890f-aaec01de9100/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -577,11 +583,37 @@ function SnakeSprite() {
 
   return (
     <SpriteAnimator
-      position={[3, 0.78, -3.8]}
+      position={[2.8, 0.75, -3.8]}
       startFrame={0}
       autoPlay={true}
       loop={true}
-      scale={[1.1, 1.04, 0.1]}
+      scale={[3.2, 4, 2.4]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
+  );
+}
+
+function ClickHimSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.clickHim.png,
+    texturePath.clickHim.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  return (
+    <SpriteAnimator
+      position={[0, -0.05, -4.75]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[0.7, 1.1, 0.1]}
       spriteDataset={spriteObj}
       asSprite={false}
       fps={15}

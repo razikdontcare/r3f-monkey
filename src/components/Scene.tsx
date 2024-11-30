@@ -16,13 +16,30 @@ import {
   PrehistoricToEgypt,
   WW2ToNYC,
 } from "@/components/transitions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PreloadTextures from "./utils/PreloadTextures";
 
 export default function Scene() {
   const { targetPosition } = useCameraPosition();
 
   const [texturesReady, setTexturesReady] = useState(false);
+
+  const [egyptPosition, setEgyptPosition] = useState<[number, number, number]>([0, 0, 0])
+  const [dynastyPosition, setDynastyPosition] = useState<[number, number, number]>([0, 0, 0])
+  const [worldWarPosition, setWorldWarPosition] = useState<[number, number, number]>([0, 0, 0])
+  const [nycPosition, setNYCPosition] = useState<[number, number, number]>([0, 0, 0])
+
+
+  useEffect(() => {
+    if (texturesReady) {
+      setTimeout(() => {
+        setEgyptPosition([10, 0, 0])
+        setDynastyPosition([20, 0, 0])
+        setWorldWarPosition([30, 0, 0])
+        setNYCPosition([40, 0, 0])
+      }, 12500);
+    }
+  }, [texturesReady])
 
   if (!texturesReady) {
     return (
@@ -44,15 +61,19 @@ export default function Scene() {
         <PrehistoricSprite isInView={targetPosition[0] <= 5} />
         <EgyptSprite
           isInView={targetPosition[0] >= 5 && targetPosition[0] <= 15}
+          position={egyptPosition}
         />
         <DynastySprite
           isInView={targetPosition[0] >= 15 && targetPosition[0] <= 25}
+          position={dynastyPosition}
         />
         <WorldWar2Sprite
           isInView={targetPosition[0] >= 25 && targetPosition[0] <= 35}
+          position={worldWarPosition}
         />
         <NYCSprite
           isInView={targetPosition[0] >= 35 && targetPosition[0] <= 45}
+          position={nycPosition}
         />
 
         {/* Transitions */}

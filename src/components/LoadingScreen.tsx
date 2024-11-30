@@ -6,17 +6,17 @@ import { useThree } from '@react-three/fiber';
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Preload, useTexture } from '@react-three/drei';
-import { SpriteMaterial, LinearFilter, NoToneMapping, Sprite, Object3DEventMap, Mesh, BufferGeometry, NormalBufferAttributes, Material, Texture } from 'three';
+import { SpriteMaterial, LinearFilter, Sprite, Object3DEventMap, Mesh, BufferGeometry, NormalBufferAttributes, Material, Texture } from 'three';
 import { useMusic } from "@/utils/MusicContext";
 
 export default function LoadingScreen() {
   const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
-  const targetSize = 400; // Target dalam MB
+  const targetSize = 125; // Target dalam MB
 
   useEffect(() => {
     const observer = new PerformanceObserver((list) => {
       const entries = list.getEntriesByType("resource");
-      let totalSize = 0;
+      let totalSize = 100;
 
       entries.forEach((entry: any) => {
         // Menambahkan ukuran setiap resource yang dimuat
@@ -80,13 +80,13 @@ export default function LoadingScreen() {
       {/* Bar Screen */}
       <div className="absolute left-20 bottom-10 text-center w-[15%]">
         {/* Spinner Monkey Loader */}
-        <Canvas gl={{ toneMapping: NoToneMapping, }}>
+        <Canvas>
           {/* <ambientLight intensity={0.5} /> */}
           {/* <pointLight position={[10, 10, 10]} /> */}
           <SpriteAnimation confirmation={confirmation} />
         </Canvas>
 
-        {/* <p className="text-white font-procopius">{Math.round(loadedSize)}MB</p> */}
+        <p className="text-white font-procopius">{Math.round(loadedSize)}MB</p>
 
         {/* Loading Bar */}
         {loading &&
@@ -153,6 +153,7 @@ const SpriteAnimation = ({ confirmation }: { confirmation: 'yes' | 'no' | null }
   // Ensure textures use linear filtering and encoding
   const allTextures = [...texturesCommon, ...texturesYes, ...texturesNo];
   allTextures.forEach((texture) => {
+    texture.colorSpace = 'srgb';
     texture.minFilter = LinearFilter; // Avoid mipmap effects
     texture.magFilter = LinearFilter;
     texture.needsUpdate = true;
@@ -347,11 +348,13 @@ const ParallaxScene = () => {
 
   useEffect(() => {
     backgroundTextures.forEach((texture) => {
+      texture.colorSpace = 'srgb';
       texture.minFilter = LinearFilter; // Avoid mipmap effects
       texture.magFilter = LinearFilter;
       texture.needsUpdate = true;
     });
     characterTextures.forEach((texture) => {
+      texture.colorSpace = 'srgb';
       texture.minFilter = LinearFilter; // Avoid mipmap effects
       texture.magFilter = LinearFilter;
       texture.needsUpdate = true;

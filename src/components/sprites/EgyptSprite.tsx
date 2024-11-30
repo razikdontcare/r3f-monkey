@@ -29,8 +29,8 @@ const texturePath = {
     json: jsonPath + "grass.json",
   },
   pyramidsAndNile: {
-    png: pngPath + "pyramids-and-nile.png",
-    json: jsonPath + "pyramids-and-nile.json",
+    png: pngPath + "pyramids-and-nile-2.png",
+    json: jsonPath + "pyramids-and-nile-2.json",
   },
   sniffer: {
     png: pngPath + "sniffer.png",
@@ -40,9 +40,13 @@ const texturePath = {
     png: pngPath + "sniffer-hover.png",
     json: jsonPath + "sniffer-hover.json",
   },
+  clickHim: {
+    png: "/sprites/click-him-text/click-him-text.png",
+    json: "/sprites/click-him-text/click-him-text.json",
+  },
 };
 
-function EgyptSprite({ isInView }: { isInView: boolean }) {
+function EgyptSprite({ isInView, position }: { isInView: boolean, position: [number, number, number] }) {
   const [isVisible, setIsVisible] = useState(isInView);
   const [isHovered, setIsHovered] = useState(false);
   const meshRef = useRef<Group>(null);
@@ -93,7 +97,7 @@ function EgyptSprite({ isInView }: { isInView: boolean }) {
     }
   });
   return (
-    <group position={[10, 0, 0]}>
+    <group position={position}>
       <group ref={meshRef} position={[0, animatedPositionY, 0]}>
         <SphinxMesh />
         <PyramidsAndNileSprite />
@@ -103,6 +107,7 @@ function EgyptSprite({ isInView }: { isInView: boolean }) {
       <GrassSprite />
       <CornerGrassSprite />
       <ForegroundStuffMesh />
+      <ClickHimSprite />
 
       <group onClick={() => setEvent("egypt")}>
         <mesh
@@ -123,7 +128,7 @@ function EgyptSprite({ isInView }: { isInView: boolean }) {
 export default React.memo(EgyptSprite);
 
 function SandMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "sand.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/7f9bde79-db8a-4377-428e-6298ad52bb00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -138,7 +143,7 @@ function SandMesh() {
 }
 
 function ForegroundStuffMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "foreground-stuff.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/b74753e3-687e-4700-196d-817c1f011c00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -153,7 +158,7 @@ function ForegroundStuffMesh() {
 }
 
 function CactusMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "cactus.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/493a03d1-35b6-4f5e-053b-f79d7b75f400/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -166,7 +171,7 @@ function CactusMesh() {
 }
 
 function SphinxMesh() {
-  const texture = useLoader(TextureLoader, pngPath + "sphinx.png");
+  const texture = useLoader(TextureLoader, "https://imagedelivery.net/TbljI5M9wzCg8cySIuWu0Q/4b79e959-0809-42b3-1dda-7f8f30da9d00/public");
   texture.minFilter = NearestFilter;
   texture.magFilter = NearestFilter;
 
@@ -185,7 +190,7 @@ function PyramidsAndNileSprite() {
     texturePath.pyramidsAndNile.png,
     texturePath.pyramidsAndNile.json,
     null,
-    15,
+    64,
     (tex) => {
       tex.minFilter = NearestFilter;
       tex.magFilter = NearestFilter;
@@ -313,6 +318,32 @@ function SnifferHoverSprite() {
       autoPlay={true}
       loop={true}
       scale={[scaleX, scaleX * 0.6784511784511785, 0.1]}
+      spriteDataset={spriteObj}
+      asSprite={false}
+      fps={15}
+    />
+  );
+}
+
+function ClickHimSprite() {
+  const { spriteObj } = useSpriteLoader(
+    texturePath.clickHim.png,
+    texturePath.clickHim.json,
+    null,
+    32,
+    (tex) => {
+      tex.minFilter = NearestFilter;
+      tex.magFilter = NearestFilter;
+    }
+  );
+
+  return (
+    <SpriteAnimator
+      position={[0, 0.65, -5]}
+      startFrame={0}
+      autoPlay={true}
+      loop={true}
+      scale={[0.7, 1.1, 0.1]}
       spriteDataset={spriteObj}
       asSprite={false}
       fps={15}
