@@ -48,7 +48,7 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/preloader/preloader-images/second-Sequence/mlk/character.png" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} transition-all duration-1000 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} transition-all duration-1000 antialiased custom-cursor-select font-procopius`}
         id="page-container"
       >
         {children}

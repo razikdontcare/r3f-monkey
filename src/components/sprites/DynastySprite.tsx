@@ -62,13 +62,13 @@ function DynastySprite({ isInView, position }: { isInView: boolean, position: [n
     () => ({
       enter: () => {
         if (typeof window !== "undefined") {
-          document.body.style.cursor = "pointer";
+          document.body.style.cursor = "url('/cursor/hover cursor.png'), auto;";
           setIsHovered(true);
         }
       },
       leave: () => {
         if (typeof window !== "undefined") {
-          document.body.style.cursor = "auto";
+          document.body.style.cursor = "url('/cursor/select cursor.png'), auto;";
           setIsHovered(false);
         }
       },

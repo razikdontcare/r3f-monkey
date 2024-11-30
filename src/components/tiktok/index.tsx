@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect, useCallback, MutableRefObject } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useAnimation } from "framer-motion";
 import Image from 'next/image';
 
@@ -12,6 +12,7 @@ import commentIcon from './assets/icon/comment.png';
 import shareIcon from './assets/icon/share.png';
 import avatarIcon from './assets/avatar.png';
 import { videosData } from './data/videos'
+import { useMusic } from "@/utils/MusicContext";
 
 interface Video {
   id: number;
@@ -24,7 +25,7 @@ interface Video {
   bLiked: boolean;
 }
 
-export default function Tiktok({ bgAudioRef }: { bgAudioRef: MutableRefObject<HTMLAudioElement | null> }) {
+export default function Tiktok() {
   const initialVideos: Video[] = videosData;
   const [loadedVideos, setLoadedVideos] = useState<Record<number, boolean>>({});
   const [videos, setVideos] = useState<Video[]>([]);
@@ -36,6 +37,8 @@ export default function Tiktok({ bgAudioRef }: { bgAudioRef: MutableRefObject<HT
   const backgroundVideoRef = useRef<HTMLVideoElement | null>(null);
   const controls = useAnimation();
   const y = useMotionValue(0);
+  const { playMusic,pauseMusic } = useMusic();
+
 
   const handleDragEnd = async (e: MouseEvent | TouchEvent | PointerEvent, info: { offset: { y: number } }) => {
     handleSwipe(info.offset.y);
@@ -78,18 +81,13 @@ export default function Tiktok({ bgAudioRef }: { bgAudioRef: MutableRefObject<HT
     }
   }, [isPaused, currentIndex]);
 
-  // Sync bgAudioRef with isPaused
   useEffect(() => {
-    if (bgAudioRef.current) {
-      if (isPaused) {
-        bgAudioRef.current.play().catch((error) => {
-          console.error("Error playing audio:", error);
-        });
-      } else {
-        bgAudioRef.current.pause();
-      }
+    if (isPaused) {
+      playMusic();
+    } else {
+      pauseMusic();
     }
-  }, [isPaused, bgAudioRef]);
+  }, [isPaused]);
 
   const handleSwipe = (offsetY: number) => {
     if (offsetY > 50) {

@@ -12,6 +12,7 @@ export default function Arrows() {
 
   const handleNext = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+    console.log(SCENE_STEP)
     setTargetPosition(
       targetPosition[0] + SCENE_STEP > MAX_POSITION
         ? [0, 0, 0]
