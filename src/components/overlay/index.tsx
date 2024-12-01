@@ -30,7 +30,7 @@ export default function UIOverlay() {
   return (
     <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
       <div className="w-full h-full flex pointer-events-none p-2 ">
-        <div className={`h-full flex justify-center pl-2 ${isMinimize ? 'items-start':'items-center'}`}>
+        <div className={`h-full flex justify-center pl-2 pt-10 ${isMinimize ? 'items-start':'items-center'}`}>
           <div
             className={`w-fit pl-10 relative transition-all duration-300 ${isMinimize && 'mb-[5rem]'}`}
             style={{
