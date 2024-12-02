@@ -2,6 +2,7 @@
 import Image from "next/image";
 import milestones from "./assets/milestones.png";
 import { useCameraPosition } from "@/utils/context";
+import { useCursor } from '@/utils/CursorContext';
 
 import IconPrehistoric from "./assets/icons/icon_prehistoric.png";
 import IconEgypt from "./assets/icons/icon_egypt.png";
@@ -15,6 +16,7 @@ import IconWW2Active from "./assets/icons/icon_ww2_active.png";
 import IconNYCActive from "./assets/icons/icon_nyc_active.png";
 
 export default function Milestones() {
+  const { setGrabCursor } = useCursor();
   const { setTargetPosition, targetPosition } = useCameraPosition();
   return (
     <>
@@ -24,8 +26,9 @@ export default function Milestones() {
             <Image src={milestones} alt="MILESTONES" className="w-[35rem]" fetchPriority="low" />
             <button
               id="prehistoric"
-              className={`size-10 pointer-events-auto absolute top-1 left-1 rounded-full ${targetPosition[0] !== 0 && 'p-2'}`}
+              className={`custom-cursor-hover size-10 pointer-events-auto absolute top-1 left-1 rounded-full ${targetPosition[0] !== 0 && 'p-2'}`}
               onClick={() => {
+                setGrabCursor();
                 setTargetPosition([0, 0, 0]);
               }}
             >
