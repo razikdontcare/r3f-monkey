@@ -8,6 +8,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Preload, useTexture } from '@react-three/drei';
 import { SpriteMaterial, LinearFilter, Sprite, Object3DEventMap, Mesh, BufferGeometry, NormalBufferAttributes, Material, Texture } from 'three';
 import { useMusic } from "@/utils/MusicContext";
+import { useCursor } from "@/utils/CursorContext";
 
 export default function LoadingScreen() {
   const [loadedSize, setLoadedSize] = useState(0); // Ukuran yang sudah dimuat dalam MB
@@ -109,20 +110,36 @@ export default function LoadingScreen() {
   );
 }
 
-const ConfirmationBox = ({ yes, no }: { yes: () => void, no: () => void }) => {
+const ConfirmationBox = ({ yes, no }: { yes: () => void; no: () => void }) => {
+  const { cursorStyle, setTemporaryCursorStyle } = useCursor();
+
+  const handleClick = (action: 'yes' | 'no') => {
+    setTemporaryCursorStyle("custom-cursor-grab");
+    (action === 'yes' ? yes : no)(); 
+  };
+
   return (
-    <div className="pt-20 pb-[186px] rounded-xl absolute max-w-[588px] w-full h-fit z-[1056]" style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}>
+    <div
+      className="pt-20 pb-[186px] rounded-xl absolute max-w-[588px] w-full h-fit z-[1056]"
+      style={{ background: "url('/preloader/confirmation-box/background-box.png')", backgroundSize: "cover" }}
+    >
       <div className="flex flex-col items-center text-center">
         <p className="text-white text-lg font-procopius">Are you ready to meet your Ancestor?</p>
 
-
-        <button className="custom-cursor-hover flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] left-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={yes}>Yes</button>
-        <button className="custom-cursor-hover flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] right-[148px] text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none" style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }} onClick={no}>No</button>
+        {['yes', 'no'].map((action) => (
+          <button
+            key={action}
+            className={`${cursorStyle} custom-cursor-hover flex items-center justify-center absolute w-[136px] h-[32px] bottom-[39px] ${action === 'yes' ? 'left-[148px]' : 'right-[148px]'} text-white p-0 rounded-sm font-procopius font-thin text-sm focus:border-none focus:outline-none`}
+            style={{ background: "url('/preloader/confirmation-box/bg-button.png')", backgroundSize: "cover" }}
+            onClick={() => handleClick(action as 'yes' | 'no')}
+          >
+            {action.charAt(0).toUpperCase() + action.slice(1)}
+          </button>
+        ))}
       </div>
     </div>
-  )
-}
-
+  );
+};
 // Function to load and play sound
 const playSFX = (audio: string) => {
   const sound = new Audio(audio);

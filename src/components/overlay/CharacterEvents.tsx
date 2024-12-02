@@ -131,7 +131,6 @@ function DynastyOverlay({ show }: { show: boolean }) {
             fetchPriority="low"
           />
           <div className="absolute px-[15%] my-[15%] text-[2vw] text-black font-black tracking-[.1vw] w-full h-[55%] overflow-y-auto no-scrollbar">
-          <div className="absolute px-[15%] my-[15%] text-[2vw] text-black font-black tracking-[.1vw] w-full h-[55%] overflow-y-auto no-scrollbar">
               {`The Art of Him`}<br/>
               {`To Ape is the essence of Him`}<br/>
               {`To fade one's ancestors is to ensure one’s own self destruction`}<br/>
@@ -149,8 +148,6 @@ function DynastyOverlay({ show }: { show: boolean }) {
               {`Supreme excellence is to sweat for the bags of HIMself`}<br/>
               {`Remember blood, for mankind can find eternal tranquility only through loving fellow HIMs as they love HIMself.`}
             </div>
-
-          </div>
         </div>
       )}
     </div>

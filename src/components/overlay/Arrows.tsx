@@ -2,9 +2,11 @@
 import { useCameraPosition } from "@/utils/context";
 import Image from "next/image";
 import React from "react";
+import { useCursor } from "@/utils/CursorContext";
 
 export default function Arrows() {
   const { setTargetPosition, targetPosition } = useCameraPosition();
+  const { cursorStyle,setTemporaryCursorStyle } = useCursor();
 
   const SCENE_COUNT = 5;
   const SCENE_STEP = 10;
@@ -12,7 +14,7 @@ export default function Arrows() {
 
   const handleNext = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    console.log(SCENE_STEP)
+    setTemporaryCursorStyle("custom-cursor-grab"); 
     setTargetPosition(
       targetPosition[0] + SCENE_STEP > MAX_POSITION
         ? [0, 0, 0]
@@ -22,6 +24,7 @@ export default function Arrows() {
 
   const handlePrev = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
+    setTemporaryCursorStyle("custom-cursor-grab"); 
     setTargetPosition(
       targetPosition[0] - SCENE_STEP < 0
         ? [MAX_POSITION, 0, 0]
@@ -36,7 +39,7 @@ export default function Arrows() {
           <div className="w-full mx-auto px-4 flex items-center justify-between gap-5 text-white pointer-events-none">
             <button
               onClick={handlePrev}
-              className="rounded pointer-events-auto hidden sm:block"
+              className={`${cursorStyle} rounded pointer-events-auto hidden sm:block`}
             >
               <Image src="/arrow-button/left.png" className="w-10 h-10" width={40} height={40} alt="Arrow Left" />
               {/* <svg
@@ -56,7 +59,7 @@ export default function Arrows() {
             </button>
             <button
               onClick={handleNext}
-              className="rounded pointer-events-auto hidden sm:block"
+              className={`${cursorStyle} rounded pointer-events-auto hidden sm:block`}
             >
               <Image src="/arrow-button/right.png" className="w-10 h-10" width={40} height={40} alt="Arrow Left" />
               {/* <svg

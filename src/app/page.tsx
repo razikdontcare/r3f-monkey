@@ -7,6 +7,7 @@ import {
   CameraPositionProvider,
   CharacterEventsProvider,
 } from "@/utils/context";
+import { CursorProvider } from '@/utils/CursorContext';
 
 export default function Home() {
   return (
@@ -14,12 +15,14 @@ export default function Home() {
       <CameraPositionProvider>
         <CharacterEventsProvider>
           <MusicProvider>
-            <LoadingScreen />
-            <div className="h-screen relative mx-auto flex items-center justify-center overflow-hidden ">
-              <Scene />
-              <UIOverlay />
-              <FollowingCursor />
-            </div>
+            <CursorProvider>
+              <LoadingScreen />
+              <div className="h-screen relative mx-auto flex items-center justify-center overflow-hidden ">
+                <Scene />
+                <UIOverlay />
+                <FollowingCursor />
+              </div>
+            </CursorProvider>
           </MusicProvider>
         </CharacterEventsProvider>
       </CameraPositionProvider>
