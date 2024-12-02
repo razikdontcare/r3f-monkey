@@ -114,8 +114,8 @@ const ConfirmationBox = ({ yes, no }: { yes: () => void; no: () => void }) => {
   const { cursorStyle, setTemporaryCursorStyle } = useCursor();
 
   const handleClick = (action: 'yes' | 'no') => {
-    setTemporaryCursorStyle("custom-cursor-grab"); // Temporarily set cursor style
-    action === 'yes' ? yes() : no(); // Trigger the appropriate action
+    setTemporaryCursorStyle("custom-cursor-grab");
+    (action === 'yes' ? yes : no)(); 
   };
 
   return (
