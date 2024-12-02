@@ -1,15 +1,18 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { useCursor } from "@/utils/CursorContext";
 
 import textBoxLong from "./assets/text-box-long.png";
 
 export default function BottomTextBox() {
   const [copied, setCopied] = useState(false);
   const [text] = useState("Coming Soon");
+  const { cursorStyle,setTemporaryCursorStyle } = useCursor();
 
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
+    setTemporaryCursorStyle("custom-cursor-grab"); 
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
@@ -24,7 +27,7 @@ export default function BottomTextBox() {
           src={textBoxLong}
           alt="TEXT BOX"
           fill
-          className="pointer-events-auto custom-cursor-hover object-contain"
+          className={`${cursorStyle} pointer-events-auto object-contain`}
           fetchPriority="low"
         />
         <div className="absolute inset-0 flex items-center justify-center">

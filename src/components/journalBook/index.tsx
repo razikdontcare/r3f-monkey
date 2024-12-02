@@ -257,6 +257,7 @@ export default function JournalBook() {
                 bottom: true,
                 left: true,
               }}
+              dragHandleClassName="drag-handle"
               className="absolute"
             >
               <textarea
@@ -277,8 +278,10 @@ export default function JournalBook() {
                   outline: "none",
                 }}
                 placeholder="Enter your text here..."
+                className="drag-handle"
               />
             </Rnd>
+
           </div>
 
           <div className="flex items-center my-1 relative w-full justify-center">
