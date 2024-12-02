@@ -3,11 +3,16 @@ import Image from "next/image";
 import milestones from "./assets/milestones.png";
 import { useCameraPosition } from "@/utils/context";
 
-import IconPrehistoric from "./assets/icons/icon-prehistoric.png";
-import IconEgypt from "./assets/icons/icon-egypt.png";
-import IconDynasty from "./assets/icons/icon-three-kingdoms.png";
-import IconWW2 from "./assets/icons/icon-ww2.png";
-import IconNYC from "./assets/icons/icon-nyc.png";
+import IconPrehistoric from "./assets/icons/icon_prehistoric.png";
+import IconEgypt from "./assets/icons/icon_egypt.png";
+import IconDynasty from "./assets/icons/icon_three_kingdoms.png";
+import IconWW2 from "./assets/icons/icon_ww2.png";
+import IconNYC from "./assets/icons/icon_nyc.png";
+import IconPrehistoricActive from "./assets/icons/icon_prehistoric_active.png";
+import IconEgyptActive from "./assets/icons/icon_egypt_active.png";
+import IconDynastyActive from "./assets/icons/icon_three_kingdoms_active.png";
+import IconWW2Active from "./assets/icons/icon_ww2_active.png";
+import IconNYCActive from "./assets/icons/icon_nyc_active.png";
 
 export default function Milestones() {
   const { setTargetPosition, targetPosition } = useCameraPosition();
@@ -19,14 +24,14 @@ export default function Milestones() {
             <Image src={milestones} alt="MILESTONES" className="w-[35rem]" fetchPriority="low" />
             <button
               id="prehistoric"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 left-1 rounded-full ${targetPosition[0] !== 0 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
+              className={`size-10 pointer-events-auto absolute top-1 left-1 rounded-full ${targetPosition[0] !== 0 && 'p-2'}`}
               onClick={() => {
                 setTargetPosition([0, 0, 0]);
               }}
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={IconPrehistoric}
+                  src={ targetPosition[0] === 0 ? IconPrehistoricActive : IconPrehistoric}
                   alt="PREHISTORIC"
                   fill
                   className={`object-contain icon`}
@@ -36,14 +41,14 @@ export default function Milestones() {
             </button>
             <button
               id="egypt"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 left-[8.2rem] rounded-full ${targetPosition[0] !== 10 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
+              className={`size-10 pointer-events-auto absolute top-1 left-[8.2rem] rounded-full  ${targetPosition[0] !== 10 && 'p-2'}`}
               onClick={() => {
                 setTargetPosition([10, 0, 0]);
               }}
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={IconEgypt}
+                  src={ targetPosition[0] === 10 ? IconEgyptActive : IconEgypt}
                   alt="EGYPT"
                   fill
                   className={`object-contain icon`}
@@ -53,14 +58,14 @@ export default function Milestones() {
             </button>
             <button
               id="dynasty"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 left-[16.25rem] rounded-full ${targetPosition[0] !== 20 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
+              className={`size-10 pointer-events-auto absolute top-1 left-[16.25rem] rounded-full ${targetPosition[0] !== 20 && 'p-2'}`}
               onClick={() => {
                 setTargetPosition([20, 0, 0]);
               }}
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={IconDynasty}
+                  src={ targetPosition[0] === 20 ? IconDynastyActive : IconDynasty }
                   alt="THREE KINGDOMS"
                   fill
                   className={`object-contain icon`}
@@ -70,14 +75,14 @@ export default function Milestones() {
             </button>
             <button
               id="ww2"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 right-[8.1rem] rounded-full ${targetPosition[0] !== 30 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
+              className={`size-10 pointer-events-auto absolute top-1 right-[8.1rem] rounded-full ${targetPosition[0] !== 30 && 'p-2'}`}
               onClick={() => {
                 setTargetPosition([30, 0, 0]);
               }}
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={IconWW2}
+                  src={ targetPosition[0] === 30 ? IconWW2Active : IconWW2 }
                   alt="WW2"
                   fill
                   className={`object-contain icon`}
@@ -87,14 +92,14 @@ export default function Milestones() {
             </button>
             <button
               id="nyc"
-              className={`size-10 p-2 pointer-events-auto absolute top-1 right-1 rounded-full ${targetPosition[0] !== 40 ? "bg-[#946951]" : "milestone-btn bg-black"}`}
+              className={`size-10 pointer-events-auto absolute top-1 right-1 rounded-full ${targetPosition[0] !== 40 && 'p-2'}`}
               onClick={() => {
                 setTargetPosition([40, 0, 0]);
               }}
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={IconNYC}
+                  src={ targetPosition[0] === 40 ? IconNYCActive : IconNYC}
                   alt="NYC"
                   fill
                   className={`object-contain icon`}
